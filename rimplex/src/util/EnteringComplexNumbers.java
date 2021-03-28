@@ -8,8 +8,16 @@ import math.ComplexNumber;
  * @author Jackson Brantley
  *
  */
-public class EnteringComplexNumbers
+public final class EnteringComplexNumbers
 {
+  
+  /**
+   * Constructor, set to private as there is no need to create an instance of this class.
+   */
+  private EnteringComplexNumbers()
+  {
+    
+  }
 
   /**
    * Given a string, convert the string into a complex number. If the string is missing either the
@@ -64,7 +72,7 @@ public class EnteringComplexNumbers
           index = input.indexOf("-", input.indexOf("-") + 1);
         }
       }
-      else if (input.indexOf("-") != 0)
+      else
       {
         operator = "-";
         index = input.indexOf(operator);
