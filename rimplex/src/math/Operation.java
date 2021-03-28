@@ -64,6 +64,10 @@ public class Operation
   {
     ComplexNumber top = Operation.multiply(a, b.conjugate());
     double bottom = b.getReal() * b.getReal() + b.getImaginary() * b.getImaginary();
+    if (bottom == 0)
+    {
+      throw new IllegalArgumentException();
+    }
     return new ComplexNumber(top.getReal() / bottom, top.getImaginary() / bottom);
   }
 
