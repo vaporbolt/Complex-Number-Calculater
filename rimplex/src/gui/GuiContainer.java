@@ -21,7 +21,7 @@ public class GuiContainer
   private static boolean exists = false;
   
   private final int jframeWidth = 400;
-  private final int jframeHeight = 400;
+  private final int jframeHeight = 600;
   
   // holds the frame
   private JFrame frame = new JFrame("Rimplex");
@@ -73,7 +73,8 @@ public class GuiContainer
    */
   public void showGUI()
   {
-    frame.setMaximumSize(new Dimension(400, 400));
+    frame.getContentPane().setBackground(Color.CYAN);
+    frame.setMaximumSize(new Dimension(400, 800));
     frame.setSize(this.jframeWidth, this.jframeHeight);
     frame.setVisible(true);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -101,33 +102,29 @@ public class GuiContainer
     gbc.fill = GridBagConstraints.HORIZONTAL;
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 1;
-    gbc.weighty = 1;
-    area.setPreferredSize(new Dimension(400,200));
-    area.setMinimumSize(new Dimension(400, 100));
+    gbc.weighty = 0.5;
     gbc.insets = new Insets(50,20,50,50);  //top padding
     gbl.setConstraints(area, gbc);
     contentPane.add(area);
     
-    /* InputField
+    // InputField
     JTextField textField = this.inputField.getTextField();
     
     gbc.gridx = 0;
     gbc.gridy = 1;
-    gbc.gridwidth = 1;
+    gbc.gridwidth = gbc.REMAINDER;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.ipadx = 400;
-    gbc.ipady = 20;
-    gbl.setConstraints(textField, gbc);  area.setPreferredSize(new Dimension(400, 20));
-    textField.setMinimumSize(new Dimension(400, 20));
+    gbl.setConstraints(textField, gbc);  
     contentPane.add(textField);
-    /*
     
-    /*resetButton
+    
+    // Reset button
     button = new JButton("R");
+    gbc = new GridBagConstraints();
     gbc.gridx = 0;
     gbc.gridy = 2;
     gbc.gridwidth = 1;
@@ -135,37 +132,110 @@ public class GuiContainer
     gbc.fill = GridBagConstraints.HORIZONTAL;
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 0;
-    gbc.weighty = 0;
-    gbc.insets = new Insets(100,20,0,20);  //top padding
-    gbl.setConstraints(button, gbc);
+    gbc.weighty = 1;
+    gbc.insets = new Insets(10, 5, 10, 5);
+    gbl.setConstraints(button, gbc);  
     contentPane.add(button);
-    /*
     
-    /*
+    
+    // clear button
+    button = new JButton("C");
     gbc = new GridBagConstraints();
-    button = new JButton("test 2"); 
-    gbc.gridx = 0;
-    gbc.gridy = 1;
+    gbc.gridx = 1;
+    gbc.gridy = 2;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     gbc.anchor = GridBagConstraints.CENTER;
-    gbc.weightx = 0.4;
+    gbc.weightx = 0;
     gbc.weighty = 1;
-    gbc.anchor = GridBagConstraints.PAGE_END; //bottom of space
-    gbc.insets = new Insets(100,0,0,0);  //top padding
-    gbl.setConstraints(button, gbc);
+    gbc.insets = new Insets(10, 5, 10, 5);
+    gbl.setConstraints(button, gbc);  
     contentPane.add(button);
-    */
+    
+    // add button
+    button = new JButton("+");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 2;
+    gbc.gridy = 2;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 1;
+    gbc.insets = new Insets(10, 5, 10, 5);
+    gbl.setConstraints(button, gbc);  
+    contentPane.add(button);
+    
+    // subtract button
+    button = new JButton("-");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 3;
+    gbc.gridy = 2;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 1;
+    gbc.insets = new Insets(10, 5, 10, 5);
+    gbl.setConstraints(button, gbc);  
+    contentPane.add(button);
+    
+    // multiplication button
+    button = new JButton("x");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 4;
+    gbc.gridy = 2;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 1;
+    gbl.setConstraints(button, gbc);  
+    contentPane.add(button);
+    // divide button
+    button = new JButton("÷");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 5;
+    gbc.gridy = 2;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 1;
+    gbc.insets = new Insets(5, 10, 10, 5);
+    gbl.setConstraints(button, gbc);  
+    contentPane.add(button);
+    
+    // = button
+    button = new JButton("=");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 6;
+    gbc.gridy = 2;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 1;
+    gbc.insets = new Insets(10, 5, 10, 5);
+    gbl.setConstraints(button, gbc);  
+    contentPane.add(button);
+    
+    
+    
+    
+    
+    
+
+    
+
   
     
-    /* output Field
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.gridx = 0;
-    c.gridy = 0;
-    c.gridwidth = 7;
-    contentPane.add(new TextArea(), c);
-    */
     
     
 

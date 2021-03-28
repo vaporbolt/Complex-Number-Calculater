@@ -26,7 +26,7 @@ public class InputField
   private InputField()
   {
     // creates a formattedinput field with one column,
-    this.field = new JFormattedTextField(1);
+    this.field = new JFormattedTextField();
   }
 
   /**
