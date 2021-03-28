@@ -138,7 +138,6 @@ class OperationTest
     ComplexNumber num5 = new ComplexNumber(0, 0);
 
     assertThrows(IllegalArgumentException.class, () -> Operation.devide(num4, num5));
-
   }
 
 }

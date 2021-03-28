@@ -1,7 +1,7 @@
 package math;
 
 /**
- * ComplexNumber.
+ * ComplexNumber class.
  * 
  * @author Sebastien Roy
  *

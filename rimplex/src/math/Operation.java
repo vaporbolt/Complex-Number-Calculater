@@ -70,5 +70,4 @@ public class Operation
     }
     return new ComplexNumber(top.getReal() / bottom, top.getImaginary() / bottom);
   }
-
 }
