@@ -25,7 +25,7 @@ public class EnteringComplexNumbers
    * @throws NumberFormatException
    *           if input is not a valid complex number
    */
-  public static ComplexNumber parseComplexNumber(String input)
+  public static ComplexNumber parseComplexNumber(final String input)
   {
     if (input == null)
       throw new NullPointerException();
@@ -35,16 +35,42 @@ public class EnteringComplexNumbers
     double real = 0.0;
     double imaginary = 0.0;
     String operator = "";
+    int index = 0;
 
     if (input.contains("+"))
+    {
       operator = "+";
-    else if (input.contains("-"))
-      operator = "-";
+      index = input.indexOf(operator);
+    }
     else if (input.contains("*"))
+    {
       operator = "*";
+      index = input.indexOf(operator);
+    }
     else if (input.contains("/"))
+    {
       operator = "/";
-
+      index = input.indexOf(operator);
+    }
+    else if (input.contains("-"))
+    {
+      if (input.indexOf("-") == 0)
+      {
+        if (input.indexOf("-", input.indexOf("-") + 1) == -1)
+          operator = "";
+        else
+        {
+          operator = "-";
+          index = input.indexOf("-", input.indexOf("-") + 1);
+        }
+      }
+      else if (input.indexOf("-") != 0)
+      {
+        operator = "-";
+        index = input.indexOf(operator);
+      }
+    }
+    
     if (operator.isEmpty())
     {
       try
@@ -63,9 +89,9 @@ public class EnteringComplexNumbers
     {
       try
       {
-        real = Double.parseDouble(input.substring(0, input.indexOf(operator)));
+        real = Double.parseDouble(input.substring(0, index));
         imaginary = Double
-            .parseDouble(input.substring(input.indexOf(operator) + 1, input.indexOf("i")));
+            .parseDouble(input.substring(index + 1, input.indexOf("i")));
       }
       catch (NumberFormatException e)
       {
