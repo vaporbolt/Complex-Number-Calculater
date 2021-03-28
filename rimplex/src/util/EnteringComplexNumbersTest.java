@@ -5,41 +5,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import math.ComplexNumber;
+import math.Operation;
 
 class EnteringComplexNumbersTest
 {
 
-  @Test
-  void testAddition()
-  {
-    ComplexNumber c = EnteringComplexNumbers.parseComplexNumber("1 + 2i");
-    assertEquals(1.0, c.getReal());
-    assertEquals(2.0, c.getImaginary());
-  }
-
-  @Test
-  void testSubtraction()
-  {
-    ComplexNumber c = EnteringComplexNumbers.parseComplexNumber("1 - 2i");
-    assertEquals(1.0, c.getReal());
-    assertEquals(2.0, c.getImaginary());
-  }
-
-  @Test
-  void testMultiplication()
-  {
-    ComplexNumber c = EnteringComplexNumbers.parseComplexNumber("1 * 2i");
-    assertEquals(1.0, c.getReal());
-    assertEquals(2.0, c.getImaginary());
-  }
-
-  @Test
-  void testDivision()
-  {
-    ComplexNumber c = EnteringComplexNumbers.parseComplexNumber("1 / 2i");
-    assertEquals(1.0, c.getReal());
-    assertEquals(2.0, c.getImaginary());
-  }
+  /*
+   * 
+   * UNIT TESTS
+   * 
+   */
 
   @Test
   void testMultipleFormats()
@@ -84,15 +59,15 @@ class EnteringComplexNumbersTest
   @Test
   void testMultipleFormatsNegative()
   {
-    ComplexNumber c = EnteringComplexNumbers.parseComplexNumber("-1 - 2i");
+    ComplexNumber c = EnteringComplexNumbers.parseComplexNumber("-1 + 2i");
     assertEquals(-1.0, c.getReal());
     assertEquals(2.0, c.getImaginary());
 
-    ComplexNumber c2 = EnteringComplexNumbers.parseComplexNumber("1.0 - -2.0i");
+    ComplexNumber c2 = EnteringComplexNumbers.parseComplexNumber("1.0 + -2.0i");
     assertEquals(1.0, c2.getReal());
     assertEquals(-2.0, c2.getImaginary());
 
-    ComplexNumber c3 = EnteringComplexNumbers.parseComplexNumber("-1.0 - -2i");
+    ComplexNumber c3 = EnteringComplexNumbers.parseComplexNumber("-1.0 + -2i");
     assertEquals(-1.0, c3.getReal());
     assertEquals(-2.0, c3.getImaginary());
 
@@ -108,15 +83,15 @@ class EnteringComplexNumbersTest
     assertEquals(0.0, c6.getReal());
     assertEquals(-1.0, c6.getImaginary());
 
-    ComplexNumber c7 = EnteringComplexNumbers.parseComplexNumber("1-2i");
-    assertEquals(1.0, c7.getReal());
-    assertEquals(2.0, c7.getImaginary());
+    ComplexNumber c7 = EnteringComplexNumbers.parseComplexNumber("-1+-2i");
+    assertEquals(-1.0, c7.getReal());
+    assertEquals(-2.0, c7.getImaginary());
 
-    ComplexNumber c8 = EnteringComplexNumbers.parseComplexNumber("-1- 2i");
+    ComplexNumber c8 = EnteringComplexNumbers.parseComplexNumber("-1+ 2i");
     assertEquals(-1.0, c8.getReal());
     assertEquals(2.0, c8.getImaginary());
 
-    ComplexNumber c9 = EnteringComplexNumbers.parseComplexNumber("1 --2i");
+    ComplexNumber c9 = EnteringComplexNumbers.parseComplexNumber("1 +-2i");
     assertEquals(1.0, c9.getReal());
     assertEquals(-2.0, c9.getImaginary());
   }
@@ -143,6 +118,36 @@ class EnteringComplexNumbersTest
     assertThrows(NumberFormatException.class, () -> {
       EnteringComplexNumbers.parseComplexNumber("+");
     });
+    
+    assertThrows(NumberFormatException.class, () -> {
+      EnteringComplexNumbers.parseComplexNumber("1 * 2i");
+    });
+  }
+
+  /*
+   * 
+   * INTEGRATION TESTS
+   * 
+   */
+  
+  @Test
+  void testIntegration()
+  {
+    ComplexNumber num1 = EnteringComplexNumbers.parseComplexNumber("2 + 3i");
+    ComplexNumber num2 = EnteringComplexNumbers.parseComplexNumber("4 + 2i");
+    ComplexNumber num3 = Operation.add(num1, num2);
+
+    assertEquals(6, num3.getReal());
+    assertEquals(5, num3.getImaginary());
+
+    num1 = EnteringComplexNumbers.parseComplexNumber("0 + 0i");
+    num2 = EnteringComplexNumbers.parseComplexNumber("0 + 0i");
+
+    num3 = Operation.add(num1, num2);
+
+    assertEquals(0, num3.getReal());
+    assertEquals(0, num3.getImaginary());
+
   }
 
 }

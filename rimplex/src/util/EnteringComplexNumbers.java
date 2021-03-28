@@ -50,34 +50,6 @@ public final class EnteringComplexNumbers
       operator = "+";
       index = input.indexOf(operator);
     }
-    else if (input.contains("*"))
-    {
-      operator = "*";
-      index = input.indexOf(operator);
-    }
-    else if (input.contains("/"))
-    {
-      operator = "/";
-      index = input.indexOf(operator);
-    }
-    else if (input.contains("-"))
-    {
-      if (input.indexOf("-") == 0)
-      {
-        if (input.indexOf("-", input.indexOf("-") + 1) == -1)
-          operator = "";
-        else
-        {
-          operator = "-";
-          index = input.indexOf("-", input.indexOf("-") + 1);
-        }
-      }
-      else
-      {
-        operator = "-";
-        index = input.indexOf(operator);
-      }
-    }
     
     if (operator.isEmpty())
     {
