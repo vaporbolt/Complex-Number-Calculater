@@ -70,21 +70,43 @@ public class ComplexNumber
   }
   
   /**
+   * return a complex number with parentheses around it.
+   * @return String
+   */
+  public String toString()
+  {
+    return toString(true);
+  }
+  
+  /**
    * Converts the complex number into a string. 
    * If either the real or imaginary number is an integer it will be displayed without the decimal.
    * 
+   * @param parentheses if true add parentheses around the complex number
    * @return the string form of a complex number.
    */
-  public String toString()
+  public String toString(boolean parentheses)
   {
     String complete;
     String realNum = "";
     String imaginaryNum = "";
+    
+    // check for integer or double
     if (this.real == (int)this.real) realNum += (int)this.real;
     else realNum += this.real;
+    
+    // check for integer or double
     if (this.imaginary == (int)this.imaginary) imaginaryNum += (int)this.imaginary;
     else imaginaryNum += this.imaginary;
-    complete = realNum + " + " + imaginaryNum + "i";
+    
+    if (parentheses)
+    {
+      complete = "(" + realNum + " + " + imaginaryNum + "i)";
+    }
+    else 
+    {
+      complete = realNum + " + " + imaginaryNum + "i";
+    }
     return complete;
   }
 

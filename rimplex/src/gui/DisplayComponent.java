@@ -21,16 +21,22 @@ public class DisplayComponent
   private static boolean exists = false;
   
   // displays complex numbers, operators, results
-  private JPanel panel;
+  private JTextPane panel;
+  
+  // tracks text inside the display
+  private String text;
 
   /**
    * Private constructor.
    */
   private DisplayComponent()
   {
-    panel = new JPanel();
+    panel = new JTextPane();
     panel.setBackground(Color.lightGray);
     panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    panel.setEditable(false);
+   
+    text = "";
   }
 
   /**
@@ -57,25 +63,25 @@ public class DisplayComponent
    */
   public void addComplexNumber(ComplexNumber complexNumber)
   {
-    String result = "(" + complexNumber.getReal() + " + ";
-    result += "" + complexNumber.getImaginary() + "i)";
-    panel.add(new JLabel(result));
+    text += complexNumber.toString();
+    this.panel.setText(text);
   }
   
   /**
-   * adds text to the display panel.
+   * adds a text string to the display panel.
    * @param text String
    */
   public void addText(String text)
   {
-    panel.add(new JLabel(" " + text + " "));
+    this.text += text;
+    this.panel.setText(this.text);
   }
 
   /**
    * gets JPanel.
    * @return JPanel
    */
-  public JPanel getPanel()
+  public JTextPane getPanel()
   {
     return this.panel;
   }
@@ -85,7 +91,8 @@ public class DisplayComponent
    */
   public void resetPanel()
   {
-    this.panel.removeAll();
+    text = "";
+    this.panel.setText(text);
   }
   
 }

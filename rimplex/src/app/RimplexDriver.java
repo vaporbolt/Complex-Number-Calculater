@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import gui.DisplayComponent;
 import gui.GuiContainer;
 import math.ComplexNumber;
+import math.Operation;
 
 /**
  * Driver for the Rimplex application.
@@ -16,7 +17,7 @@ import math.ComplexNumber;
 public class RimplexDriver
 {
   
-  public static ArrayList<ComplexNumber> complexNumbers;
+  public static ArrayList<ComplexNumber> complexNumbers = new ArrayList<ComplexNumber>();
 
   /**
    * main method.
@@ -30,9 +31,25 @@ public class RimplexDriver
         GuiContainer container = GuiContainer.createInstance();
         container.showGUI();
         
-        // insert Complex Numbers
+        // get display
         DisplayComponent display = container.getDisplay();
-        display.addComplexNumber(new ComplexNumber(5, 10));
+        
+        // insert Complex Numbers
+        ComplexNumber a = new ComplexNumber(5, 10);
+        ComplexNumber b = new ComplexNumber(7, 2);
+        complexNumbers.add(a);
+        complexNumbers.add(b);
+        
+        // display Complex Numbers
+        display.addComplexNumber(complexNumbers.get(0));
+        display.addText(" + ");
+        display.addComplexNumber(complexNumbers.get(1));
+        display.addText(" = ");
+        
+        // calculate result
+        ComplexNumber result = Operation.add(a, b);
+        display.addComplexNumber(result);
+      
       }
   });
   }
