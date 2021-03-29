@@ -21,12 +21,12 @@ public class InputField
   // filters the Jtext area for correct input.
   private DocumentFilter filter;
   // contains the text area the user will type in.
-  private JFormattedTextField field;
+  private JTextPane field;
 
   private InputField()
   {
     // creates a formattedinput field with one column,
-    this.field = new JFormattedTextField();
+    this.field = new JTextPane();
   }
 
   /**
@@ -52,7 +52,7 @@ public class InputField
   /**
    * @return the text field this input field contains.
    */
-  public JTextField getTextField()
+  public JTextPane getTextField()
   {
     return this.field;
   }
