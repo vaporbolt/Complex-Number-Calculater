@@ -87,9 +87,9 @@ public class DisplayComponent
   }
   
   /**
-   * resets display of every visible thing.
+   * clears display of all text.
    */
-  public void resetPanel()
+  public void reset()
   {
     text = "";
     this.panel.setText(text);
