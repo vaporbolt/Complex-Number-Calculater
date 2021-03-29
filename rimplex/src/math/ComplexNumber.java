@@ -68,5 +68,24 @@ public class ComplexNumber
   {
     return new ComplexNumber(this.real, this.imaginary * -1);
   }
+  
+  /**
+   * Converts the complex number into a string. 
+   * If either the real or imaginary number is an integer it will be displayed without the decimal.
+   * 
+   * @return the string form of a complex number.
+   */
+  public String toString()
+  {
+    String complete;
+    String realNum = "";
+    String imaginaryNum = "";
+    if (this.real == (int)this.real) realNum += (int)this.real;
+    else realNum += this.real;
+    if (this.imaginary == (int)this.imaginary) imaginaryNum += (int)this.imaginary;
+    else imaginaryNum += this.imaginary;
+    complete = realNum + " + " + imaginaryNum + "i";
+    return complete;
+  }
 
 }

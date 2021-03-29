@@ -149,5 +149,15 @@ class EnteringComplexNumbersTest
     assertEquals(0, num3.getImaginary());
 
   }
+  
+  @Test void testToString()
+  {
+    ComplexNumber num = new ComplexNumber(1, 2);
+    ComplexNumber num2 = EnteringComplexNumbers.parseComplexNumber("4 + 2i");
+    ComplexNumber num3 = EnteringComplexNumbers.parseComplexNumber("4.5 + 2.7i");
+    assertEquals("1 + 2i", num.toString());
+    assertEquals("4 + 2i", num2.toString());
+    assertEquals("4.5 + 2.7i", num3.toString());
+  }
 
 }
