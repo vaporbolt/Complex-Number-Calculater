@@ -31,7 +31,7 @@ public class GuiContainer
   private HashMap<String, JButton> buttons = new HashMap<String, JButton>();
   
   private InputField inputField = InputField.createInstance();
-  
+
   private DisplayComponent display;
 
   /**
@@ -60,6 +60,24 @@ public class GuiContainer
       exists = true;
       return new GuiContainer();
     }
+  }
+  
+  /**
+   * gets the GUI's display.
+   * @return DisplayComponent
+   */
+  public DisplayComponent getDisplay()
+  {
+    return this.display;
+  }
+  
+  /**
+   * gets GUI's inputfield.
+   * @return InputField
+   */
+  public InputField getInputField()
+  {
+    return this.inputField;
   }
   
   /**
@@ -98,12 +116,6 @@ public class GuiContainer
     
     // Display
     display = DisplayComponent.createInstance();
-    
-    // ComplexNumber will not be accessed by this class when driver is made
-    // this is just a placeholder text
-    display.addComplexNumber(new ComplexNumber(5, 10)); 
-    display.addText("+");
-    display.addComplexNumber(new ComplexNumber(7, 3));
     
     gbc.gridx = 0;
     gbc.gridy = 0;
@@ -237,20 +249,6 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);  
     contentPane.add(button);
-    
-    
-    
-    
-    
-    
-
-    
-
-  
-    
-    
-    
-
     
   }
 

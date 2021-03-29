@@ -20,6 +20,7 @@ public class DisplayComponent
   // tracks if an instance exists of the Display.
   private static boolean exists = false;
   
+  // displays complex numbers, operators, results
   private JPanel panel;
 
   /**
@@ -77,6 +78,14 @@ public class DisplayComponent
   public JPanel getPanel()
   {
     return this.panel;
+  }
+  
+  /**
+   * resets display of every visible thing.
+   */
+  public void resetPanel()
+  {
+    this.panel.removeAll();
   }
   
 }
