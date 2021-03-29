@@ -34,10 +34,10 @@ public class InputField
   {
     // creates a formattedinput field with one column,
     this.field = new JTextPane();
-    document = this.getTextField().getDocument();
+    document = this.field.getDocument();
     this.filter = new  InputFieldDocumentFilter();
-    abstractDocument = (AbstractDocument) this.getTextField().getDocument();
-    this.abstractDocument.setDocumentFilter(new InputFieldDocumentFilter());
+    this.abstractDocument = (AbstractDocument) this.document;
+    this.abstractDocument.setDocumentFilter(filter);
   }
 
   /**
