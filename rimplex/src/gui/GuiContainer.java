@@ -129,7 +129,7 @@ public class GuiContainer
     contentPane.add(display.getPanel(), gbc);
     
     // InputField
-    JTextField textField = this.inputField.getTextField();
+    JTextPane textField = this.inputField.getTextField();
     
     gbc.gridx = 0;
     gbc.gridy = 1;
