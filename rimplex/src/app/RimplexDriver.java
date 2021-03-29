@@ -54,7 +54,7 @@ public class RimplexDriver
           else
           {
             display.addComplexNumber(num);
-            display.addText(" + ");
+            display.addText(" / ");
           }
         }
         display.addText(" = ");
@@ -63,7 +63,7 @@ public class RimplexDriver
         ComplexNumber result = complexNumbers.get(0);
         for (int i = 1; i < complexNumbers.size(); i++)
         {
-          result = Operation.add(result, complexNumbers.get(i));
+          result = Operation.divide(result, complexNumbers.get(i));
         }
         
         // display result

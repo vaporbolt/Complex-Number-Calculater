@@ -105,7 +105,7 @@ class OperationTest
   {
     ComplexNumber num1 = new ComplexNumber(5, 5);
     ComplexNumber num2 = new ComplexNumber(3, 2);
-    ComplexNumber num3 = Operation.devide(num1, num2);
+    ComplexNumber num3 = Operation.divide(num1, num2);
 
     assertEquals(25.0 / 13, num3.getReal());
     assertEquals(5.0 / 13, num3.getImaginary());
@@ -113,7 +113,7 @@ class OperationTest
     num1 = new ComplexNumber(-5, 5);
     num2 = new ComplexNumber(-3, 2);
 
-    num3 = Operation.devide(num1, num2);
+    num3 = Operation.divide(num1, num2);
 
     assertEquals(25.0 / 13, num3.getReal());
     assertEquals(-5.0 / 13, num3.getImaginary());
@@ -121,7 +121,7 @@ class OperationTest
     num1 = new ComplexNumber(5, -5);
     num2 = new ComplexNumber(3, -2);
 
-    num3 = Operation.devide(num1, num2);
+    num3 = Operation.divide(num1, num2);
 
     assertEquals(25.0 / 13, num3.getReal());
     assertEquals(-5.0 / 13, num3.getImaginary());
@@ -129,7 +129,7 @@ class OperationTest
     num1 = new ComplexNumber(-5, -5);
     num2 = new ComplexNumber(-3, -2);
 
-    num3 = Operation.devide(num1, num2);
+    num3 = Operation.divide(num1, num2);
 
     assertEquals(25.0 / 13, num3.getReal());
     assertEquals(5.0 / 13, num3.getImaginary());
@@ -137,7 +137,7 @@ class OperationTest
     ComplexNumber num4 = new ComplexNumber(0, 0);
     ComplexNumber num5 = new ComplexNumber(0, 0);
 
-    assertThrows(IllegalArgumentException.class, () -> Operation.devide(num4, num5));
+    assertThrows(IllegalArgumentException.class, () -> Operation.divide(num4, num5));
   }
 
 }

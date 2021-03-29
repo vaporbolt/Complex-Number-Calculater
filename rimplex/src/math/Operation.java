@@ -60,7 +60,7 @@ public class Operation
    *          one ComplexNumber
    * @return a new ComplexNumber
    */
-  public static ComplexNumber devide(final ComplexNumber a, final ComplexNumber b)
+  public static ComplexNumber divide(final ComplexNumber a, final ComplexNumber b)
   {
     ComplexNumber top = Operation.multiply(a, b.conjugate());
     double bottom = b.getReal() * b.getReal() + b.getImaginary() * b.getImaginary();
