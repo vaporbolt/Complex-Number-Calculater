@@ -5,6 +5,8 @@ import java.awt.*;
 
 import javax.swing.*;
 
+import math.ComplexNumber;
+
 /**
  * @author Seth Roper
  * @version 3/27/2020
@@ -30,6 +32,7 @@ public class GuiContainer
   
   private InputField inputField = InputField.createInstance();
   
+  private DisplayComponent display;
 
   /**
    * creates the GUI container object with the proper gridbagLayout.
@@ -94,7 +97,14 @@ public class GuiContainer
     JButton button;
     
     // Display
-    DisplayComponent display = DisplayComponent.createInstance();
+    display = DisplayComponent.createInstance();
+    
+    // ComplexNumber will not be accessed by this class when driver is made
+    // this is just a placeholder text
+    display.addComplexNumber(new ComplexNumber(5, 10)); 
+    display.addText("+");
+    display.addComplexNumber(new ComplexNumber(7, 3));
+    
     gbc.gridx = 0;
     gbc.gridy = 0;
     gbc.gridwidth = gbc.REMAINDER;
@@ -104,8 +114,7 @@ public class GuiContainer
     gbc.weightx = 1;
     gbc.weighty = 0.5;
     gbc.insets = new Insets(50,20,0,50);  //top padding
-    gbl.setConstraints(display.getScrollPane(), gbc);
-    contentPane.add(display.getScrollPane());
+    contentPane.add(display.getPanel(), gbc);
     
     // InputField
     JTextField textField = this.inputField.getTextField();

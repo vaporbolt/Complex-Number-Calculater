@@ -1,8 +1,11 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.GridBagLayout;
 
 import javax.swing.*;
+
+import math.ComplexNumber;
 
 /**
  * Singleton that creates the display for the Rimplex expressions.
@@ -16,21 +19,17 @@ public class DisplayComponent
 
   // tracks if an instance exists of the Display.
   private static boolean exists = false;
-
-  private JTextArea text;
-  // provides scroll for the textarea
-  private JScrollPane scrollPane;
+  
+  private JPanel panel;
 
   /**
    * Private constructor.
    */
   private DisplayComponent()
   {
-    text = new JTextArea();
-    text.setEditable(false);
-    text.setLineWrap(true);
-    text.setWrapStyleWord(true);
-    scrollPane = new JScrollPane(text);
+    panel = new JPanel();
+    panel.setBackground(Color.lightGray);
+    panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
   }
 
   /**
@@ -50,32 +49,34 @@ public class DisplayComponent
       throw new IllegalStateException("A DisplayComponent already exists!");
     }
   }
-
+  
   /**
-   * Text setter.
-   * @param text String
+   * adds the complex number to display in correct format.
+   * @param complexNumber ComplexNumber
    */
-  public void setText(String text)
+  public void addComplexNumber(ComplexNumber complexNumber)
   {
-    this.text.setText(text);
-  }
-
-  /**
-   * TextArea getter.
-   * @return JTextArea
-   */
-  public JTextArea getText()
-  {
-    return this.text;
+    String result = "(" + complexNumber.getReal() + " + ";
+    result += "" + complexNumber.getImaginary() + "i)";
+    panel.add(new JLabel(result));
   }
   
   /**
-   * gets the scrollPane.
-   * @return JScrollPane
+   * adds text to the display panel.
+   * @param text String
    */
-  public JScrollPane getScrollPane()
+  public void addText(String text)
   {
-    return this.scrollPane;
+    panel.add(new JLabel(" " + text + " "));
   }
 
+  /**
+   * gets JPanel.
+   * @return JPanel
+   */
+  public JPanel getPanel()
+  {
+    return this.panel;
+  }
+  
 }
