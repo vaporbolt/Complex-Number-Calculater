@@ -94,18 +94,18 @@ public class GuiContainer
     JButton button;
     
     // Display
-    TextArea area = new TextArea();
+    DisplayComponent display = DisplayComponent.createInstance();
     gbc.gridx = 0;
     gbc.gridy = 0;
     gbc.gridwidth = gbc.REMAINDER;
     gbc.gridheight = 1;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.fill = GridBagConstraints.BOTH;
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 1;
     gbc.weighty = 0.5;
-    gbc.insets = new Insets(50,20,50,50);  //top padding
-    gbl.setConstraints(area, gbc);
-    contentPane.add(area);
+    gbc.insets = new Insets(50,20,0,50);  //top padding
+    gbl.setConstraints(display.getScrollPane(), gbc);
+    contentPane.add(display.getScrollPane());
     
     // InputField
     JTextField textField = this.inputField.getTextField();
