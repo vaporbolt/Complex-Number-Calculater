@@ -81,4 +81,24 @@ public final class EnteringComplexNumbers
 
     return new ComplexNumber(real, imaginary);
   }
+  
+  /**
+   * Given a string, check to see if the string is a complex number.
+   * 
+   * @param input the string to check
+   * @return true if a complex number, false otherwise
+   */
+  public static boolean isComplexNumber(String input)
+  {
+    try
+    {
+      ComplexNumber num = parseComplexNumber(input);
+      if (num.getImaginary() == 0) return false;
+      else return true;
+    }
+    catch (Exception e)
+    {
+      return false;
+    }
+  }
 }

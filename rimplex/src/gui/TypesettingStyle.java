@@ -1,5 +1,9 @@
 package gui;
 
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
+
 /**
  * Helper method to change "i" in strings to italics.
  * 
@@ -20,16 +24,13 @@ public final class TypesettingStyle
   /**
    * Given a string, convert every "i" character to italics. If input is empty, return the empty string.
    * 
-   * @param input 
-   *          the string to be converted
    * @return the new string with converted i characters
-   * @throws IllegalArgumentException
-   *          if input is null
    */
-  public static String applyTypesetting(final String input)
+  public static Style applyTypesetting()
   {
-    if (input == null) throw new IllegalArgumentException();
-    if (input.isEmpty()) return input;
-    return input.replaceAll("i", "<i>i</i>");
+    StyleContext sc = new StyleContext();
+    Style italic = sc.addStyle("BLACK", null);
+    italic.addAttribute(StyleConstants.Italic, true);
+    return italic;
   }
 }

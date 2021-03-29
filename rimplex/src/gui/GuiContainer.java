@@ -141,8 +141,6 @@ public class GuiContainer
     gbc.weighty = 0;
     gbl.setConstraints(textField, gbc);
     textField.getDocument().addDocumentListener(new InputFieldListener());
-    Font f = new Font("Courier", Font.ITALIC, 12);
-    textField.setFont(f);
     contentPane.add(textField);
     
     

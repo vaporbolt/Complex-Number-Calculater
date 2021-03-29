@@ -150,14 +150,23 @@ class EnteringComplexNumbersTest
 
   }
   
-  @Test void testToString()
+  @Test 
+  void testToString()
   {
     ComplexNumber num = new ComplexNumber(1, 2);
     ComplexNumber num2 = EnteringComplexNumbers.parseComplexNumber("4 + 2i");
     ComplexNumber num3 = EnteringComplexNumbers.parseComplexNumber("4.5 + 2.7i");
-    assertEquals("1 + 2i", num.toString());
-    assertEquals("4 + 2i", num2.toString());
-    assertEquals("4.5 + 2.7i", num3.toString());
+    assertEquals("(1 + 2i)", num.toString());
+    assertEquals("(4 + 2i)", num2.toString());
+    assertEquals("(4.5 + 2.7i)", num3.toString());
+  }
+  
+  @Test
+  void testIsComplexNumber()
+  {
+    assertTrue(EnteringComplexNumbers.isComplexNumber("4 + 2i"));
+    assertFalse(EnteringComplexNumbers.isComplexNumber("hi"));
+    assertFalse(EnteringComplexNumbers.isComplexNumber("4"));
   }
 
 }
