@@ -87,6 +87,15 @@ public class DisplayComponent
   }
   
   /**
+   * gets text from display.
+   * @return String
+   */
+  public String getText()
+  {
+    return this.text;
+  }
+  
+  /**
    * clears display of all text.
    */
   public void reset()
