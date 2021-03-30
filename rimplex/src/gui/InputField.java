@@ -7,6 +7,7 @@ import javax.swing.text.Document;
 
 import util.EnteringComplexNumbers;
 
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
@@ -141,15 +142,18 @@ public class InputField
        public void actionPerformed(ActionEvent arg0) {
           // add text from inputField to buffer string, plus a space character
           if (EnteringComplexNumbers.isComplexNumber(field.getText()))
+          {
             text += field.getText() + " ";
-          else text += "";
-          
-          // clear the inputField
-          field.setText("");
-          
-          // set display to the added text and apply Typesetting
-          display.getPanel().setText(text);
-          display.displayTypesetting(0, text.length() - 1);
+            // clear the inputField
+            field.setText("");
+            
+            // set display to the added text and apply Typesetting
+            display.getPanel().setText(text);
+            display.displayTypesetting(0, text.length() - 1);
+          }
+          else {
+            Toolkit.getDefaultToolkit().beep();
+          }
        }
     });
   }
