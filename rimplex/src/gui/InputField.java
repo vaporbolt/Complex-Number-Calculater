@@ -136,15 +136,15 @@ public class InputField
       
       @Override
        public void actionPerformed(ActionEvent arg0) {
-          // add text from inputField to buffer string
-          text += field.getText();
+          // add text from inputField to buffer string, plus a space character
+          text += field.getText() + " ";
           
           // clear the inputField
           field.setText("");
           
           // set display to the added text and apply Typesetting
           display.getPanel().setText(text);
-          display.displayTypesetting();
+          display.displayTypesetting(0, text.length() - 1);
        }
     });
   }

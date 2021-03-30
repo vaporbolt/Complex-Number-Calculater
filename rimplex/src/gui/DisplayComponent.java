@@ -118,14 +118,15 @@ public class DisplayComponent
   /**
    * Replaces all i characters in display with italicized i characters.
    * 
-   * @param pane the display
+   * @param start the offset of the string to typeset
+   * @param end the end of the string to typeset
    */
-  public void displayTypesetting()
+  public void displayTypesetting(int start, int end)
   {
     try
     { 
       // copy the text from display into placeholder string
-      String s = panel.getDocument().getText(0, panel.getDocument().getLength());
+      String s = panel.getDocument().getText(start, end);
       
       // length of the text that has been removed from string s, for indexing purposes
       int length = 0;

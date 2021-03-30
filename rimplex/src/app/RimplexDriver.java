@@ -72,9 +72,11 @@ public class RimplexDriver
         // display result
         display.addComplexNumber(result);
         
+        // transfer text from inputField to display after pressing enter
         inputField.enterText(display, display.getText());
         
-        display.displayTypesetting();
+        // set all i characters in display to italics
+        display.displayTypesetting(0, display.getText().length() - 1);
       }
   });
   }

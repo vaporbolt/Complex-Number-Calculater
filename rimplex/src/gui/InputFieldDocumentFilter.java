@@ -27,9 +27,8 @@ public class InputFieldDocumentFilter extends DocumentFilter
     // if the document has an i, don't insert the update.
     if(!fb.getDocument().getText(0, fb.getDocument().getLength()).contains("i"))
     {
-      super.insertString(fb, offset, string, attr);
       if (string.equals("i")) super.insertString(fb, offset, string, TypesettingStyle.applyTypesetting());
-      else super.insertString(fb, offset, string, attr);
+      else super.insertString(fb, offset, string, null);
     }
     else
     {
@@ -47,7 +46,7 @@ public class InputFieldDocumentFilter extends DocumentFilter
         && !fb.getDocument().getText(0, fb.getDocument().getLength()).contains("i"))
     {
       if (string.equals("i")) super.replace(fb, offset, length, string, TypesettingStyle.applyTypesetting());
-      else super.replace(fb, offset, length, string, attr);
+      else super.replace(fb, offset, length, string, null);
     }
     else
     {
