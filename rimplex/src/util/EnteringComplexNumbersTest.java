@@ -59,19 +59,19 @@ class EnteringComplexNumbersTest
   @Test
   void testMultipleFormatsNegative()
   {
-    ComplexNumber c = EnteringComplexNumbers.parseComplexNumber("-1 + 2i");
+    ComplexNumber c = EnteringComplexNumbers.parseComplexNumber("-1 - 2i");
     assertEquals(-1.0, c.getReal());
     assertEquals(2.0, c.getImaginary());
 
-    ComplexNumber c2 = EnteringComplexNumbers.parseComplexNumber("1.0 + -2.0i");
+    ComplexNumber c2 = EnteringComplexNumbers.parseComplexNumber("1.0 - -2.0i");
     assertEquals(1.0, c2.getReal());
     assertEquals(-2.0, c2.getImaginary());
 
-    ComplexNumber c3 = EnteringComplexNumbers.parseComplexNumber("-1.0 + -2i");
+    ComplexNumber c3 = EnteringComplexNumbers.parseComplexNumber("-1.0 - -2i");
     assertEquals(-1.0, c3.getReal());
     assertEquals(-2.0, c3.getImaginary());
 
-    ComplexNumber c4 = EnteringComplexNumbers.parseComplexNumber("1 + -2.0i");
+    ComplexNumber c4 = EnteringComplexNumbers.parseComplexNumber("1 - -2.0i");
     assertEquals(1.0, c4.getReal());
     assertEquals(-2.0, c4.getImaginary());
 
@@ -83,7 +83,7 @@ class EnteringComplexNumbersTest
     assertEquals(0.0, c6.getReal());
     assertEquals(-1.0, c6.getImaginary());
 
-    ComplexNumber c7 = EnteringComplexNumbers.parseComplexNumber("-1+-2i");
+    ComplexNumber c7 = EnteringComplexNumbers.parseComplexNumber("-1--2i");
     assertEquals(-1.0, c7.getReal());
     assertEquals(-2.0, c7.getImaginary());
 
@@ -165,8 +165,9 @@ class EnteringComplexNumbersTest
   void testIsComplexNumber()
   {
     assertTrue(EnteringComplexNumbers.isComplexNumber("4 + 2i"));
+    assertTrue(EnteringComplexNumbers.isComplexNumber("-4 - -2i"));
     assertFalse(EnteringComplexNumbers.isComplexNumber("hi"));
-    assertFalse(EnteringComplexNumbers.isComplexNumber("4"));
+    assertTrue(EnteringComplexNumbers.isComplexNumber("4"));
   }
 
 }

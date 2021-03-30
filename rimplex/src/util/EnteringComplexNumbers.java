@@ -50,6 +50,24 @@ public final class EnteringComplexNumbers
       operator = "+";
       index = input.indexOf(operator);
     }
+    else if (input.contains("-"))
+    {
+      if (input.indexOf("-") == 0)
+      {
+        if (input.indexOf("-", input.indexOf("-") + 1) == -1)
+          operator = "";
+        else
+        {
+          operator = "-";
+          index = input.indexOf("-", input.indexOf("-") + 1);
+        }
+      }
+      else if (input.indexOf("-") != 0)
+      {
+        operator = "-";
+        index = input.indexOf(operator);
+      }
+    }
     
     if (operator.isEmpty())
     {
@@ -92,9 +110,8 @@ public final class EnteringComplexNumbers
   {
     try
     {
-      ComplexNumber num = parseComplexNumber(input);
-      if (num.getImaginary() == 0) return false;
-      else return true;
+      parseComplexNumber(input);
+      return true;
     }
     catch (Exception e)
     {
