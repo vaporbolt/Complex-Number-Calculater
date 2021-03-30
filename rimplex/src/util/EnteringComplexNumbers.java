@@ -90,6 +90,7 @@ public final class EnteringComplexNumbers
         real = Double.parseDouble(input.substring(0, index));
         imaginary = Double
             .parseDouble(input.substring(index + 1, input.indexOf("i")));
+        if (operator.equals("-")) imaginary *= - 1;
       }
       catch (NumberFormatException e)
       {
