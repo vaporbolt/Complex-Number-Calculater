@@ -3,6 +3,7 @@ package app;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 
 import gui.DisplayComponent;
@@ -72,7 +73,7 @@ public class RimplexDriver
         // display result
         display.addComplexNumber(result);
         
-        TypesettingStyle.displayTypesetting(display.getPanel());
+        display.displayTypesetting();
       }
   });
   }
