@@ -44,7 +44,7 @@ public final class TypesettingStyle
   public static void displayTypesetting(JTextPane pane)
   {
     try
-    {
+    { 
       // copy the text from display into placeholder string
       String s = pane.getDocument().getText(0, pane.getDocument().getLength());
       

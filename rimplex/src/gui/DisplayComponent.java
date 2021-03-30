@@ -96,6 +96,16 @@ public class DisplayComponent
   }
   
   /**
+   * replaces current display text with the given String
+   * @param replacement String
+   */
+  public void replaceText(String replacement)
+  {
+    this.text = replacement;
+    this.panel.setText(text);
+  }
+  
+  /**
    * clears display of all text.
    */
   public void reset()
