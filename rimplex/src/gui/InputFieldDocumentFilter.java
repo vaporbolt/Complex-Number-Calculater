@@ -25,28 +25,44 @@ public class InputFieldDocumentFilter extends DocumentFilter
   {
 
     // if the document has an i, don't insert the update.
-    if(!fb.getDocument().getText(0, fb.getDocument().getLength()).contains("i"))
+    if (!fb.getDocument().getText(0, fb.getDocument().getLength()).contains("i"))
     {
-      if (string.equals("i")) super.insertString(fb, offset, string, TypesettingStyle.applyTypesetting());
-      else super.insertString(fb, offset, string, null);
+      if (string.equals("i"))
+        super.insertString(fb, offset, string, TypesettingStyle.applyTypesetting());
+      else
+        super.insertString(fb, offset, string, null);
     }
     else
     {
       Toolkit.getDefaultToolkit().beep();
     }
   }
-  
+
   @Override
-  public void replace (final DocumentFilter.FilterBypass fb, final int offset, final int length,
+  public void replace(final DocumentFilter.FilterBypass fb, final int offset, final int length,
       final String string, final AttributeSet attr) throws BadLocationException
   {
     
+    if (!string.equals(" ") && !string.equals("+") && !string.equals("i"))
+      // if it's isnt a number, make an error
+      try
+      {
+        Integer.parseInt(string);
+      }
+
+      catch (NumberFormatException e)
+      {
+        Toolkit.getDefaultToolkit().beep();
+        return;
+      }
     // if the document has an i, don't insert the update.
     if (fb.getDocument().getText(0, fb.getDocument().getLength()) != null
         && !fb.getDocument().getText(0, fb.getDocument().getLength()).contains("i"))
     {
-      if (string.equals("i")) super.replace(fb, offset, length, string, TypesettingStyle.applyTypesetting());
-      else super.replace(fb, offset, length, string, null);
+      if (string.equals("i"))
+        super.replace(fb, offset, length, string, TypesettingStyle.applyTypesetting());
+      else
+        super.replace(fb, offset, length, string, null);
     }
     else
     {
