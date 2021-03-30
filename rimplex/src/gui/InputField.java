@@ -4,6 +4,9 @@ import javax.swing.*;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
+
+import util.EnteringComplexNumbers;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
@@ -137,7 +140,9 @@ public class InputField
       @Override
        public void actionPerformed(ActionEvent arg0) {
           // add text from inputField to buffer string, plus a space character
-          text += field.getText() + " ";
+          if (EnteringComplexNumbers.isComplexNumber(field.getText()))
+            text += field.getText() + " ";
+          else text += "";
           
           // clear the inputField
           field.setText("");
