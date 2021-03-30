@@ -4,8 +4,8 @@ import javax.swing.*;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
-import javax.swing.text.DocumentFilter;
-import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 /**
  * @author Seth Roper
@@ -103,5 +103,49 @@ public class InputField
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
+  }
+  
+  /**
+   * When the user hits enter, the text from inputField is added to display.
+   * 
+   * @param display the display
+   * @param displayText the text in display
+   */
+  public void enterText(DisplayComponent display, String displayText)
+  { 
+    // to get the correct InputMap
+    int condition = JComponent.WHEN_FOCUSED;  
+    
+    // get maps for binding from the inputField JTextPane
+    InputMap inputMap = field.getInputMap(condition);
+    ActionMap actionMap = field.getActionMap();
+
+    // the key stroke we want to capture
+    KeyStroke enterStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
+
+    // tell input map that we are handling the enter key
+    inputMap.put(enterStroke, enterStroke.toString());
+    
+    // tell action map just how we want to handle the enter key
+    actionMap.put(enterStroke.toString(), new AbstractAction() {
+
+      private static final long serialVersionUID = 1L;
+      
+      // copy text from display into buffer string
+      private String text = displayText;
+      
+      @Override
+       public void actionPerformed(ActionEvent arg0) {
+          // add text from inputField to buffer string
+          text += field.getText();
+          
+          // clear the inputField
+          field.setText("");
+          
+          // set display to the added text and apply Typesetting
+          display.getPanel().setText(text);
+          display.displayTypesetting();
+       }
+    });
   }
 }

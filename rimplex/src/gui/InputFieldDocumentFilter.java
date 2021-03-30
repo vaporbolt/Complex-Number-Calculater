@@ -28,6 +28,8 @@ public class InputFieldDocumentFilter extends DocumentFilter
     if(!fb.getDocument().getText(0, fb.getDocument().getLength()).contains("i"))
     {
       super.insertString(fb, offset, string, attr);
+      if (string.equals("i")) super.insertString(fb, offset, string, TypesettingStyle.applyTypesetting());
+      else super.insertString(fb, offset, string, attr);
     }
     else
     {

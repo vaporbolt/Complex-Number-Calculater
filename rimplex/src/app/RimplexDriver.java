@@ -2,13 +2,9 @@ package app;
 
 import java.util.ArrayList;
 import java.util.Random;
-
-import javax.swing.JTextPane;
-import javax.swing.text.BadLocationException;
-
 import gui.DisplayComponent;
 import gui.GuiContainer;
-import gui.TypesettingStyle;
+import gui.InputField;
 import math.ComplexNumber;
 import math.Operation;
 
@@ -38,6 +34,9 @@ public class RimplexDriver
         
         // get display
         DisplayComponent display = container.getDisplay();
+        
+        // get input field
+        InputField inputField = container.getInputField();
         
         // insert Complex Numbers
         Random r = new Random();
@@ -72,6 +71,8 @@ public class RimplexDriver
         
         // display result
         display.addComplexNumber(result);
+        
+        inputField.enterText(display, display.getText());
         
         display.displayTypesetting();
       }
