@@ -3,8 +3,11 @@ package app;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.text.BadLocationException;
+
 import gui.DisplayComponent;
 import gui.GuiContainer;
+import gui.TypesettingStyle;
 import math.ComplexNumber;
 import math.Operation;
 
@@ -68,6 +71,22 @@ public class RimplexDriver
         
         // display result
         display.addComplexNumber(result);
+        try
+        {
+          String s = display.getPanel().getDocument().getText(0, display.getPanel().getDocument().getLength());
+          int length = 0;
+          while (s.contains("i"))
+          {
+            display.getPanel().getDocument().remove(s.indexOf("i") + length, 1);
+            display.getPanel().getDocument().insertString(s.indexOf("i") + length, "i", TypesettingStyle.applyTypesetting());
+            length += s.substring(0, s.indexOf("i") + 1).length();
+            s = s.substring(s.indexOf("i") + 1);
+          }
+        }
+        catch (BadLocationException e)
+        {
+          
+        }
       }
   });
   }
