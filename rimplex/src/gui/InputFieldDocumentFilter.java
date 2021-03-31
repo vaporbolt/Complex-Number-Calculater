@@ -75,7 +75,7 @@ public class InputFieldDocumentFilter extends DocumentFilter
     }
 
   
-    // if the document has an i, don't insert the update.
+    // if the document has an i, don't insert the update after the i
     if (fb.getDocument().getText(0, fb.getDocument().getLength()) != null
         && !fb.getDocument().getText(0, fb.getDocument().getLength()).contains(i))
     {
