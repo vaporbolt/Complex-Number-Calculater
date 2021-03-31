@@ -11,7 +11,7 @@ import math.Operation;
 /**
  * Driver for the Rimplex application.
  * 
- * @author Endre Szakal
+ * @author Endre Szakal, Sebastien Roy
  * @version 3/29/2021
  *
  */
