@@ -43,13 +43,17 @@ public class RimplexDriver
         InputField inputField = container.getInputField();
 
         // insert Complex Numbers
-        Random r = new Random();
+       /* Random r = new Random();
         for (int i = 0; i < 2; i++)
         {
           double a = r.nextInt(100);
           double b = r.nextInt(100);
           complexNumbers.add(new ComplexNumber(a, b));
-        }
+        }*/
+        complexNumbers.add(new ComplexNumber(5, 9));
+        complexNumbers.add(new ComplexNumber(1, 3));
+
+
 
         // display Complex Numbers
         for (ComplexNumber num : complexNumbers)
@@ -77,6 +81,11 @@ public class RimplexDriver
         display.addComplexNumber(result);
         display.addText("\n\n");
 
+        complexNumbers = new ArrayList<ComplexNumber>();
+        complexNumbers.add(new ComplexNumber(6, 3));
+        complexNumbers.add(new ComplexNumber(12, 9));
+
+        
         // display Complex Numbers
         for (ComplexNumber num : complexNumbers)
         {
@@ -103,6 +112,10 @@ public class RimplexDriver
         display.addComplexNumber(result);
         display.addText("\n\n");
 
+        complexNumbers = new ArrayList<ComplexNumber>();
+        complexNumbers.add(new ComplexNumber(4, 2));
+        complexNumbers.add(new ComplexNumber(8, 3));
+        
         for (ComplexNumber num : complexNumbers)
         {
           if (complexNumbers.indexOf(num) == complexNumbers.size() - 1)
@@ -128,6 +141,10 @@ public class RimplexDriver
         display.addComplexNumber(result);
         display.addText("\n\n");
 
+        
+        complexNumbers = new ArrayList<ComplexNumber>();
+        complexNumbers.add(new ComplexNumber(4, 2));
+        complexNumbers.add(new ComplexNumber(8, 3));
         for (ComplexNumber num : complexNumbers)
         {
           if (complexNumbers.indexOf(num) == complexNumbers.size() - 1)
