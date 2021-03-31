@@ -1,6 +1,7 @@
 package util;
 
 import math.ComplexNumber;
+import math.Operation;
 
 /**
  * Utility class for parsing complex numbers.
@@ -10,13 +11,13 @@ import math.ComplexNumber;
  */
 public final class EnteringComplexNumbers
 {
-  
+
   /**
    * Constructor, set to private as there is no need to create an instance of this class.
    */
   private EnteringComplexNumbers()
   {
-    
+
   }
 
   /**
@@ -68,7 +69,7 @@ public final class EnteringComplexNumbers
         index = input.indexOf(operator);
       }
     }
-    
+
     if (operator.isEmpty())
     {
       try
@@ -88,9 +89,9 @@ public final class EnteringComplexNumbers
       try
       {
         real = Double.parseDouble(input.substring(0, index));
-        imaginary = Double
-            .parseDouble(input.substring(index + 1, input.indexOf("i")));
-        if (operator.equals("-")) imaginary *= - 1;
+        imaginary = Double.parseDouble(input.substring(index + 1, input.indexOf("i")));
+        if (operator.equals("-"))
+          imaginary *= -1;
       }
       catch (NumberFormatException e)
       {
@@ -100,11 +101,12 @@ public final class EnteringComplexNumbers
 
     return new ComplexNumber(real, imaginary);
   }
-  
+
   /**
    * Given a string, check to see if the string is a complex number.
    * 
-   * @param input the string to check
+   * @param input
+   *          the string to check
    * @return true if a complex number, false otherwise
    */
   public static boolean isComplexNumber(String input)
@@ -119,4 +121,32 @@ public final class EnteringComplexNumbers
       return false;
     }
   }
+
+  public static ComplexNumber parseEquation(final String input)
+  {
+    ComplexNumber a = parseComplexNumber(
+        input.substring(input.indexOf('(') + 1, input.indexOf(')')));
+    ComplexNumber b = parseComplexNumber(
+        input.substring(input.lastIndexOf('(') + 1, input.lastIndexOf(')')));
+
+    String operand = input.substring(input.indexOf(')') + 1, input.lastIndexOf('('));
+    if (operand.contains("+"))
+    {
+      return Operation.add(a, b);
+    }
+    else if (operand.contains("*"))
+    {
+      return Operation.multiply(a, b);
+    }
+    if (operand.contains("/"))
+    {
+      return Operation.divide(a, b);
+    }
+    else
+    {
+      return Operation.subtract(a, b);
+    }
+
+  }
+
 }

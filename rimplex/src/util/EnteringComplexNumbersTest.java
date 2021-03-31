@@ -55,7 +55,7 @@ class EnteringComplexNumbersTest
     assertEquals(1.0, c9.getReal());
     assertEquals(2.0, c9.getImaginary());
   }
-  
+
   @Test
   void testMultipleFormatsNegative()
   {
@@ -118,7 +118,7 @@ class EnteringComplexNumbersTest
     assertThrows(NumberFormatException.class, () -> {
       EnteringComplexNumbers.parseComplexNumber("+");
     });
-    
+
     assertThrows(NumberFormatException.class, () -> {
       EnteringComplexNumbers.parseComplexNumber("1 * 2i");
     });
@@ -129,7 +129,7 @@ class EnteringComplexNumbersTest
    * INTEGRATION TESTS
    * 
    */
-  
+
   @Test
   void testIntegration()
   {
@@ -149,8 +149,8 @@ class EnteringComplexNumbersTest
     assertEquals(0, num3.getImaginary());
 
   }
-  
-  @Test 
+
+  @Test
   void testToString()
   {
     ComplexNumber num = new ComplexNumber(1, 2);
@@ -160,7 +160,7 @@ class EnteringComplexNumbersTest
     assertEquals("(4 + 2i)", num2.toString());
     assertEquals("(4.5 + 2.7i)", num3.toString());
   }
-  
+
   @Test
   void testIsComplexNumber()
   {
@@ -168,6 +168,47 @@ class EnteringComplexNumbersTest
     assertTrue(EnteringComplexNumbers.isComplexNumber("-4 - -2i"));
     assertFalse(EnteringComplexNumbers.isComplexNumber("hi"));
     assertTrue(EnteringComplexNumbers.isComplexNumber("4"));
+  }
+
+  @Test
+  void testParseEquation()
+  {
+    ComplexNumber num = EnteringComplexNumbers.parseEquation("(3 + 2i) + (5 + 7i)");
+    assertEquals(8, num.getReal());
+    assertEquals(9, num.getImaginary());
+
+    num = EnteringComplexNumbers.parseEquation("(3 + 2i) - (5 + 7i)");
+    assertEquals(-2, num.getReal());
+    assertEquals(-5, num.getImaginary());
+
+    num = EnteringComplexNumbers.parseEquation("(5 + 5i) * (3 + 2i)");
+    assertEquals(5, num.getReal());
+    assertEquals(25, num.getImaginary());
+
+    num = EnteringComplexNumbers.parseEquation("(5 + 5i) / (3 + 2i)");
+    assertEquals(25.0/13, num.getReal());
+    assertEquals(5.0/13, num.getImaginary());
+
+  }
+  
+  @Test
+  void testParseEquationNoSpaces()
+  {
+    ComplexNumber num = EnteringComplexNumbers.parseEquation("(3+2i)+(5+7i)");
+    assertEquals(8, num.getReal());
+    assertEquals(9, num.getImaginary());
+
+    num = EnteringComplexNumbers.parseEquation("(3+2i)-(5+7i)");
+    assertEquals(-2, num.getReal());
+    assertEquals(-5, num.getImaginary());
+
+    num = EnteringComplexNumbers.parseEquation("(5+5i)*(3+2i)");
+    assertEquals(5, num.getReal());
+    assertEquals(25, num.getImaginary());
+
+    num = EnteringComplexNumbers.parseEquation("(5+5i)/(3+2i)");
+    assertEquals(25.0/13, num.getReal());
+    assertEquals(5.0/13, num.getImaginary());
   }
 
 }
