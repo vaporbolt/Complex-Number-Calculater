@@ -5,6 +5,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
+import app.RimplexDriver;
 import math.ComplexNumber;
 
 /**
@@ -27,8 +28,9 @@ public class GuiContainer
   
   // holds the frame
   private JFrame frame = new JFrame("Rimplex");
+  
   // holds all of the buttons(add subtract reset etc.)
-  private HashMap<String, JButton> buttons = new HashMap<String, JButton>();
+  //private HashMap<String, JButton> buttons = new HashMap<String, JButton>();
   
   private InputField inputField = InputField.createInstance();
 
@@ -140,7 +142,7 @@ public class GuiContainer
     gbc.weightx = 0;
     gbc.weighty = 0;
     gbl.setConstraints(textField, gbc);
-    textField.getDocument().addDocumentListener(new InputFieldListener());
+    //textField.getDocument().addDocumentListener(new InputFieldListener());
     contentPane.add(textField);
     
     
@@ -157,6 +159,8 @@ public class GuiContainer
     gbc.weighty = 1;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);  
+    button.addActionListener(
+        new ResetHandler(display, RimplexDriver.complexNumbers, RimplexDriver.operations));
     contentPane.add(button);
     
     
@@ -173,6 +177,7 @@ public class GuiContainer
     gbc.weighty = 1;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);  
+    button.addActionListener(new ClearHandler(inputField));
     contentPane.add(button);
     
     // add button
@@ -188,6 +193,7 @@ public class GuiContainer
     gbc.weighty = 1;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);  
+    button.addActionListener(new AdditionHandler(display, RimplexDriver.operations));
     contentPane.add(button);
     
     // subtract button
@@ -202,7 +208,8 @@ public class GuiContainer
     gbc.weightx = 0;
     gbc.weighty = 1;
     gbc.insets = new Insets(10, 5, 10, 5);
-    gbl.setConstraints(button, gbc);  
+    gbl.setConstraints(button, gbc);
+    button.addActionListener(new SubtractionHandler(display, RimplexDriver.operations));
     contentPane.add(button);
     
     // multiplication button
@@ -217,7 +224,9 @@ public class GuiContainer
     gbc.weightx = 0;
     gbc.weighty = 1;
     gbl.setConstraints(button, gbc);  
+    button.addActionListener(new MultiplicationHandler(display, RimplexDriver.operations));
     contentPane.add(button);
+    
     // divide button
     button = new JButton("÷");
     gbc = new GridBagConstraints();
@@ -230,7 +239,8 @@ public class GuiContainer
     gbc.weightx = 0;
     gbc.weighty = 1;
     gbc.insets = new Insets(5, 10, 10, 5);
-    gbl.setConstraints(button, gbc);  
+    gbl.setConstraints(button, gbc);
+    button.addActionListener(new DivisionHandler(display, RimplexDriver.operations));
     contentPane.add(button);
     
     // = button
@@ -245,7 +255,9 @@ public class GuiContainer
     gbc.weightx = 0;
     gbc.weighty = 1;
     gbc.insets = new Insets(10, 5, 10, 5);
-    gbl.setConstraints(button, gbc);  
+    gbl.setConstraints(button, gbc);
+    button.addActionListener(
+        new EqualsHandler(display, RimplexDriver.complexNumbers, RimplexDriver.operations));
     contentPane.add(button);
     
   }

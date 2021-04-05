@@ -261,5 +261,19 @@ class OperationTest
     assertEquals(-1.0, num3.getImaginary());
 
   }
+  
+  @Test
+  void testInverseComplexNumber()
+  {
+    ComplexNumber num = new ComplexNumber(2, 4);
+    num = Operation.inverse(num);
+    assertEquals(0.1, num.getReal());
+    assertEquals(-0.2, num.getImaginary());
+    
+    num = new ComplexNumber(2, 0);
+    num = Operation.inverse(num);
+    assertEquals(0.5, num.getReal());
+    assertEquals(0, num.getImaginary());
+  }
 
 }

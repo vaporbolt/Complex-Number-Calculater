@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.Color;
-import java.awt.GridBagLayout;
 
 import javax.swing.*;
 import javax.swing.text.BadLocationException;

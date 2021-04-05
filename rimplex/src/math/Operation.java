@@ -70,4 +70,18 @@ public class Operation
     }
     return new ComplexNumber(top.getReal() / bottom, top.getImaginary() / bottom);
   }
+  
+  /**
+   * Returns a new ComplexNumber that is the inverse of the original.
+   * 
+   * @param a the complex number to invert
+   * @return the inverse of a
+   */
+  public static ComplexNumber inverse(final ComplexNumber a)
+  {
+    if (a.getImaginary() == 0) return new ComplexNumber(1 / a.getReal(), 0);
+    ComplexNumber numerator = a.conjugate();
+    ComplexNumber denominator = multiply(a, numerator);
+    return divide(numerator, denominator);
+  }
 }

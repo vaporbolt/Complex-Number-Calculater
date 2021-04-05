@@ -6,10 +6,12 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 
 import util.EnteringComplexNumbers;
+import math.ComplexNumber;
 
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 /**
  * @author Seth Roper
@@ -110,13 +112,14 @@ public class InputField
   }
   
   /**
-   * When the user hits enter, the text from inputField is added to display.
+   * When the user hits enter, the text from inputField is added to display,
+   * and the number is added to the list of complex numbers.
    * 
    * @param display the display
-   * @param displayText the text in display
+   * @param nums the list of complex numbers
    */
-  public void enterText(DisplayComponent display, String displayText)
-  { 
+  public void enterText(DisplayComponent display, ArrayList<ComplexNumber> nums)
+  {
     // to get the correct InputMap
     int condition = JComponent.WHEN_FOCUSED;  
     
@@ -135,23 +138,40 @@ public class InputField
 
       private static final long serialVersionUID = 1L;
       
-      // copy text from display into buffer string
-      private String text = displayText;
-      
       @Override
        public void actionPerformed(ActionEvent arg0) {
-          // add text from inputField to buffer string, plus a space character
-          if (EnteringComplexNumbers.isComplexNumber(field.getText()))
+          try
           {
-            text += field.getText() + " ";
-            // clear the inputField
-            field.setText("");
+            // throw exception if there are already two operands
+            if (nums.size() == 2) throw new Exception();
             
-            // set display to the added text and apply Typesetting
-            display.getPanel().setText(text);
-            display.displayTypesetting(0, text.length() - 1);
+            // transfers input to display if a valid complex number
+            if (EnteringComplexNumbers.isComplexNumber(field.getText()))
+            {
+              // buffer string
+              String text = field.getText();
+              
+              // clear the inputField
+              field.setText("");
+              
+              // adds number to display, plus a space character
+              display.addComplexNumber(EnteringComplexNumbers.parseComplexNumber(text));
+              display.addText(" ");
+              
+              // adds number to the list of complex numbers
+              nums.add(EnteringComplexNumbers.parseComplexNumber(text));
+              
+              // applies typesetting for display
+              display.displayTypesetting(0, display.getText().length() - 1);
+            }
+            else {
+              // beep if input is not a valid complex number
+              Toolkit.getDefaultToolkit().beep();
+            }
           }
-          else {
+          catch (Exception e)
+          {
+            // beep if there are already two operands
             Toolkit.getDefaultToolkit().beep();
           }
        }

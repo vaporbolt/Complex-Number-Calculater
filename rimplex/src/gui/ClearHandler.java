@@ -12,11 +12,28 @@ import java.awt.event.ActionListener;
 public class ClearHandler implements ActionListener
 {
 
+  private InputField field;
+  
+  /**
+   * Creates a clear handler
+   * 
+   * @param field the input field
+   */
+  public ClearHandler(InputField field)
+  {
+    this.field = field;
+  }
+  
+  /**
+   * Clears the input field
+   * 
+   * @param e when the user click the clear button
+   */
   @Override
   public void actionPerformed(final ActionEvent e)
   {
-    // TODO Auto-generated method stub
-    
+    // clears input field
+    field.clear();
   }
 
 }
