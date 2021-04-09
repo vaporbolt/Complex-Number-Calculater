@@ -122,29 +122,84 @@ public final class EnteringComplexNumbers
     }
   }
 
+  /**
+   * Given an equation, return the ComplexNumber that is the evalutation of the equation.
+   * 
+   * @param input
+   *          the equation as a string
+   * @return a ComplexNumber, or null if it is not a proper equation
+   */
   public static ComplexNumber parseEquation(final String input)
   {
-    ComplexNumber a = parseComplexNumber(
-        input.substring(input.indexOf('(') + 1, input.indexOf(')')));
-    ComplexNumber b = parseComplexNumber(
-        input.substring(input.lastIndexOf('(') + 1, input.lastIndexOf(')')));
+    String number = "()0123456789-.i-";
+    String operations = "+-*/";
+    boolean foundFirst = false;
+    boolean foundOperation = false;
+    char operand = 0;
+    ComplexNumber a = null;
+    ComplexNumber b = null;
+    
+    int i = 0;
+    while (i < input.length())
+    {
+      char token = input.charAt(i);
+      if (token == '(')
+      {
+        if (!foundFirst)
 
-    String operand = input.substring(input.indexOf(')') + 1, input.lastIndexOf('('));
-    if (operand.contains("+"))
-    {
-      return Operation.add(a, b);
+        {
+          a = parseComplexNumber(input.substring(i + 1, input.indexOf(')')));
+          i = input.indexOf(')');
+          foundFirst = true;
+        }
+        else
+        {
+          b = parseComplexNumber(input.substring(i + 1, input.lastIndexOf(')')));
+          break;
+        }
+      }
+      else if (foundFirst && !foundOperation && operations.indexOf(token) != -1)
+      {
+        operand = token;
+        foundOperation = true;
+      }
+      else if (number.indexOf(token) != -1)
+      {
+        int j = i;
+
+        while (number.indexOf(token) != -1 && j < input.length() - 1)
+        {
+          j++;
+          token = input.charAt(j);
+        }
+
+        if (!foundFirst)
+        {
+          a = parseComplexNumber(input.substring(i, j));
+          foundFirst = true;
+          i = j - 1;
+        }
+        else
+        {
+          b = parseComplexNumber(input.substring(i));
+          i = j;
+        }
+      }
+      i++;
     }
-    else if (operand.contains("*"))
+
+    switch (operand)
     {
-      return Operation.multiply(a, b);
-    }
-    if (operand.contains("/"))
-    {
-      return Operation.divide(a, b);
-    }
-    else
-    {
-      return Operation.subtract(a, b);
+      case '+':
+        return Operation.add(a, b);
+      case '*':
+        return Operation.multiply(a, b);
+      case '/':
+        return Operation.divide(a, b);
+      case '-':
+        return Operation.subtract(a, b);
+      default:
+        return null;
     }
 
   }
