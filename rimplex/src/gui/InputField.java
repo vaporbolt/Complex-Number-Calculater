@@ -112,8 +112,8 @@ public class InputField
   }
   
   /**
-   * When the user hits enter, the text from inputField is added to display,
-   * and the number is added to the list of complex numbers.
+   * When the user hits enter, the equation from inputField is calculated,
+   * and the result is transfered to display.
    * 
    * @param display the display
    * @param nums the list of complex numbers
@@ -142,32 +142,19 @@ public class InputField
        public void actionPerformed(ActionEvent arg0) {
           try
           {
-            // throw exception if there are already two operands
-            if (nums.size() == 2) throw new Exception();
+            ComplexNumber result;
             
-            // transfers input to display if a valid complex number
-            if (EnteringComplexNumbers.isComplexNumber(field.getText()))
-            {
-              // buffer string
-              String text = field.getText();
-              
-              // clear the inputField
-              field.setText("");
-              
-              // adds number to display, plus a space character
-              display.addComplexNumber(EnteringComplexNumbers.parseComplexNumber(text));
-              display.addText(" ");
-              
-              // adds number to the list of complex numbers
-              nums.add(EnteringComplexNumbers.parseComplexNumber(text));
-              
-              // applies typesetting for display
-              display.displayTypesetting(0, display.getText().length() - 1);
-            }
-            else {
-              // beep if input is not a valid complex number
-              Toolkit.getDefaultToolkit().beep();
-            }
+            // gets the result of the equation in the input field
+            result = EnteringComplexNumbers.parseEquation(field.getText());
+            
+            // adds the result to the display
+            display.addText(field.getText() + " = " + result.toString() + "\n");
+            
+            // sets the input field to the result to use for the next calculation
+            field.setText(result.toString());
+            
+            // apply typestting to display
+            display.displayTypesetting(0, display.getText().length());
           }
           catch (Exception e)
           {

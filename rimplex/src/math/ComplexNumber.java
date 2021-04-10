@@ -130,9 +130,17 @@ public class ComplexNumber
     else
       imaginaryNum += this.imaginary;
 
+    
     if (parentheses)
     {
-      complete = "(" + realNum + " + " + imaginaryNum + "i)";
+      if (this.imaginary == 0)
+      {
+        complete = "(" + realNum + ")";
+      }
+      else
+      {  
+        complete = "(" + realNum + " + " + imaginaryNum + "i)";
+      }
     }
     else
     {

@@ -16,7 +16,7 @@ import math.OperationType;
 public class DivisionHandler implements ActionListener
 {
 
-  private DisplayComponent display;
+  private InputField input;
   private ArrayList<OperationType> operations;
   
   /**
@@ -25,15 +25,15 @@ public class DivisionHandler implements ActionListener
    * @param display the system's display
    * @param operations the operations list
    */
-  public DivisionHandler(DisplayComponent display, ArrayList<OperationType> operations)
+  public DivisionHandler(InputField input, ArrayList<OperationType> operations)
   {
     this.operations = operations;
-    this.display = display;
+    this.input = input;
   }
   
   /**
    * When clicked, adds division to the operation list
-   * and adds a "/" to the display.
+   * and adds a "/" to the input field.
    * 
    * @param e when the user clicks the division button
    */
@@ -46,9 +46,8 @@ public class DivisionHandler implements ActionListener
       // adds division to operations list
       operations.add(OperationType.DIVISION);
       
-      // add a "/" to display
-      display.addText(" / ");
-      display.displayTypesetting(0, display.getText().length());
+      // adds division sign to input field
+      input.getTextField().setText(input.getTextField().getText() + " / ");
     }
     catch (Exception ex)
     {

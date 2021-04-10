@@ -16,7 +16,7 @@ import math.OperationType;
 public class SubtractionHandler implements ActionListener
 {
 
-  private DisplayComponent display;
+  private InputField input;
   private ArrayList<OperationType> operations;
   
   /**
@@ -25,15 +25,15 @@ public class SubtractionHandler implements ActionListener
    * @param display the system's display
    * @param operations the operations list
    */
-  public SubtractionHandler(DisplayComponent display, ArrayList<OperationType> operations)
+  public SubtractionHandler(InputField input, ArrayList<OperationType> operations)
   {
     this.operations = operations;
-    this.display = display;
+    this.input = input;
   }
   
   /**
    * When clicked, adds subtraction to the operation list
-   * and adds a "-" to the display.
+   * and adds a "-" to the input field.
    * 
    * @param e when the user clicks the "-" button
    */
@@ -46,9 +46,8 @@ public class SubtractionHandler implements ActionListener
       // adds subtraction to the operations list
       operations.add(OperationType.SUBTRACTION);
       
-      // adds a "-" to display
-      display.addText(" - ");
-      display.displayTypesetting(0, display.getText().length());
+      // adds subtraction sign to input field
+      input.getTextField().setText(input.getTextField().getText() + " - ");
     }
     catch (Exception ex)
     {

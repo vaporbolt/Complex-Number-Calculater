@@ -16,7 +16,7 @@ import math.OperationType;
 public class MultiplicationHandler implements ActionListener
 {
 
-  private DisplayComponent display;
+  private InputField input;
   private ArrayList<OperationType> operations;
   
   /**
@@ -25,15 +25,15 @@ public class MultiplicationHandler implements ActionListener
    * @param display the system's display
    * @param operations the operations list
    */
-  public MultiplicationHandler(DisplayComponent display, ArrayList<OperationType> operations)
+  public MultiplicationHandler(InputField input, ArrayList<OperationType> operations)
   {
     this.operations = operations;
-    this.display = display;
+    this.input = input;
   }
   
   /**
    * When clicked, adds multiplication to the operation list
-   * and adds a "*" to the display.
+   * and adds a "*" to the input field.
    * 
    * @param e when the user clicks the "+" button
    */
@@ -46,9 +46,8 @@ public class MultiplicationHandler implements ActionListener
       // adds multiplication to the operations list
       operations.add(OperationType.MULTIPLICATION);
       
-      // adds a "*" to the display
-      display.addText(" * ");
-      display.displayTypesetting(0, display.getText().length());
+      // adds multiplication sign to input field
+      input.getTextField().setText(input.getTextField().getText() + " * ");
     }
     catch (Exception ex)
     {

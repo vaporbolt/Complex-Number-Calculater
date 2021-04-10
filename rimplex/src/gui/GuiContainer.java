@@ -160,7 +160,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);  
     button.addActionListener(
-        new ResetHandler(display, RimplexDriver.complexNumbers, RimplexDriver.operations));
+        new ResetHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations));
     contentPane.add(button);
     
     
@@ -193,7 +193,7 @@ public class GuiContainer
     gbc.weighty = 1;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);  
-    button.addActionListener(new AdditionHandler(display, RimplexDriver.operations));
+    button.addActionListener(new AdditionHandler(inputField, RimplexDriver.operations));
     contentPane.add(button);
     
     // subtract button
@@ -209,7 +209,7 @@ public class GuiContainer
     gbc.weighty = 1;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
-    button.addActionListener(new SubtractionHandler(display, RimplexDriver.operations));
+    button.addActionListener(new SubtractionHandler(inputField, RimplexDriver.operations));
     contentPane.add(button);
     
     // multiplication button
@@ -224,7 +224,7 @@ public class GuiContainer
     gbc.weightx = 0;
     gbc.weighty = 1;
     gbl.setConstraints(button, gbc);  
-    button.addActionListener(new MultiplicationHandler(display, RimplexDriver.operations));
+    button.addActionListener(new MultiplicationHandler(inputField, RimplexDriver.operations));
     contentPane.add(button);
     
     // divide button
@@ -240,7 +240,7 @@ public class GuiContainer
     gbc.weighty = 1;
     gbc.insets = new Insets(5, 10, 10, 5);
     gbl.setConstraints(button, gbc);
-    button.addActionListener(new DivisionHandler(display, RimplexDriver.operations));
+    button.addActionListener(new DivisionHandler(inputField, RimplexDriver.operations));
     contentPane.add(button);
     
     // = button
@@ -257,7 +257,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
     button.addActionListener(
-        new EqualsHandler(display, RimplexDriver.complexNumbers, RimplexDriver.operations));
+        new EqualsHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations));
     contentPane.add(button);
     
   }
