@@ -261,7 +261,7 @@ class OperationTest
     assertEquals(-1.0, num3.getImaginary());
 
   }
-  
+
   @Test
   void testInverseComplexNumber()
   {
@@ -269,11 +269,53 @@ class OperationTest
     num = Operation.inverse(num);
     assertEquals(0.1, num.getReal());
     assertEquals(-0.2, num.getImaginary());
-    
+
     num = new ComplexNumber(2, 0);
     num = Operation.inverse(num);
     assertEquals(0.5, num.getReal());
     assertEquals(0, num.getImaginary());
+  }
+
+  @Test
+  void testExponentPositive()
+  {
+    ComplexNumber num1 = new ComplexNumber(5, 3);
+    ComplexNumber num2 = Operation.exponential(num1, 0);
+
+    assertEquals(1, num2.getReal());
+    assertEquals(0, num2.getImaginary());
+
+    num2 = Operation.exponential(num1, 2);
+
+    assertEquals(16, num2.getReal());
+    assertEquals(30, num2.getImaginary());
+
+    num2 = Operation.exponential(num1, 5);
+
+    assertEquals(-6100, num2.getReal());
+    assertEquals(2868, num2.getImaginary());
+
+  }
+
+  @Test
+  void testExponentNegative()
+  {
+    ComplexNumber num1 = new ComplexNumber(5, 3);
+    ComplexNumber num2 = Operation.exponential(num1, -1);
+
+    assertEquals(5.0/34, num2.getReal());
+    assertEquals(-3.0/34, num2.getImaginary());
+
+    num2 = Operation.exponential(num1, -2);
+
+    assertEquals(4.0/289, num2.getReal());
+    assertEquals(-15.0/578, num2.getImaginary());
+
+    num2 = Operation.exponential(num1, -3);
+
+    assertEquals(-5.0/19652, num2.getReal());
+    assertEquals(-99.0/19652, num2.getImaginary());
+
   }
 
 }

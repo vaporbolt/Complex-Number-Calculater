@@ -132,12 +132,13 @@ public final class EnteringComplexNumbers
   public static ComplexNumber parseEquation(final String input)
   {
     String number = "()0123456789-.i-";
-    String operations = "+-*/";
+    String operations = "+-*/^";
     boolean foundFirst = false;
     boolean foundOperation = false;
     char operand = 0;
     ComplexNumber a = null;
     ComplexNumber b = null;
+    
     
     int i = 0;
     while (i < input.length())
@@ -188,6 +189,11 @@ public final class EnteringComplexNumbers
       i++;
     }
 
+    if(input.contains("con"))
+    {
+      return a.conjugate();
+    }
+    
     switch (operand)
     {
       case '+':
@@ -198,6 +204,8 @@ public final class EnteringComplexNumbers
         return Operation.divide(a, b);
       case '-':
         return Operation.subtract(a, b);
+      case '^':
+        return Operation.exponential(a, (int) b.getReal());
       default:
         return null;
     }
