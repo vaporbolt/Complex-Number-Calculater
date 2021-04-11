@@ -50,7 +50,7 @@ public class RimplexDriver
         inputField.enterText(display, complexNumbers);
         
         // set all i characters in display to italics
-        display.displayTypesetting(0, display.getText().length() - 1);
+      //  display.displayTypesetting(0, display.getText().length() - 1);
       }
     });
   }
