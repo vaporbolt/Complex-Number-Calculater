@@ -38,6 +38,10 @@ public class InputFieldDocumentFilter extends DocumentFilter
     validChars.add(" ");
     validChars.add("(");
     validChars.add(")");
+    validChars.add("c");
+    validChars.add("o");
+    validChars.add("n");
+    validChars.add("^");
     validChars.add(i);
   }
   
@@ -45,21 +49,6 @@ public class InputFieldDocumentFilter extends DocumentFilter
   public void insertString(final DocumentFilter.FilterBypass fb, final int offset,
       final String string, final AttributeSet attr) throws BadLocationException
   {
-    
-    /*
-    // if the document has an i, don't insert the update.
-    if (!fb.getDocument().getText(0, fb.getDocument().getLength()).contains(i))
-    {
-      if (string.equals(i))
-        super.insertString(fb, offset, string, TypesettingStyle.applyTypesetting());
-      else
-        super.insertString(fb, offset, string, null);
-    }
-    else
-    {
-      Toolkit.getDefaultToolkit().beep();
-    }
-    */
     if (string.equals(i))
       super.insertString(fb, offset, string, TypesettingStyle.applyTypesetting());
     else
@@ -85,21 +74,6 @@ public class InputFieldDocumentFilter extends DocumentFilter
       }
     }
 
-    /*
-    // if the document has an i, don't insert the update after the i
-    if (fb.getDocument().getText(0, fb.getDocument().getLength()) != null
-        && !fb.getDocument().getText(0, fb.getDocument().getLength()).contains(i))
-    {
-      if (string.equals(i))
-        super.replace(fb, offset, length, string, TypesettingStyle.applyTypesetting());
-      else
-        super.replace(fb, offset, length, string, null);
-    }
-    else
-    {
-      Toolkit.getDefaultToolkit().beep();
-    }
-    */
     if (string.equals(i))
       super.replace(fb, offset, length, string, TypesettingStyle.applyTypesetting());
     else
