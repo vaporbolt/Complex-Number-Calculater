@@ -45,7 +45,7 @@ public class GuiContainer
   
   private CartesianPlane plane;
   
-  private JTextArea block = new JTextArea();
+  private JTextPane block = new JTextPane();
 
   /**
    * creates the GUI container object with the proper gridbagLayout.
@@ -113,7 +113,7 @@ public class GuiContainer
   /**
    * @return the block for the gui.
    */
-  public JTextArea getBlock()
+  public JTextPane getBlock()
   {
     return this.block;
   }
@@ -578,6 +578,8 @@ public class GuiContainer
         if (block.isVisible())
         {
           block.setVisible(false);
+          display.getPanel().setBackground(Color.WHITE);
+          display.getPanel().setBorder(BorderFactory.createLineBorder(Color.BLACK));
         } else
         {
           block.setVisible(true);

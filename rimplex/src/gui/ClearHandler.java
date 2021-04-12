@@ -34,6 +34,7 @@ public class ClearHandler implements ActionListener
   {
     // clears input field
     field.clear();
+    field.getTextField().requestFocus();
   }
 
 }

@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 import math.ComplexNumber;
 import math.Operation;
@@ -27,7 +28,7 @@ public class EqualsHandler implements ActionListener
   private ArrayList<OperationType> operations;
   private InputField input;
   private CartesianPlane plane;
-  private JTextArea block;
+  private JTextPane block;
   
   /**
    * Creates an equals handler.
@@ -36,7 +37,7 @@ public class EqualsHandler implements ActionListener
    * @param nums the list of complex numbers
    * @param operations the list of operations
    */
-  public EqualsHandler(DisplayComponent display, InputField input, ArrayList<ComplexNumber> nums, ArrayList<OperationType> operations, CartesianPlane plane, JTextArea block)
+  public EqualsHandler(DisplayComponent display, InputField input, ArrayList<ComplexNumber> nums, ArrayList<OperationType> operations, CartesianPlane plane, JTextPane block)
   {
     this.display = display;
     this.nums = nums;
@@ -74,6 +75,7 @@ public class EqualsHandler implements ActionListener
       display.displayTypesetting(0, display.getText().length());
       input.inputTypesetting(0, input.getTextField().getText().length());
       plane.addPoint(result);
+      input.getTextField().requestFocus();
       
       if (block.isVisible())
       {

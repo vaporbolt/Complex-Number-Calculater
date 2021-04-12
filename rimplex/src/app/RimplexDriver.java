@@ -3,6 +3,7 @@ package app;
 import java.util.ArrayList;
 
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 import gui.DisplayComponent;
 import gui.GuiContainer;
@@ -48,7 +49,7 @@ public class RimplexDriver
         DisplayComponent display = container.getDisplay();
         
         // get block
-        JTextArea block = container.getBlock();
+        JTextPane block = container.getBlock();
         
         // get plane
         CartesianPlane plane = container.getPlane();
