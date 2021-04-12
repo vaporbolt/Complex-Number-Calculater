@@ -133,9 +133,13 @@ public class ComplexNumber
     
     if (parentheses)
     {
-      if (this.imaginary == 0)
+      if (this.imaginary == 0 && this.real != 0)
       {
         complete = "(" + realNum + ")";
+      }
+      else if (this.imaginary != 0 && this.real == 0)
+      {
+        complete = "(" + imaginaryNum + "i)";
       }
       else
       {  

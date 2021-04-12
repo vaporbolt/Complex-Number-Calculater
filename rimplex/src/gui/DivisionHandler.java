@@ -48,6 +48,7 @@ public class DivisionHandler implements ActionListener
       
       // adds division sign to input field
       input.getTextField().setText(input.getTextField().getText() + " / ");
+      input.inputTypesetting(0, input.getTextField().getText().length());
     }
     catch (Exception ex)
     {

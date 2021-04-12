@@ -48,6 +48,7 @@ public class MultiplicationHandler implements ActionListener
       
       // adds multiplication sign to input field
       input.getTextField().setText(input.getTextField().getText() + " * ");
+      input.inputTypesetting(0, input.getTextField().getText().length());
     }
     catch (Exception ex)
     {

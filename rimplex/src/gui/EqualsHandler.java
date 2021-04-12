@@ -65,6 +65,7 @@ public class EqualsHandler implements ActionListener
       
       // apply typestting for display
       display.displayTypesetting(0, display.getText().length());
+      input.inputTypesetting(0, input.getTextField().getText().length());
     }
     catch (Exception ex)
     {
