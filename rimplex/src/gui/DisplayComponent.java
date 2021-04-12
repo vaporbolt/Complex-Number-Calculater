@@ -16,6 +16,7 @@ import math.ComplexNumber;
  */
 public class DisplayComponent
 {
+ 
 
   // tracks if an instance exists of the Display.
   private static boolean exists = false;
