@@ -410,7 +410,22 @@ public class GuiContainer
     gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
-    gbl.setConstraints(button, gbc);  
+    gbl.setConstraints(button, gbc); 
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        if (plane.isVisible())
+        {
+          plane.setVisible(false);
+        } else
+        {
+          plane.setVisible(true);
+        }
+      }
+      
+    });
     contentPane.add(button);
     
     // conjugate button
@@ -505,6 +520,23 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);  
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        if (display.getPanel().isVisible())
+        {
+          display.getPanel().setVisible(false);
+          scrollDisplay.setVisible(false);
+        } else
+        {
+          display.getPanel().setVisible(true);
+          scrollDisplay.setVisible(true);
+        }
+      }
+      
+    });
     contentPane.add(button);
     
 
