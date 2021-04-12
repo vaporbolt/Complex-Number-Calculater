@@ -32,7 +32,7 @@ public class DisplayComponent
   private DisplayComponent()
   {
     panel = new JTextPane();
-    panel.setBackground(Color.lightGray);
+    panel.setBackground(Color.WHITE);
     panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     panel.setEditable(false);
    

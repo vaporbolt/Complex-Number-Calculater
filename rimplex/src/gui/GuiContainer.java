@@ -166,6 +166,25 @@ public class GuiContainer
     gbl.setConstraints(textField, gbc);
     contentPane.add(textField);
     
+    JTextArea block = new JTextArea();
+    block.setBackground(Color.LIGHT_GRAY);
+    
+    gbc = new GridBagConstraints();
+    gbc.gridx = 10;
+    gbc.gridy = 1;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 5;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.fill = GridBagConstraints.VERTICAL;
+    gbc.anchor = GridBagConstraints.EAST;
+    gbc.ipadx = 250;
+    gbc.ipady = 200;
+    gbc.weightx = 0;
+    gbc.weighty = 1;
+    gbc.insets = new Insets(0, 100, 10, 10);
+    gbl.setConstraints(block, gbc);  
+    contentPane.add(block);
+    
     // Display
     display = DisplayComponent.createInstance();
     
@@ -180,6 +199,7 @@ public class GuiContainer
     gbc.gridheight = 5;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     gbc.fill = GridBagConstraints.VERTICAL;
+    gbc.anchor = GridBagConstraints.EAST;
     gbc.ipadx = 200;
     gbc.ipady = 200;
     gbc.weightx = 0;
@@ -192,7 +212,8 @@ public class GuiContainer
     plane = new CartesianPlane();
     //plane.addPoint(new ComplexNumber(4, 5));
     JScrollPane scrollPlane = new JScrollPane(plane);
-    scrollDisplay.setPreferredSize(new Dimension(200, 200));
+    scrollPlane.setPreferredSize(new Dimension(200, 200));
+    //scrollPlane.setVisible(false);
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
     gbc.gridy = 1;
@@ -228,7 +249,7 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-        // TODO Auto-generated method stub
+        
         textField.setText(textField.getText() + " ^-1 ");
         inputField.inputTypesetting(0, textField.getText().length());
       }
@@ -318,7 +339,7 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-        // TODO Auto-generated method stub
+        
         textField.setText(textField.getText() + "(");
         inputField.inputTypesetting(0, textField.getText().length());
       }
@@ -344,7 +365,7 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-        // TODO Auto-generated method stub
+        
         textField.setText(textField.getText() + ")");
         inputField.inputTypesetting(0, textField.getText().length());
       }
@@ -450,7 +471,7 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-        // TODO Auto-generated method stub
+        
         textField.setText(textField.getText() + " con ");
         inputField.inputTypesetting(0, textField.getText().length());
       }
@@ -476,7 +497,7 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-        // TODO Auto-generated method stub
+        
         textField.setText(textField.getText() + " ^ ");
         inputField.inputTypesetting(0, textField.getText().length());
       }
@@ -503,7 +524,7 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-        // TODO Auto-generated method stub
+        
         textField.setText(textField.getText() + "i");
         inputField.inputTypesetting(0, textField.getText().length());
       }
@@ -529,14 +550,12 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-        if (display.getPanel().isVisible())
+        if (block.isVisible())
         {
-          display.getPanel().setVisible(false);
-          scrollDisplay.setVisible(false);
+          block.setVisible(false);
         } else
         {
-          display.getPanel().setVisible(true);
-          scrollDisplay.setVisible(true);
+          block.setVisible(true);
         }
       }
       
@@ -721,7 +740,7 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-        // TODO Auto-generated method stub
+        
         textField.setText(textField.getText() + ".");
         inputField.inputTypesetting(0, textField.getText().length());
       }
@@ -747,7 +766,7 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-        // TODO Auto-generated method stub
+        
         String s =  "";
         if (textField.getText().length() != 0) s = textField.getText().substring(0, textField.getText().length() - 1);
         textField.setText(s);
