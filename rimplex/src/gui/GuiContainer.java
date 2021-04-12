@@ -4,7 +4,11 @@ import java.util.HashMap;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import app.RimplexDriver;
@@ -110,7 +114,7 @@ public class GuiContainer
    */
   public void showGUI()
   {
-    frame.getContentPane().setBackground(Color.CYAN);
+    frame.getContentPane().setBackground(Color.LIGHT_GRAY);
     frame.setMaximumSize(new Dimension(400, 1000));
     frame.setSize(this.jframeWidth, this.jframeHeight);
     frame.setVisible(true);
@@ -129,7 +133,23 @@ public class GuiContainer
     contentPane.setLayout(gbl);
     GridBagConstraints gbc = new GridBagConstraints();
     JButton button;
-
+    
+    // rimplex icon
+    ImageIcon logo = new ImageIcon(this.getClass().getResource("/pictures/logoRimplex.png"));
+    JLabel label = new JLabel(logo);
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(0, 0, 0, 90);
+    gbl.setConstraints(label, gbc);
+    contentPane.add(label);
+    
+    
     
     // InputField/ display.
     JTextPane textField = this.inputField.getTextField();
@@ -545,7 +565,7 @@ public class GuiContainer
     gbl.setConstraints(button, gbc); 
     button.addActionListener(new NumActionHandler(inputField, 4));
     contentPane.add(button);
-    
+
     // 5 button
     button = new JButton("5");
     gbc = new GridBagConstraints();
@@ -654,6 +674,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc); 
     contentPane.add(button);
+    
     
     
     
