@@ -24,7 +24,7 @@ public class GuiContainer
   // keeps track if a GUIContainer exists or not.
   private static boolean exists = false;
   
-  private final int jframeWidth = 800;
+  private final int jframeWidth = 1000;
   private final int jframeHeight = 400;
   
   // holds the frame
@@ -98,7 +98,7 @@ public class GuiContainer
   public void showGUI()
   {
     frame.getContentPane().setBackground(Color.CYAN);
-    frame.setMaximumSize(new Dimension(400, 800));
+    frame.setMaximumSize(new Dimension(400, 1000));
     frame.setSize(this.jframeWidth, this.jframeHeight);
     frame.setVisible(true);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -132,6 +132,23 @@ public class GuiContainer
     gbc.insets = new Insets(40, 0, 0, 0);
     gbl.setConstraints(textField, gbc);
     contentPane.add(textField);
+    
+    // Display
+    display = DisplayComponent.createInstance();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 10;
+    gbc.gridy = 1;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 5;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.fill = GridBagConstraints.VERTICAL;
+    gbc.ipadx = 200;
+    gbc.ipady = 200;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(0, 100, 10, 10);
+    gbl.setConstraints(display.getPanel(), gbc);  
+    contentPane.add(display.getPanel());
     
     // Cartesian Plane
     CartesianPlane plane = new CartesianPlane();
