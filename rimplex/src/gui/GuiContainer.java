@@ -145,7 +145,7 @@ public class GuiContainer
     gbc.ipadx = 200;
     gbc.ipady = 200;
     gbc.weightx = 0;
-    gbc.weighty = 0;
+    gbc.weighty = 1;
     gbc.insets = new Insets(0, 100, 10, 10);
     gbl.setConstraints(display.getPanel(), gbc);  
     contentPane.add(display.getPanel());
@@ -164,7 +164,7 @@ public class GuiContainer
     gbc.ipady = 200;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(10, 5, 10, 100);
+    gbc.insets = new Insets(0, 5, 10, 100);
     gbl.setConstraints(plane, gbc);  
     contentPane.add(plane);
     
