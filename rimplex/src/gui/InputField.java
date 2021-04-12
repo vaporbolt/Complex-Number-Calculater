@@ -9,6 +9,7 @@ import util.EnteringComplexNumbers;
 import visualization.CartesianPlane;
 import math.ComplexNumber;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -119,7 +120,7 @@ public class InputField
    * @param display the display
    * @param nums the list of complex numbers
    */
-  public void enterText(DisplayComponent display, ArrayList<ComplexNumber> nums, CartesianPlane plane)
+  public void enterText(DisplayComponent display, ArrayList<ComplexNumber> nums, CartesianPlane plane, JTextPane block)
   {
     // to get the correct InputMap
     int condition = JComponent.WHEN_FOCUSED;  
@@ -157,6 +158,15 @@ public class InputField
             
             // apply typestting to display
             display.displayTypesetting(0, display.getText().length());
+            inputTypesetting(0, field.getText().length());
+            
+            if (block.isVisible())
+            {
+              display.getPanel().setBackground(Color.LIGHT_GRAY);
+              display.getPanel().setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+              block.setVisible(false);
+              block.setVisible(true);
+            }
           }
           catch (Exception e)
           {
