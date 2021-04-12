@@ -722,6 +722,20 @@ public class GuiContainer
     contentPane.add(button);
     
     
+    // sign button
+    button = new JButton("+/-");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 3;
+    gbc.gridy = 6;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(10, 5, 10, 5);
+    gbl.setConstraints(button, gbc);
+    contentPane.add(button);
     
     
 
