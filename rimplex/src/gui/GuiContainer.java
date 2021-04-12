@@ -255,6 +255,7 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
+    button.setFocusPainted(false);
     button.addActionListener((ActionListener) new ActionListener() {
 
       @Override
@@ -282,6 +283,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
     button.addActionListener(new ClearHandler(inputField));
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // Addition Button
@@ -298,6 +300,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
     button.addActionListener(new AdditionHandler(inputField, RimplexDriver.operations));
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // subtraction Button
@@ -314,6 +317,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
     button.addActionListener(new SubtractionHandler(inputField, RimplexDriver.operations));
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // reset button
@@ -330,6 +334,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
     button.addActionListener(new ResetHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations, plane, block));
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // open parentheses button
@@ -356,6 +361,7 @@ public class GuiContainer
       }
       
     });
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // closed parentheses
@@ -382,6 +388,7 @@ public class GuiContainer
       }
       
     });
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // multiplication symbol
@@ -398,6 +405,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
     button.addActionListener(new MultiplicationHandler(inputField, RimplexDriver.operations));
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // division symbol.
@@ -414,6 +422,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
     button.addActionListener(new DivisionHandler(inputField, RimplexDriver.operations));
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // equals button
@@ -430,6 +439,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
     button.addActionListener(new EqualsHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations, plane, block));
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // complex number plane button
@@ -462,6 +472,7 @@ public class GuiContainer
       }
       
     });
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // conjugate button
@@ -488,6 +499,7 @@ public class GuiContainer
       }
       
     });
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // exponet button
@@ -514,6 +526,7 @@ public class GuiContainer
       }
       
     });
+    button.setFocusPainted(false);
     contentPane.add(button);
 
 
@@ -541,6 +554,7 @@ public class GuiContainer
       }
       
     });
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // history button
@@ -571,6 +585,7 @@ public class GuiContainer
       }
       
     });
+    button.setFocusPainted(false);
     contentPane.add(button);
     
 
@@ -588,6 +603,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc); 
     button.addActionListener(new NumActionHandler(inputField, 0));
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // 1 button
@@ -604,6 +620,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);  
     button.addActionListener(new NumActionHandler(inputField, 1));
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // 2 button
@@ -620,6 +637,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
     button.addActionListener(new NumActionHandler(inputField, 2));
+    button.setFocusPainted(false);
     contentPane.add(button);
     // 3 button
     button = new JButton("3");
@@ -635,6 +653,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);  
     button.addActionListener(new NumActionHandler(inputField, 3));
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // 4 button
@@ -651,6 +670,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc); 
     button.addActionListener(new NumActionHandler(inputField, 4));
+    button.setFocusPainted(false);
     contentPane.add(button);
 
     // 5 button
@@ -667,6 +687,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);  
     button.addActionListener(new NumActionHandler(inputField, 5));
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // 6 button
@@ -683,6 +704,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
     button.addActionListener(new NumActionHandler(inputField, 6));
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // 7 button
@@ -699,6 +721,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
     button.addActionListener(new NumActionHandler(inputField, 7));
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // 8 button
@@ -715,6 +738,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
     button.addActionListener(new NumActionHandler(inputField, 8));
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // 9 button
@@ -731,6 +755,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc); 
     button.addActionListener(new NumActionHandler(inputField, 9));
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     // decimal button
@@ -785,6 +810,7 @@ public class GuiContainer
       }
       
     });
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     
@@ -801,6 +827,7 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
+    button.setFocusPainted(false);
     contentPane.add(button);
     
     
