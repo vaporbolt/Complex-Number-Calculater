@@ -275,7 +275,7 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
-    button.addActionListener(new ResetHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations));
+    button.addActionListener(new ResetHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations, plane));
     contentPane.add(button);
     
     // open parentheses button

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import math.ComplexNumber;
 import math.OperationType;
+import visualization.CartesianPlane;
 
 /**
  * @author Seth Roper
@@ -20,6 +21,7 @@ public class ResetHandler implements ActionListener
   private InputField input;
   private ArrayList<ComplexNumber> nums;
   private ArrayList<OperationType> operations;
+  private CartesianPlane plane;
   
   /**
    * Creates a rest handler.
@@ -28,12 +30,13 @@ public class ResetHandler implements ActionListener
    * @param nums the list of complex numbers
    * @param operations the list of operations
    */
-  public ResetHandler(DisplayComponent display, InputField input, ArrayList<ComplexNumber> nums, ArrayList<OperationType> operations)
+  public ResetHandler(DisplayComponent display, InputField input, ArrayList<ComplexNumber> nums, ArrayList<OperationType> operations, CartesianPlane plane)
   {
     this.display = display;
     this.nums = nums;
     this.operations = operations;
     this.input = input;
+    this.plane = plane;
   }
   
   /**
@@ -50,6 +53,7 @@ public class ResetHandler implements ActionListener
     input.clear();
     nums.clear();
     operations.clear();
+    plane.reset();
     
   }
 
