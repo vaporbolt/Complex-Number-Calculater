@@ -1,6 +1,9 @@
 package app;
 
 import java.util.ArrayList;
+
+import javax.swing.JTextArea;
+
 import gui.DisplayComponent;
 import gui.GuiContainer;
 import gui.InputField;
@@ -44,6 +47,9 @@ public class RimplexDriver
         // get display
         DisplayComponent display = container.getDisplay();
         
+        // get block
+        JTextArea block = container.getBlock();
+        
         // get plane
         CartesianPlane plane = container.getPlane();
 
@@ -51,7 +57,7 @@ public class RimplexDriver
         InputField inputField = container.getInputField();
 
         // transfers text from inputField to display upon hitting enter
-        inputField.enterText(display, complexNumbers, plane);
+        inputField.enterText(display, complexNumbers, plane, block);
         
         // set all i characters in display to italics
       //  display.displayTypesetting(0, display.getText().length() - 1);

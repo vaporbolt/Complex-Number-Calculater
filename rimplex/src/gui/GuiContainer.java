@@ -44,6 +44,8 @@ public class GuiContainer
   private DisplayComponent display;
   
   private CartesianPlane plane;
+  
+  private JTextArea block = new JTextArea();
 
   /**
    * creates the GUI container object with the proper gridbagLayout.
@@ -108,6 +110,14 @@ public class GuiContainer
     return this.frame;
   }
   
+  /**
+   * @return the block for the gui.
+   */
+  public JTextArea getBlock()
+  {
+    return this.block;
+  }
+  
   
   /**
    * sets the gui to visible for display.
@@ -166,8 +176,9 @@ public class GuiContainer
     gbl.setConstraints(textField, gbc);
     contentPane.add(textField);
     
-    JTextArea block = new JTextArea();
+    // creates blocking text area
     block.setBackground(Color.LIGHT_GRAY);
+    block.setEditable(false);
     
     gbc = new GridBagConstraints();
     gbc.gridx = 10;
@@ -318,7 +329,7 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
-    button.addActionListener(new ResetHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations, plane));
+    button.addActionListener(new ResetHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations, plane, block));
     contentPane.add(button);
     
     // open parentheses button
@@ -418,7 +429,7 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
-    button.addActionListener(new EqualsHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations, plane));
+    button.addActionListener(new EqualsHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations, plane, block));
     contentPane.add(button);
     
     // complex number plane button

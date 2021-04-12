@@ -119,7 +119,7 @@ public class InputField
    * @param display the display
    * @param nums the list of complex numbers
    */
-  public void enterText(DisplayComponent display, ArrayList<ComplexNumber> nums, CartesianPlane plane)
+  public void enterText(DisplayComponent display, ArrayList<ComplexNumber> nums, CartesianPlane plane, JTextArea block)
   {
     // to get the correct InputMap
     int condition = JComponent.WHEN_FOCUSED;  
@@ -157,6 +157,12 @@ public class InputField
             
             // apply typestting to display
             display.displayTypesetting(0, display.getText().length());
+            
+            if (block.isVisible())
+            {
+              block.setVisible(false);
+              block.setVisible(true);
+            }
           }
           catch (Exception e)
           {

@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JTextArea;
+
 import math.ComplexNumber;
 import math.OperationType;
 import visualization.CartesianPlane;
@@ -22,6 +24,7 @@ public class ResetHandler implements ActionListener
   private ArrayList<ComplexNumber> nums;
   private ArrayList<OperationType> operations;
   private CartesianPlane plane;
+  private JTextArea block;
   
   /**
    * Creates a rest handler.
@@ -30,13 +33,14 @@ public class ResetHandler implements ActionListener
    * @param nums the list of complex numbers
    * @param operations the list of operations
    */
-  public ResetHandler(DisplayComponent display, InputField input, ArrayList<ComplexNumber> nums, ArrayList<OperationType> operations, CartesianPlane plane)
+  public ResetHandler(DisplayComponent display, InputField input, ArrayList<ComplexNumber> nums, ArrayList<OperationType> operations, CartesianPlane plane, JTextArea block)
   {
     this.display = display;
     this.nums = nums;
     this.operations = operations;
     this.input = input;
     this.plane = plane;
+    this.block = block;
   }
   
   /**
@@ -54,6 +58,12 @@ public class ResetHandler implements ActionListener
     nums.clear();
     operations.clear();
     plane.reset();
+    
+    if (block.isVisible())
+    {
+      block.setVisible(false);
+      block.setVisible(true);
+    }
     
   }
 
