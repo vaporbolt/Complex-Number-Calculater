@@ -137,6 +137,11 @@ public class GuiContainer
     
     // Display
     display = DisplayComponent.createInstance();
+    
+    // create scroll pane for the display/history and set a restricting size
+    JScrollPane scrollDisplay = new JScrollPane(display.getPanel());
+    scrollDisplay.setPreferredSize(new Dimension(200, 200));
+    
     gbc = new GridBagConstraints();
     gbc.gridx = 10;
     gbc.gridy = 1;
@@ -149,8 +154,8 @@ public class GuiContainer
     gbc.weightx = 0;
     gbc.weighty = 1;
     gbc.insets = new Insets(0, 100, 10, 10);
-    gbl.setConstraints(display.getPanel(), gbc);  
-    contentPane.add(display.getPanel());
+    gbl.setConstraints(scrollDisplay, gbc);  
+    contentPane.add(scrollDisplay);
     
     // Cartesian Plane
     CartesianPlane plane = new CartesianPlane();

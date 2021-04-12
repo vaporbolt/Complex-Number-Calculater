@@ -22,7 +22,7 @@ public class CartesianPlane extends JPanel
   
   private static final long serialVersionUID = -5340977851975906294L;
   
-  private final double spacing = 20;
+  private final double spacing = 7;
   private double height;
   private double width;
   private double axisX;
@@ -99,7 +99,7 @@ public class CartesianPlane extends JPanel
    */
   public void drawPoint(ComplexNumberPoint point, Graphics2D g)
   {
-    g.setStroke(new BasicStroke(7));
+    g.setStroke(new BasicStroke(5));
     g.setColor(Color.BLUE);
     double x = axisX + point.getX() * spacing;
     double y = axisY - point.getY() * spacing;
