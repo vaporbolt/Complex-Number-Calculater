@@ -405,9 +405,21 @@ public class GuiContainer
     gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
-    gbl.setConstraints(button, gbc);  
-    // exponet button
+    gbl.setConstraints(button, gbc);
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        // TODO Auto-generated method stub
+        textField.setText(textField.getText() + " con ");
+        inputField.inputTypesetting(0, textField.getText().length());
+      }
+      
+    });
     contentPane.add(button);
+    
+    // exponet button
     button = new JButton("x²");
     gbc = new GridBagConstraints();
     gbc.gridx = 4;
@@ -420,11 +432,20 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);  
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        // TODO Auto-generated method stub
+        textField.setText(textField.getText() + " ^ ");
+        inputField.inputTypesetting(0, textField.getText().length());
+      }
+      
+    });
     contentPane.add(button);
 
-    
-    
-    
+
     // i button
     button = new JButton("i");
     gbc = new GridBagConstraints();
@@ -638,8 +659,20 @@ public class GuiContainer
     gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
-    gbl.setConstraints(button, gbc); 
+    gbl.setConstraints(button, gbc);
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        // TODO Auto-generated method stub
+        textField.setText(textField.getText() + ".");
+        inputField.inputTypesetting(0, textField.getText().length());
+      }
+      
+    });
     contentPane.add(button);
+    
     // back space button
     button = new JButton("<-");
     gbc = new GridBagConstraints();
@@ -652,7 +685,20 @@ public class GuiContainer
     gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
-    gbl.setConstraints(button, gbc); 
+    gbl.setConstraints(button, gbc);
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        // TODO Auto-generated method stub
+        String s =  "";
+        if (textField.getText().length() != 0) s = textField.getText().substring(0, textField.getText().length() - 1);
+        textField.setText(s);
+        inputField.inputTypesetting(0, textField.getText().length());
+      }
+      
+    });
     contentPane.add(button);
     
     
