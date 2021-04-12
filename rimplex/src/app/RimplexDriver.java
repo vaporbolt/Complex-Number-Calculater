@@ -6,6 +6,7 @@ import gui.GuiContainer;
 import gui.InputField;
 import math.ComplexNumber;
 import math.OperationType;
+import visualization.CartesianPlane;
 
 /**
  * Driver for the Rimplex application.
@@ -42,12 +43,15 @@ public class RimplexDriver
 
         // get display
         DisplayComponent display = container.getDisplay();
+        
+        // get plane
+        CartesianPlane plane = container.getPlane();
 
         // get input field
         InputField inputField = container.getInputField();
 
         // transfers text from inputField to display upon hitting enter
-        inputField.enterText(display, complexNumbers);
+        inputField.enterText(display, complexNumbers, plane);
         
         // set all i characters in display to italics
       //  display.displayTypesetting(0, display.getText().length() - 1);

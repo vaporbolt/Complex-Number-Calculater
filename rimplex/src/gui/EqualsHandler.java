@@ -9,6 +9,7 @@ import math.ComplexNumber;
 import math.Operation;
 import math.OperationType;
 import util.EnteringComplexNumbers;
+import visualization.CartesianPlane;
 
 /**
  * @author Seth Roper
@@ -23,6 +24,7 @@ public class EqualsHandler implements ActionListener
   private ArrayList<ComplexNumber> nums;
   private ArrayList<OperationType> operations;
   private InputField input;
+  private CartesianPlane plane;
   
   /**
    * Creates an equals handler.
@@ -31,12 +33,13 @@ public class EqualsHandler implements ActionListener
    * @param nums the list of complex numbers
    * @param operations the list of operations
    */
-  public EqualsHandler(DisplayComponent display, InputField input, ArrayList<ComplexNumber> nums, ArrayList<OperationType> operations)
+  public EqualsHandler(DisplayComponent display, InputField input, ArrayList<ComplexNumber> nums, ArrayList<OperationType> operations, CartesianPlane plane)
   {
     this.display = display;
     this.nums = nums;
     this.operations = operations;
     this.input = input;
+    this.plane = plane;
   }
   
   /**
@@ -66,6 +69,7 @@ public class EqualsHandler implements ActionListener
       // apply typestting for display
       display.displayTypesetting(0, display.getText().length());
       input.inputTypesetting(0, input.getTextField().getText().length());
+      plane.addPoint(result);
     }
     catch (Exception ex)
     {

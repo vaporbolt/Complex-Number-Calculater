@@ -6,6 +6,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 
 import util.EnteringComplexNumbers;
+import visualization.CartesianPlane;
 import math.ComplexNumber;
 
 import java.awt.Toolkit;
@@ -118,7 +119,7 @@ public class InputField
    * @param display the display
    * @param nums the list of complex numbers
    */
-  public void enterText(DisplayComponent display, ArrayList<ComplexNumber> nums)
+  public void enterText(DisplayComponent display, ArrayList<ComplexNumber> nums, CartesianPlane plane)
   {
     // to get the correct InputMap
     int condition = JComponent.WHEN_FOCUSED;  
@@ -152,6 +153,7 @@ public class InputField
             
             // sets the input field to the result to use for the next calculation
             field.setText(result.toString());
+            plane.addPoint(result);
             
             // apply typestting to display
             display.displayTypesetting(0, display.getText().length());

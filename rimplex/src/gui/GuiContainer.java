@@ -38,6 +38,8 @@ public class GuiContainer
   private InputField inputField = InputField.createInstance();
 
   private DisplayComponent display;
+  
+  private CartesianPlane plane;
 
   /**
    * creates the GUI container object with the proper gridbagLayout.
@@ -74,6 +76,15 @@ public class GuiContainer
   public DisplayComponent getDisplay()
   {
     return this.display;
+  }
+  
+  /**
+   * gets the GUI's plane.
+   * @return CartesianPlane
+   */
+  public CartesianPlane getPlane()
+  {
+    return this.plane;
   }
   
   /**
@@ -158,8 +169,8 @@ public class GuiContainer
     contentPane.add(scrollDisplay);
     
     // Cartesian Plane
-    CartesianPlane plane = new CartesianPlane();
-    plane.addPoint(new ComplexNumber(4, 5));
+    plane = new CartesianPlane();
+    //plane.addPoint(new ComplexNumber(4, 5));
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
     gbc.gridy = 1;
@@ -364,7 +375,7 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
-    button.addActionListener(new EqualsHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations));
+    button.addActionListener(new EqualsHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations, plane));
     contentPane.add(button);
     
     // complex number plane button
