@@ -191,6 +191,8 @@ public class GuiContainer
     // Cartesian Plane
     plane = new CartesianPlane();
     //plane.addPoint(new ComplexNumber(4, 5));
+    JScrollPane scrollPlane = new JScrollPane(plane);
+    scrollDisplay.setPreferredSize(new Dimension(200, 200));
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
     gbc.gridy = 1;
@@ -203,8 +205,8 @@ public class GuiContainer
     gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.insets = new Insets(0, 5, 10, 100);
-    gbl.setConstraints(plane, gbc);  
-    contentPane.add(plane);
+    gbl.setConstraints(scrollPlane, gbc);  
+    contentPane.add(scrollPlane);
     
     
     
@@ -419,9 +421,11 @@ public class GuiContainer
         if (plane.isVisible())
         {
           plane.setVisible(false);
+          scrollPlane.setVisible(false);
         } else
         {
           plane.setVisible(true);
+          scrollPlane.setVisible(true);
         }
       }
       
