@@ -97,13 +97,23 @@ public class CartesianPlane extends JPanel
    * draws point on the Cartesian plane.
    * @param point ComplexNumberPoint
    */
-  public void drawPoint(ComplexNumberPoint point, Graphics2D g)
+  private void drawPoint(ComplexNumberPoint point, Graphics2D g)
   {
     g.setStroke(new BasicStroke(5));
     g.setColor(Color.BLUE);
     double x = axisX + point.getX() * spacing;
     double y = axisY - point.getY() * spacing;
     g.draw(new Line2D.Double(x, y, x, y));
+    
+  }
+  
+  /**
+   * clear plane of drawn points.
+   */
+  public void reset()
+  {
+    points.removeAll(points);
+    repaint();
   }
   
 }
