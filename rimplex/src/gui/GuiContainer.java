@@ -393,6 +393,38 @@ public class GuiContainer
     gbl.setConstraints(button, gbc);  
     contentPane.add(button);
     
+    // conjugate button
+    button = new JButton("z*");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 2;
+    gbc.gridy = 3;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(10, 5, 10, 5);
+    gbl.setConstraints(button, gbc);  
+    // exponet button
+    contentPane.add(button);
+    button = new JButton("x²");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 4;
+    gbc.gridy = 3;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(10, 5, 10, 5);
+    gbl.setConstraints(button, gbc);  
+    contentPane.add(button);
+
+    
+    
+    
     // i button
     button = new JButton("i");
     gbc = new GridBagConstraints();
@@ -498,7 +530,6 @@ public class GuiContainer
     button.addActionListener(new NumActionHandler(inputField, 3));
     contentPane.add(button);
     
-    
     // 4 button
     button = new JButton("4");
     gbc = new GridBagConstraints();
@@ -595,6 +626,34 @@ public class GuiContainer
     button.addActionListener(new NumActionHandler(inputField, 9));
     contentPane.add(button);
     
+    // decimal button
+    button = new JButton(".");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1;
+    gbc.gridy = 6;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(10, 5, 10, 5);
+    gbl.setConstraints(button, gbc); 
+    contentPane.add(button);
+    // back space button
+    button = new JButton("<-");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 2;
+    gbc.gridy = 6;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(10, 5, 10, 5);
+    gbl.setConstraints(button, gbc); 
+    contentPane.add(button);
     
     
     
