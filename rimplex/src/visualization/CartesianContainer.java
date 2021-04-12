@@ -34,6 +34,11 @@ public class CartesianContainer extends JFrame
     plane.addPoint(number);
   }
   
+  public void reset()
+  {
+    plane.reset();
+  }
+  
   public static void main(String[] args)
   {
     CartesianContainer c = new CartesianContainer();
@@ -43,5 +48,9 @@ public class CartesianContainer extends JFrame
     c.addPoint(new ComplexNumber(-8, -4));
     c.addPoint(new ComplexNumber(10.3, 7.0));
     
+    c.reset();
+    
+    c.addPoint(new ComplexNumber(1, 2));
+    c.addPoint(new ComplexNumber(15, 1));
   }
 }
