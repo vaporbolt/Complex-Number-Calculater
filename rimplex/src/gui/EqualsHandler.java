@@ -1,10 +1,12 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
@@ -79,6 +81,8 @@ public class EqualsHandler implements ActionListener
       
       if (block.isVisible())
       {
+        display.getPanel().setBackground(Color.LIGHT_GRAY);
+        display.getPanel().setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
         block.setVisible(false);
         block.setVisible(true);
       }
