@@ -147,6 +147,7 @@ public class GuiContainer
     frame.setVisible(true);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setResizable(false); 
+    frame.setLocation(500, 200);
     this.historyWindow.getContentPane().setBackground(new Color(199, 238, 255));
     this.historyWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
     this.historyWindow.setVisible(true);
@@ -927,6 +928,18 @@ public class GuiContainer
     
   }
   
+  /**
+   * creates a window to hold the complex number plane.
+   */
+  private void createPlaneWindow()
+  {
+    this.planeWindow = new JWindow();
+    Container contentPane = this.planeWindow.getContentPane();
+    GridBagLayout gbl = new GridBagLayout();
+    contentPane.setLayout(gbl);
+    GridBagConstraints gbc = new GridBagConstraints();
+    JButton button;
+  }
 
 
 }
