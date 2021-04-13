@@ -151,6 +151,7 @@ public class GuiContainer
     this.historyWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
     this.historyWindow.setVisible(true);
     this.historyWindow.setLocation(frame.getX() + 400, frame.getY() + 165);
+    this.historyWindow.setVisible(false);
   }
   
   /**
@@ -600,16 +601,9 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-        if (block.isVisible())
+        if (!historyWindow.isVisible())
         {
-          int w = jframeWidth;
-          for (int i = 0; i < 150; i++)
-          {
-            w += 4;
-            frame.setSize(w, jframeHeight);
-          }
-          block.setVisible(false);
-          display.getPanel().setBackground(new Color(199, 238, 255));
+          historyWindow.setVisible(true);
         }
       }
       
@@ -910,6 +904,7 @@ public class GuiContainer
     gbc.weighty = 1;
     gbl.setConstraints(scrollDisplay, gbc);  
     contentPane.add(scrollDisplay);
+    
     button = new JButton("<");
     gbc = new GridBagConstraints();
     gbc.gridx = 1;
@@ -922,6 +917,18 @@ public class GuiContainer
     gbc.weighty = 0;
     gbl.setConstraints(button, gbc); 
     button.setBackground(new Color(199, 238, 255));
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        if (historyWindow.isVisible())
+        {
+          historyWindow.setVisible(false);
+        }
+      }
+      
+    });
     contentPane.add(button);
     
     
