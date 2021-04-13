@@ -46,12 +46,17 @@ public class GuiContainer
   private CartesianPlane plane;
   
   private JTextPane block = new JTextPane();
+  
+  private JWindow historyWindow;
+  
+  private JWindow planeWindow;
 
   /**
    * creates the GUI container object with the proper gridbagLayout.
    */
   private GuiContainer()
   {
+    this.createHistoryWindow();
     this.addComponetsToPane();
   }
   
@@ -141,7 +146,11 @@ public class GuiContainer
     frame.setSize(this.jframeWidth, this.jframeHeight);
     frame.setVisible(true);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setResizable(false);
+    frame.setResizable(false); 
+    this.historyWindow.getContentPane().setBackground(new Color(199, 238, 255));
+    this.historyWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
+    this.historyWindow.setVisible(true);
+    this.historyWindow.setLocation(frame.getX() + 400, frame.getY() + 165);
   }
   
   /**
@@ -210,6 +219,7 @@ public class GuiContainer
     contentPane.add(block);
     
     // Display
+    /*
     display = DisplayComponent.createInstance();
     
     // create scroll pane for the display/history and set a restricting size
@@ -231,6 +241,7 @@ public class GuiContainer
     gbc.insets = new Insets(0, 100, 10, 50);
     gbl.setConstraints(scrollDisplay, gbc);  
     contentPane.add(scrollDisplay);
+    */
     
     // Cartesian Plane
     plane = new CartesianPlane();
@@ -862,6 +873,57 @@ public class GuiContainer
     
     
 
+    
+  }
+  
+  
+  /**
+   * creates a JWindow containing the history componet and a button that makes it invisible.
+   */
+  private void createHistoryWindow()
+  {
+    this.historyWindow = new JWindow();
+    Container contentPane = this.historyWindow.getContentPane();
+    GridBagLayout gbl = new GridBagLayout();
+    contentPane.setLayout(gbl);
+    GridBagConstraints gbc = new GridBagConstraints();
+    JButton button;
+    // Display
+    display = DisplayComponent.createInstance();
+    // create scroll pane for the display/history and set a restricting size
+    JScrollPane scrollDisplay = new JScrollPane(display.getPanel());
+    scrollDisplay.setViewportBorder(null);
+    scrollDisplay.setBorder(null);
+    scrollDisplay.setPreferredSize(new Dimension(200, 200));
+    
+    gbc = new GridBagConstraints();
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.fill = GridBagConstraints.VERTICAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.ipadx = 200;
+    gbc.ipady = 200;
+    gbc.weightx = 0.9;
+    gbc.weighty = 1;
+    gbl.setConstraints(scrollDisplay, gbc);  
+    contentPane.add(scrollDisplay);
+    button = new JButton("<");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0.1;
+    gbc.weighty = 0;
+    gbl.setConstraints(button, gbc); 
+    button.setBackground(new Color(199, 238, 255));
+    contentPane.add(button);
+    
     
   }
   
