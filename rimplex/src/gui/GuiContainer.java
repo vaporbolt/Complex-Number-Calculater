@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -151,7 +153,7 @@ public class GuiContainer
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setResizable(false); 
     frame.setLocation(500, 200);
-    frame.addComponentListener(new FrameListener(historyWindow));
+    frame.addComponentListener(new FrameListener(historyWindow, planeWindow));
     this.historyWindow.getContentPane().setBackground(new Color(199, 238, 255));
     this.historyWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
     this.historyWindow.setVisible(true);
@@ -162,8 +164,17 @@ public class GuiContainer
     this.planeWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
     this.planeWindow.setVisible(true);
     this.planeWindow.setLocation(frame.getX() - 275, frame.getY() + 165);
-    this.planeWindow.setVisible(true);
+    this.planeWindow.setVisible(false);
     this.planeWindow.setAlwaysOnTop(true);
+    frame.addWindowStateListener(new WindowStateListener() {
+      @Override
+      public void windowStateChanged(WindowEvent e)
+      {
+        historyWindow.setVisible(false);
+        planeWindow.setVisible(false);
+        
+      }
+   });
   }
   
   /**
@@ -496,15 +507,9 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-        if (!block.isVisible())
+        if (!planeWindow.isVisible())
         {
-          int w = jframeWidth + 600;
-          for (int i = 0; i < 150; i++)
-          {
-            w -= 4;
-            frame.setSize(w, jframeHeight);
-          }
-          block.setVisible(true);
+          planeWindow.setVisible(true);
         }
       }
       
@@ -1012,7 +1017,18 @@ public class GuiContainer
     gbc.insets = new Insets(90, 0, 0, 0);
     gbl.setConstraints(button, gbc); 
     button.setBackground(new Color(199, 238, 255));
-    
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        if (planeWindow.isVisible())
+        {
+          planeWindow.setVisible(false);
+        }
+      }
+      
+    });
     contentPane.add(button);
   }
 
