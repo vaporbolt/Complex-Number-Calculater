@@ -268,9 +268,9 @@ public class GuiContainer
     */
     
     // Cartesian Plane
-    plane = new CartesianPlane();
+    CartesianPlane plane2 = new CartesianPlane();
     //plane.addPoint(new ComplexNumber(4, 5));
-    JScrollPane scrollPlane = new JScrollPane(plane);
+    JScrollPane scrollPlane = new JScrollPane(plane2);
     scrollPlane.setPreferredSize(new Dimension(200, 200));
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
