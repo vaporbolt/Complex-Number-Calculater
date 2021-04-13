@@ -590,8 +590,7 @@ public class GuiContainer
         if (block.isVisible())
         {
           block.setVisible(false);
-          display.getPanel().setBackground(Color.WHITE);
-          display.getPanel().setBorder(BorderFactory.createLineBorder(Color.BLACK));
+          display.getPanel().setBackground(new Color(199, 238, 255));
         } else
         {
           block.setVisible(true);
