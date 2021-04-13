@@ -56,6 +56,7 @@ public class GuiContainer
    */
   private GuiContainer()
   {
+    this.createPlaneWindow();
     this.createHistoryWindow();
     this.addComponetsToPane();
   }
@@ -152,9 +153,15 @@ public class GuiContainer
     this.historyWindow.getContentPane().setBackground(new Color(199, 238, 255));
     this.historyWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
     this.historyWindow.setVisible(true);
-    this.historyWindow.setLocation(frame.getX() + 350, frame.getY() + 165);
+    this.historyWindow.setLocation(frame.getX() + 200, frame.getY() + 165);
     this.historyWindow.setVisible(false);
     this.historyWindow.setAlwaysOnTop(true);
+    this.planeWindow.getContentPane().setBackground(new Color(199, 238, 255));
+    this.planeWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
+    this.planeWindow.setVisible(true);
+    this.planeWindow.setLocation(frame.getX() - 275, frame.getY() + 165);
+    this.planeWindow.setVisible(true);
+    this.planeWindow.setAlwaysOnTop(true);
   }
   
   /**
@@ -948,6 +955,39 @@ public class GuiContainer
     contentPane.setLayout(gbl);
     GridBagConstraints gbc = new GridBagConstraints();
     JButton button;
+    // Cartesian Plane
+    plane = new CartesianPlane();
+    JScrollPane scrollPlane = new JScrollPane(plane);
+    scrollPlane.setPreferredSize(new Dimension(200, 200));
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 5;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.fill = GridBagConstraints.VERTICAL;
+    gbc.ipadx = 200;
+    gbc.ipady = 200;
+    gbc.weightx = .9;
+    gbc.weighty = 0;
+    gbl.setConstraints(scrollPlane, gbc);  
+    contentPane.add(scrollPlane);
+    
+    button = new JButton(">");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0.1;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(90, 0, 0, 0);
+    gbl.setConstraints(button, gbc); 
+    button.setBackground(new Color(199, 238, 255));
+    
+    contentPane.add(button);
   }
 
 
