@@ -589,12 +589,22 @@ public class GuiContainer
       {
         if (block.isVisible())
         {
-          frame.setSize(jframeWidth + 600, jframeHeight);
+          int w = jframeWidth;
+          for (int i = 0; i < 150; i++)
+          {
+            w += 4;
+            frame.setSize(w, jframeHeight);
+          }
           block.setVisible(false);
           display.getPanel().setBackground(new Color(199, 238, 255));
         } else
         {
-          frame.setSize(jframeWidth, jframeHeight);
+          int w = 1000;
+          for (int i = 0; i < 150; i++)
+          {
+            w -= 4;
+            frame.setSize(w, jframeHeight);
+          }
           block.setVisible(true);
         }
       }
