@@ -163,8 +163,7 @@ public class InputField
             
             if (block.isVisible())
             {
-              display.getPanel().setBackground(Color.LIGHT_GRAY);
-              display.getPanel().setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+              display.getPanel().setBackground(new Color(199, 238, 255));
               block.setVisible(false);
               block.setVisible(true);
             }
