@@ -599,7 +599,7 @@ public class GuiContainer
           display.getPanel().setBackground(new Color(199, 238, 255));
         } else
         {
-          int w = 1000;
+          int w = jframeWidth + 600;
           for (int i = 0; i < 150; i++)
           {
             w -= 4;
