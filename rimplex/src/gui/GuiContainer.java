@@ -30,8 +30,8 @@ public class GuiContainer
   // keeps track if a GUIContainer exists or not.
   private static boolean exists = false;
   
-  private final int jframeWidth = 400;
-  private final int jframeHeight = 400;
+  private final int jframeWidth = 450;
+  private final int jframeHeight = 450;
   
   // holds the frame
   private JFrame frame = new JFrame("Rimplex");
@@ -159,9 +159,9 @@ public class GuiContainer
     // rimplex icon
     ImageIcon logo = new ImageIcon(this.getClass().getResource("/pictures/logoRimplex.png"));
     JLabel label = new JLabel(logo);
-    gbc.gridx = 0;
+    gbc.gridx = 2;
     gbc.gridy = 0;
-    gbc.gridwidth = 1;
+    gbc.gridwidth = gbc.REMAINDER - 4;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     gbc.anchor = GridBagConstraints.CENTER;
@@ -176,9 +176,9 @@ public class GuiContainer
     // InputField/ display.
     JTextPane textField = this.inputField.getTextField();
     
-    gbc.gridx = 1;
-    gbc.gridy = 0;
-    gbc.gridwidth = gbc.REMAINDER - 1;
+    gbc.gridx = 2;
+    gbc.gridy = 1;
+    gbc.gridwidth = gbc.REMAINDER - 4;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     gbc.anchor = GridBagConstraints.CENTER;
@@ -194,7 +194,7 @@ public class GuiContainer
     
     gbc = new GridBagConstraints();
     gbc.gridx = 10;
-    gbc.gridy = 1;
+    gbc.gridy = 2;
     gbc.gridwidth = 1;
     gbc.gridheight = 5;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -217,7 +217,7 @@ public class GuiContainer
     
     gbc = new GridBagConstraints();
     gbc.gridx = 10;
-    gbc.gridy = 1;
+    gbc.gridy = 2;
     gbc.gridwidth = 1;
     gbc.gridheight = 5;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -238,7 +238,7 @@ public class GuiContainer
     scrollPlane.setPreferredSize(new Dimension(200, 200));
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
-    gbc.gridy = 1;
+    gbc.gridy = 2;
     gbc.gridwidth = 1;
     gbc.gridheight = 5;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -256,8 +256,8 @@ public class GuiContainer
     // inverse button
     button = new JButton("inv");
     gbc = new GridBagConstraints();
-    gbc.gridx = 2;
-    gbc.gridy = 1;
+    gbc.gridx = 3;
+    gbc.gridy = 2;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -283,8 +283,8 @@ public class GuiContainer
     // Clear Button
     button = new JButton("C");
     gbc = new GridBagConstraints();
-    gbc.gridx = 1;
-    gbc.gridy = 1;
+    gbc.gridx = 2;
+    gbc.gridy = 2;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -300,8 +300,8 @@ public class GuiContainer
     // Addition Button
     button = new JButton("+");
     gbc = new GridBagConstraints();
-    gbc.gridx = 3;
-    gbc.gridy = 1;
+    gbc.gridx = 4;
+    gbc.gridy = 2;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -317,8 +317,8 @@ public class GuiContainer
     // subtraction Button
     button = new JButton("-");
     gbc = new GridBagConstraints();
-    gbc.gridx = 4;
-    gbc.gridy = 1;
+    gbc.gridx = 5;
+    gbc.gridy = 2;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -334,8 +334,8 @@ public class GuiContainer
     // reset button
     button = new JButton("R");
     gbc = new GridBagConstraints();
-    gbc.gridx = 5;
-    gbc.gridy = 1;
+    gbc.gridx = 6;
+    gbc.gridy = 2;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -351,8 +351,8 @@ public class GuiContainer
     // open parentheses button
     button = new JButton("(");
     gbc = new GridBagConstraints();
-    gbc.gridx = 1;
-    gbc.gridy = 2;
+    gbc.gridx = 2;
+    gbc.gridy = 3;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -378,8 +378,8 @@ public class GuiContainer
     // closed parentheses
     button = new JButton(")");
     gbc = new GridBagConstraints();
-    gbc.gridx = 2;
-    gbc.gridy = 2;
+    gbc.gridx = 3;
+    gbc.gridy = 3;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -405,8 +405,8 @@ public class GuiContainer
     // multiplication symbol
     button = new JButton("x");
     gbc = new GridBagConstraints();
-    gbc.gridx = 3;
-    gbc.gridy = 2;
+    gbc.gridx = 4;
+    gbc.gridy = 3;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -422,8 +422,8 @@ public class GuiContainer
     // division symbol.
     button = new JButton("÷");
     gbc = new GridBagConstraints();
-    gbc.gridx = 4;
-    gbc.gridy = 2;
+    gbc.gridx = 5;
+    gbc.gridy = 3;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -439,8 +439,8 @@ public class GuiContainer
     // equals button
     button = new JButton("=");
     gbc = new GridBagConstraints();
-    gbc.gridx = 5;
-    gbc.gridy = 2;
+    gbc.gridx = 6;
+    gbc.gridy = 3;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -457,14 +457,14 @@ public class GuiContainer
     button = new JButton("<");
     gbc = new GridBagConstraints();
     gbc.gridx = 1;
-    gbc.gridy = 3;
+    gbc.gridy = 4;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(10, 5, 10, 5);
+    gbc.insets = new Insets(10, 50, 10, 50);
     gbl.setConstraints(button, gbc); 
     button.addActionListener((ActionListener) new ActionListener() {
 
@@ -489,8 +489,8 @@ public class GuiContainer
     // conjugate button
     button = new JButton("z*");
     gbc = new GridBagConstraints();
-    gbc.gridx = 2;
-    gbc.gridy = 3;
+    gbc.gridx = 3;
+    gbc.gridy = 4;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -516,8 +516,8 @@ public class GuiContainer
     // exponet button
     button = new JButton("x²");
     gbc = new GridBagConstraints();
-    gbc.gridx = 4;
-    gbc.gridy = 3;
+    gbc.gridx = 5;
+    gbc.gridy = 4;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -544,8 +544,8 @@ public class GuiContainer
     // i button
     button = new JButton("i");
     gbc = new GridBagConstraints();
-    gbc.gridx = 3;
-    gbc.gridy = 3;
+    gbc.gridx = 4;
+    gbc.gridy = 4;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -572,15 +572,15 @@ public class GuiContainer
     // history button
     button = new JButton(">");
     gbc = new GridBagConstraints();
-    gbc.gridx = 5;
-    gbc.gridy = 3;
+    gbc.gridx = 7;
+    gbc.gridy = 4;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(10, 5, 10, 5);
+    gbc.insets = new Insets(10, 50, 10, 5);
     gbl.setConstraints(button, gbc);  
     button.addActionListener((ActionListener) new ActionListener() {
 
@@ -617,8 +617,8 @@ public class GuiContainer
     // 0 button 
     button = new JButton("0");
     gbc = new GridBagConstraints();
-    gbc.gridx = 1;
-    gbc.gridy = 4;
+    gbc.gridx = 2;
+    gbc.gridy = 5;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -635,8 +635,8 @@ public class GuiContainer
     // 1 button
     button = new JButton("1");
     gbc = new GridBagConstraints();
-    gbc.gridx = 2;
-    gbc.gridy = 4;
+    gbc.gridx = 3;
+    gbc.gridy = 5;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -653,8 +653,8 @@ public class GuiContainer
     // 2 button
     button = new JButton("2");
     gbc = new GridBagConstraints();
-    gbc.gridx = 3;
-    gbc.gridy = 4;
+    gbc.gridx = 4;
+    gbc.gridy = 5;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -670,8 +670,8 @@ public class GuiContainer
     // 3 button
     button = new JButton("3");
     gbc = new GridBagConstraints();
-    gbc.gridx = 4;
-    gbc.gridy = 4;
+    gbc.gridx = 5;
+    gbc.gridy = 5;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -688,8 +688,8 @@ public class GuiContainer
     // 4 button
     button = new JButton("4");
     gbc = new GridBagConstraints();
-    gbc.gridx = 5;
-    gbc.gridy = 4;
+    gbc.gridx = 6;
+    gbc.gridy = 5;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -706,8 +706,8 @@ public class GuiContainer
     // 5 button
     button = new JButton("5");
     gbc = new GridBagConstraints();
-    gbc.gridx = 1;
-    gbc.gridy = 5;
+    gbc.gridx = 2;
+    gbc.gridy = 6;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -724,8 +724,8 @@ public class GuiContainer
     // 6 button
     button = new JButton("6");
     gbc = new GridBagConstraints();
-    gbc.gridx = 2;
-    gbc.gridy = 5;
+    gbc.gridx = 3;
+    gbc.gridy = 6;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -742,8 +742,8 @@ public class GuiContainer
     // 7 button
     button = new JButton("7");
     gbc = new GridBagConstraints();
-    gbc.gridx = 3;
-    gbc.gridy = 5;
+    gbc.gridx = 4;
+    gbc.gridy = 6;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -760,8 +760,8 @@ public class GuiContainer
     // 8 button
     button = new JButton("8");
     gbc = new GridBagConstraints();
-    gbc.gridx = 4;
-    gbc.gridy = 5;
+    gbc.gridx = 5;
+    gbc.gridy = 6;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -778,8 +778,8 @@ public class GuiContainer
     // 9 button
     button = new JButton("9");
     gbc = new GridBagConstraints();
-    gbc.gridx = 5;
-    gbc.gridy = 5;
+    gbc.gridx = 6;
+    gbc.gridy = 6;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -796,8 +796,8 @@ public class GuiContainer
     // decimal button
     button = new JButton(".");
     gbc = new GridBagConstraints();
-    gbc.gridx = 1;
-    gbc.gridy = 6;
+    gbc.gridx = 2;
+    gbc.gridy = 7;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -823,8 +823,8 @@ public class GuiContainer
     // back space button
     button = new JButton("<-");
     gbc = new GridBagConstraints();
-    gbc.gridx = 2;
-    gbc.gridy = 6;
+    gbc.gridx = 6;
+    gbc.gridy = 4;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -853,8 +853,8 @@ public class GuiContainer
     // sign button
     button = new JButton("+/-");
     gbc = new GridBagConstraints();
-    gbc.gridx = 3;
-    gbc.gridy = 6;
+    gbc.gridx = 2;
+    gbc.gridy = 4;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -875,3 +875,4 @@ public class GuiContainer
 
 
 }
+
