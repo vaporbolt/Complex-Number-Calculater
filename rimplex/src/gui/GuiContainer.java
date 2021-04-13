@@ -30,7 +30,7 @@ public class GuiContainer
   // keeps track if a GUIContainer exists or not.
   private static boolean exists = false;
   
-  private final int jframeWidth = 1000;
+  private final int jframeWidth = 400;
   private final int jframeHeight = 400;
   
   // holds the frame
@@ -589,10 +589,12 @@ public class GuiContainer
       {
         if (block.isVisible())
         {
+          frame.setSize(jframeWidth + 600, jframeHeight);
           block.setVisible(false);
           display.getPanel().setBackground(new Color(199, 238, 255));
         } else
         {
+          frame.setSize(jframeWidth, jframeHeight);
           block.setVisible(true);
         }
       }
