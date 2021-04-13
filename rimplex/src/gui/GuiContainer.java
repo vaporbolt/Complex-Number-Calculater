@@ -505,7 +505,7 @@ public class GuiContainer
       public void actionPerformed(ActionEvent e)
       {
         
-        textField.setText(textField.getText() + " con ");
+        textField.setText(textField.getText() + " con(");
         inputField.inputTypesetting(0, textField.getText().length());
       }
       
@@ -532,7 +532,7 @@ public class GuiContainer
       public void actionPerformed(ActionEvent e)
       {
         
-        textField.setText(textField.getText() + " ^ ");
+        textField.setText(textField.getText() + "^");
         inputField.inputTypesetting(0, textField.getText().length());
       }
       

@@ -11,6 +11,8 @@ public class ComplexNumber
 {
   private double real;
   private double imaginary;
+  
+  private int sign;
 
   /**
    * ComplexNumber Constructor.
@@ -24,6 +26,8 @@ public class ComplexNumber
   {
     this.real = real;
     this.imaginary = imaginary;
+    
+    this.sign = 1;
   }
 
   /**
@@ -55,7 +59,7 @@ public class ComplexNumber
    */
   public double getReal()
   {
-    return real;
+    return real * sign;
   }
 
   /**
@@ -72,7 +76,7 @@ public class ComplexNumber
    */
   public double getImaginary()
   {
-    return imaginary;
+    return imaginary * sign;
   }
 
   /**
@@ -82,6 +86,15 @@ public class ComplexNumber
   public void setImaginary(final double imaginary)
   {
     this.imaginary = imaginary;
+  }
+  
+  
+  /**
+   * Switches the ComplexNumber from positive to negative or from negative to positive.
+   */
+  public void negate()
+  {
+    this.sign *= -1;
   }
 
   /**
