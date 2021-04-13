@@ -46,6 +46,7 @@ public class InputField
     this.filter = new  InputFieldDocumentFilter();
     this.abstractDocument = (AbstractDocument) this.document;
     this.abstractDocument.setDocumentFilter(filter);
+    this.field.setBackground(new Color(199, 238, 255));
   }
 
   /**

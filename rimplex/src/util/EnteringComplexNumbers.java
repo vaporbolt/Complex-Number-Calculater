@@ -55,6 +55,7 @@ public final class EnteringComplexNumbers
     {
       if (input.indexOf("-") == 0)
       {
+
         if (input.indexOf("-", input.indexOf("-") + 1) == -1)
           operator = "";
         else
@@ -123,7 +124,7 @@ public final class EnteringComplexNumbers
   }
 
   /**
-   * Given an equation, return the ComplexNumber that is the evalutation of the equation.
+   * Given an equation, return the ComplexNumber that is the evaluation of the equation.
    * 
    * @param input
    *          the equation as a string
@@ -131,31 +132,47 @@ public final class EnteringComplexNumbers
    */
   public static ComplexNumber parseEquation(final String input)
   {
-    String number = "()0123456789-.i-";
+    String number = "()0123456789-.i";
     String operations = "+-*/^";
     boolean foundFirst = false;
     boolean foundOperation = false;
+    boolean negitive = false;
     char operand = 0;
     ComplexNumber a = null;
     ComplexNumber b = null;
-    
-    
+    int opId = -1;
+
     int i = 0;
     while (i < input.length())
     {
       char token = input.charAt(i);
       if (token == '(')
       {
+        if (i != 0 && i - 1 != opId && input.charAt(i - 1) == '-')
+        {
+          negitive = true;
+        }
         if (!foundFirst)
 
         {
           a = parseComplexNumber(input.substring(i + 1, input.indexOf(')')));
+          if (negitive)
+          {
+            a.negate();
+            negitive = false;
+          }
+
           i = input.indexOf(')');
           foundFirst = true;
         }
         else
         {
           b = parseComplexNumber(input.substring(i + 1, input.lastIndexOf(')')));
+          if (negitive)
+          {
+            b.negate();
+          }
+          i = input.lastIndexOf(')');
           break;
         }
       }
@@ -163,6 +180,7 @@ public final class EnteringComplexNumbers
       {
         operand = token;
         foundOperation = true;
+        opId = i;
       }
       else if (number.indexOf(token) != -1)
       {
@@ -172,28 +190,44 @@ public final class EnteringComplexNumbers
         {
           j++;
           token = input.charAt(j);
+
         }
 
-        if (!foundFirst)
+        if (!input.substring(i, j).contains("("))
         {
-          a = parseComplexNumber(input.substring(i, j));
-          foundFirst = true;
-          i = j - 1;
-        }
-        else
-        {
-          b = parseComplexNumber(input.substring(i));
-          i = j;
+
+          if (!foundFirst)
+          {
+            a = parseComplexNumber(input.substring(i, j));
+            foundFirst = true;
+            i = j - 1;
+          }
+          else
+          {
+            b = parseComplexNumber(input.substring(i));
+            i = j;
+            break;
+          }
         }
       }
       i++;
     }
-
-    if(input.contains("con"))
+    
+    if (i + 1 < input.length())
     {
+      throw new NumberFormatException();
+    }
+
+    
+    if (input.contains("con"))
+    {
+      if(b != null)
+      {
+        throw new NumberFormatException();
+      }
       return a.conjugate();
     }
-    
+
     switch (operand)
     {
       case '+':
