@@ -151,8 +151,9 @@ public class GuiContainer
     this.historyWindow.getContentPane().setBackground(new Color(199, 238, 255));
     this.historyWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
     this.historyWindow.setVisible(true);
-    this.historyWindow.setLocation(frame.getX() + 400, frame.getY() + 165);
+    this.historyWindow.setLocation(frame.getX() + 350, frame.getY() + 165);
     this.historyWindow.setVisible(false);
+    this.historyWindow.setAlwaysOnTop(true);
   }
   
   /**
