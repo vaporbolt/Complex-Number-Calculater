@@ -141,6 +141,7 @@ public class GuiContainer
     frame.setSize(this.jframeWidth, this.jframeHeight);
     frame.setVisible(true);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setResizable(false);
   }
   
   /**
