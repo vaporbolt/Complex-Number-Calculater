@@ -509,13 +509,15 @@ public class GuiContainer
         {
           int w = 325;
           planeWindow.setSize(0, planeWindow.getHeight());
+          planeWindow.setLocation(frame.getX() + 55, planeWindow.getY());
           planeWindow.setVisible(true);
           
           Timer timer = new Timer(1, new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
               if (planeWindow.getWidth() < w)
               {
-                planeWindow.setSize(planeWindow.getWidth() + 5, planeWindow.getHeight());
+                planeWindow.setSize(planeWindow.getWidth() + 15, planeWindow.getHeight());
+                planeWindow.setLocation(planeWindow.getX() - 15, planeWindow.getY());
               } else 
               {
                 ((Timer)evt.getSource()).stop();
@@ -642,7 +644,7 @@ public class GuiContainer
             public void actionPerformed(ActionEvent evt) {
               if (historyWindow.getWidth() < w)
               {
-                historyWindow.setSize(historyWindow.getWidth() + 8, historyWindow.getHeight());
+                historyWindow.setSize(historyWindow.getWidth() + 16, historyWindow.getHeight());
               } else 
               {
                 ((Timer)evt.getSource()).stop();
@@ -976,7 +978,7 @@ public class GuiContainer
             public void actionPerformed(ActionEvent evt) {
               if (historyWindow.getWidth() > 0)
               {
-                historyWindow.setSize(historyWindow.getWidth() - 8, historyWindow.getHeight());
+                historyWindow.setSize(historyWindow.getWidth() - 16, historyWindow.getHeight());
               } else 
               {
                 historyWindow.setVisible(false);
@@ -1048,7 +1050,8 @@ public class GuiContainer
             public void actionPerformed(ActionEvent evt) {
               if (planeWindow.getWidth() > 0)
               {
-                planeWindow.setSize(planeWindow.getWidth() - 5, planeWindow.getHeight());
+                planeWindow.setSize(planeWindow.getWidth() - 15, planeWindow.getHeight());
+                planeWindow.setLocation(planeWindow.getX() + 15, planeWindow.getY());
               } else 
               {
                 planeWindow.setVisible(false);
