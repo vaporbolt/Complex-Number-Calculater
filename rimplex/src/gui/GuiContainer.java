@@ -507,7 +507,23 @@ public class GuiContainer
       {
         if (!planeWindow.isVisible())
         {
+          int w = 325;
+          planeWindow.setSize(0, planeWindow.getHeight());
           planeWindow.setVisible(true);
+          
+          Timer timer = new Timer(1, new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+              if (planeWindow.getWidth() < w)
+              {
+                planeWindow.setSize(planeWindow.getWidth() + 5, planeWindow.getHeight());
+              } else 
+              {
+                ((Timer)evt.getSource()).stop();
+              }
+            }
+          });
+          timer.start();
+
         }
       }
       
@@ -1027,7 +1043,20 @@ public class GuiContainer
       {
         if (planeWindow.isVisible())
         {
-          planeWindow.setVisible(false);
+          planeWindow.setSize(325, planeWindow.getHeight());
+          Timer timer = new Timer(1, new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+              if (planeWindow.getWidth() > 0)
+              {
+                planeWindow.setSize(planeWindow.getWidth() - 5, planeWindow.getHeight());
+              } else 
+              {
+                planeWindow.setVisible(false);
+                ((Timer)evt.getSource()).stop();
+              }
+            }
+          });
+          timer.start();
         }
       }
       

@@ -50,6 +50,7 @@ public class SignHandler implements ActionListener
         text = "-(" + text + ")"; // make it negative
       }
       input.getTextField().setText(text);
+      input.inputTypesetting(0, input.getTextField().getText().length());
     }
     catch (Exception ex)
     {
