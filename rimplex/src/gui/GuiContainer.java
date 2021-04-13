@@ -161,7 +161,7 @@ public class GuiContainer
     JLabel label = new JLabel(logo);
     gbc.gridx = 2;
     gbc.gridy = 0;
-    gbc.gridwidth = gbc.REMAINDER - 4;
+    gbc.gridwidth = gbc.REMAINDER - 3;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     gbc.anchor = GridBagConstraints.CENTER;
@@ -227,7 +227,7 @@ public class GuiContainer
     gbc.ipady = 200;
     gbc.weightx = 0;
     gbc.weighty = 1;
-    gbc.insets = new Insets(0, 100, 10, 10);
+    gbc.insets = new Insets(0, 100, 10, 50);
     gbl.setConstraints(scrollDisplay, gbc);  
     contentPane.add(scrollDisplay);
     
@@ -247,7 +247,7 @@ public class GuiContainer
     gbc.ipady = 200;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(0, 5, 10, 100);
+    gbc.insets = new Insets(0, 50, 10, 0);
     gbl.setConstraints(scrollPlane, gbc);  
     contentPane.add(scrollPlane);
     
@@ -464,7 +464,7 @@ public class GuiContainer
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(10, 50, 10, 50);
+    gbc.insets = new Insets(10, 50, 10, 25);
     gbl.setConstraints(button, gbc); 
     button.addActionListener((ActionListener) new ActionListener() {
 
