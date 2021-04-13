@@ -471,14 +471,15 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-        if (plane.isVisible())
+        if (!block.isVisible())
         {
-          plane.setVisible(false);
-          scrollPlane.setVisible(false);
-        } else
-        {
-          plane.setVisible(true);
-          scrollPlane.setVisible(true);
+          int w = jframeWidth + 600;
+          for (int i = 0; i < 150; i++)
+          {
+            w -= 4;
+            frame.setSize(w, jframeHeight);
+          }
+          block.setVisible(true);
         }
       }
       
@@ -597,15 +598,6 @@ public class GuiContainer
           }
           block.setVisible(false);
           display.getPanel().setBackground(new Color(199, 238, 255));
-        } else
-        {
-          int w = jframeWidth + 600;
-          for (int i = 0; i < 150; i++)
-          {
-            w -= 4;
-            frame.setSize(w, jframeHeight);
-          }
-          block.setVisible(true);
         }
       }
       
