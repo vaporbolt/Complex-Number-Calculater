@@ -26,67 +26,56 @@ public class SignHandler implements ActionListener
   {
     this.input = input;
   }
-  
-  /**
-   * applies the opposite sign of the given string.
-   * @param input String
-   */
-  private String applySign(String input)
-  {
-    
-    if (input.charAt(0) == '-' && input.charAt(1) == '(' && input.charAt(input.length() - 1) == ')')
-    {
-      input = input.substring(2, input.length() - 1); // make it positive
-    }
-    else if (input.charAt(0) == '-')
-    {
-      input = input.substring(1); // make it positive
-    }
-    else if (input.charAt(0) == '(' && input.charAt(input.length() - 1) == ')')
-    {
-      input = "-" + input; // make it negative
-    }
-    else
-    {
-      input = "-(" + input + ")"; // make it negative
-    }
-    return input;
-  }
 
   @Override
   public void actionPerformed(ActionEvent e)
   {
-    String operations = "+-*/";
+
+    char token;
+    String numbers = "0123456789.i";
+    int insert = 0;
+    boolean start = false;
     try
     {
       String text = input.getTextField().getText();
-      // if theres an operation in the field
-      if (text.contains(operations))
+      
+      for (int i = text.length() - 1; i >= 0; i--)
       {
-        // get index of operation
-        int opIndex = 0;
-        for (int i = 0 ; i < operations.length(); i++)
+        token = text.charAt(i);
+        if (token == ')')
         {
-          int tmp = text.indexOf(operations.charAt(i));
-          if (tmp != -1)
-          {
-            opIndex = tmp; 
-          }
+          insert = text.lastIndexOf('(');
+          break;
         }
-        // get right (current) operand
-        String currentOperand = text.substring(opIndex);
-        // check if the current operand is a complex number
+        if (numbers.indexOf(token) != -1)
+        {
+          start = true;
+        }
+        else if (start)
+        {
+          insert = i + 1;
+          break;
+        }
         
       }
-      
-      text = applySign(text);
+      if (insert != 0 && text.charAt(insert - 1) == '-')
+      {
+        text = text.substring(0, insert - 1) + text.substring(insert);
+      }
+      else
+      {
+        text = text.substring(0, insert) + "-" + text.substring(insert);
+      }
+
       input.getTextField().setText(text);
       input.inputTypesetting(0, input.getTextField().getText().length());
+
     }
     catch (Exception ex)
     {
       Toolkit.getDefaultToolkit().beep();
     }
+
   }
 
 }
