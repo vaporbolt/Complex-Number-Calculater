@@ -76,6 +76,7 @@ public class SignHandler implements ActionListener
         // get right (current) operand
         String currentOperand = text.substring(opIndex);
         // check if the current operand is a complex number
+        
       }
       
       text = applySign(text);
