@@ -30,32 +30,52 @@ public class SignHandler implements ActionListener
   @Override
   public void actionPerformed(ActionEvent e)
   {
+
+    char token;
+    String numbers = "0123456789.i";
+    int insert = 0;
+    boolean start = false;
     try
     {
       String text = input.getTextField().getText();
-      if (text.charAt(0) == '-' && text.charAt(1) == '(' && text.charAt(text.length() - 1) == ')')
+
+      for (int i = text.length() - 1; i >= 0; i--)
       {
-        text = text.substring(2, text.length() - 1); // make it positive
+        token = text.charAt(i);
+        if (token == ')')
+        {
+          insert = text.lastIndexOf('(');
+          break;
+        }
+        if (numbers.indexOf(token) != -1)
+        {
+          start = true;
+        }
+        else if (start)
+        {
+          insert = i + 1;
+          break;
+        }
+
       }
-      else if (text.charAt(0) == '-')
+      if (insert != 0 && text.charAt(insert - 1) == '-')
       {
-        text = text.substring(1); // make it positive
-      }
-      else if (text.charAt(0) == '(' && text.charAt(text.length() - 1) == ')')
-      {
-        text = "-" + text; // make it negative
+        text = text.substring(0, insert - 1) + text.substring(insert);
       }
       else
       {
-        text = "-(" + text + ")"; // make it negative
+        text = text.substring(0, insert) + "-" + text.substring(insert);
       }
+
       input.getTextField().setText(text);
       input.inputTypesetting(0, input.getTextField().getText().length());
+
     }
     catch (Exception ex)
     {
       Toolkit.getDefaultToolkit().beep();
     }
+
   }
 
 }
