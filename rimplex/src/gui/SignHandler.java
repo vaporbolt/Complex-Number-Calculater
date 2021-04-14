@@ -26,29 +26,59 @@ public class SignHandler implements ActionListener
   {
     this.input = input;
   }
+  
+  /**
+   * applies the opposite sign of the given string.
+   * @param input String
+   */
+  private String applySign(String input)
+  {
+    
+    if (input.charAt(0) == '-' && input.charAt(1) == '(' && input.charAt(input.length() - 1) == ')')
+    {
+      input = input.substring(2, input.length() - 1); // make it positive
+    }
+    else if (input.charAt(0) == '-')
+    {
+      input = input.substring(1); // make it positive
+    }
+    else if (input.charAt(0) == '(' && input.charAt(input.length() - 1) == ')')
+    {
+      input = "-" + input; // make it negative
+    }
+    else
+    {
+      input = "-(" + input + ")"; // make it negative
+    }
+    return input;
+  }
 
   @Override
   public void actionPerformed(ActionEvent e)
   {
+    String operations = "+-*/";
     try
     {
       String text = input.getTextField().getText();
-      if (text.charAt(0) == '-' && text.charAt(1) == '(' && text.charAt(text.length() - 1) == ')')
+      // if theres an operation in the field
+      if (text.contains(operations))
       {
-        text = text.substring(2, text.length() - 1); // make it positive
+        // get index of operation
+        int opIndex = 0;
+        for (int i = 0 ; i < operations.length(); i++)
+        {
+          int tmp = text.indexOf(operations.charAt(i));
+          if (tmp != -1)
+          {
+            opIndex = tmp; 
+          }
+        }
+        // get right (current) operand
+        String currentOperand = text.substring(opIndex);
+        // check if the current operand is a complex number
       }
-      else if (text.charAt(0) == '-')
-      {
-        text = text.substring(1); // make it positive
-      }
-      else if (text.charAt(0) == '(' && text.charAt(text.length() - 1) == ')')
-      {
-        text = "-" + text; // make it negative
-      }
-      else
-      {
-        text = "-(" + text + ")"; // make it negative
-      }
+      
+      text = applySign(text);
       input.getTextField().setText(text);
     }
     catch (Exception ex)
