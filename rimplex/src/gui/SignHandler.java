@@ -80,6 +80,7 @@ public class SignHandler implements ActionListener
       
       text = applySign(text);
       input.getTextField().setText(text);
+      input.inputTypesetting(0, input.getTextField().getText().length());
     }
     catch (Exception ex)
     {

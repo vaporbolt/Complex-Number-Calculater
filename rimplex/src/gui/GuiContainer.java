@@ -52,8 +52,6 @@ public class GuiContainer
   private JWindow historyWindow;
   
   private JWindow planeWindow;
-  
-  private Timer timer;
 
   /**
    * creates the GUI container object with the proper gridbagLayout.
@@ -268,9 +266,9 @@ public class GuiContainer
     */
     
     // Cartesian Plane
-    plane = new CartesianPlane();
+    CartesianPlane plane2 = new CartesianPlane();
     //plane.addPoint(new ComplexNumber(4, 5));
-    JScrollPane scrollPlane = new JScrollPane(plane);
+    JScrollPane scrollPlane = new JScrollPane(plane2);
     scrollPlane.setPreferredSize(new Dimension(200, 200));
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
@@ -509,7 +507,25 @@ public class GuiContainer
       {
         if (!planeWindow.isVisible())
         {
+          int w = 325;
+          planeWindow.setSize(0, planeWindow.getHeight());
+          planeWindow.setLocation(frame.getX() + 55, planeWindow.getY());
           planeWindow.setVisible(true);
+          
+          Timer timer = new Timer(1, new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+              if (planeWindow.getWidth() < w)
+              {
+                planeWindow.setSize(planeWindow.getWidth() + 15, planeWindow.getHeight());
+                planeWindow.setLocation(planeWindow.getX() - 15, planeWindow.getY());
+              } else 
+              {
+                ((Timer)evt.getSource()).stop();
+              }
+            }
+          });
+          timer.start();
+
         }
       }
       
@@ -620,18 +636,21 @@ public class GuiContainer
       {
         if (!historyWindow.isVisible())
         {
-          int w = historyWindow.getWidth();
+          int w = 320;
           historyWindow.setSize(0, historyWindow.getHeight());
           historyWindow.setVisible(true);
-          ActionListener resize = new ActionListener() {
+          
+          Timer timer = new Timer(1, new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
               if (historyWindow.getWidth() < w)
               {
-                historyWindow.setSize(historyWindow.getWidth() + 8, historyWindow.getHeight());
+                historyWindow.setSize(historyWindow.getWidth() + 16, historyWindow.getHeight());
+              } else 
+              {
+                ((Timer)evt.getSource()).stop();
               }
             }
-          };
-          timer = new Timer(1, resize);
+          });
           timer.start();
 
         }
@@ -955,17 +974,19 @@ public class GuiContainer
         if (historyWindow.isVisible())
         {
           historyWindow.setSize(320, historyWindow.getHeight());
-          ActionListener resize2 = new ActionListener() {
+          Timer timer = new Timer(1, new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
               if (historyWindow.getWidth() > 0)
               {
-                historyWindow.setSize(historyWindow.getWidth() - 8, historyWindow.getHeight());
+                historyWindow.setSize(historyWindow.getWidth() - 16, historyWindow.getHeight());
+              } else 
+              {
+                historyWindow.setVisible(false);
+                ((Timer)evt.getSource()).stop();
               }
             }
-          };
-          timer = new Timer(1, resize2);
+          });
           timer.start();
-          historyWindow.setVisible(false);
         }
       }
       
@@ -1024,7 +1045,21 @@ public class GuiContainer
       {
         if (planeWindow.isVisible())
         {
-          planeWindow.setVisible(false);
+          planeWindow.setSize(325, planeWindow.getHeight());
+          Timer timer = new Timer(1, new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+              if (planeWindow.getWidth() > 0)
+              {
+                planeWindow.setSize(planeWindow.getWidth() - 15, planeWindow.getHeight());
+                planeWindow.setLocation(planeWindow.getX() + 15, planeWindow.getY());
+              } else 
+              {
+                planeWindow.setVisible(false);
+                ((Timer)evt.getSource()).stop();
+              }
+            }
+          });
+          timer.start();
         }
       }
       
