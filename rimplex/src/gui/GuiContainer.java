@@ -127,7 +127,7 @@ public class GuiContainer
     button.setFocusPainted(false);
     button.setFont(new Font("TimesRoman", Font.PLAIN, 16));
     button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-    button.setContentAreaFilled(false);
+    button.setBackground(Color.LIGHT_GRAY);
   }
   
   /**
@@ -276,6 +276,7 @@ public class GuiContainer
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
     setButton(button);
+    button.setForeground(new Color(133, 130, 0));
     button.addActionListener(new ClearHandler(inputField));
     contentPane.add(button);
     
@@ -294,6 +295,7 @@ public class GuiContainer
     gbl.setConstraints(button, gbc);
     button.addActionListener(new SignHandler(inputField));
     setButton(button);
+    button.setForeground(new Color(133, 130, 0));
     contentPane.add(button);
     
     // backspace Button
@@ -323,6 +325,7 @@ public class GuiContainer
       
     });
     setButton(button);
+    button.setForeground(new Color(133, 130, 0));
     contentPane.add(button);
     
     // addition Button
@@ -340,6 +343,7 @@ public class GuiContainer
     gbl.setConstraints(button, gbc);
     button.addActionListener(new AdditionHandler(inputField, RimplexDriver.operations));
     setButton(button);
+    button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
     
     // reset button
@@ -357,6 +361,7 @@ public class GuiContainer
     gbl.setConstraints(button, gbc);
     button.addActionListener(new ResetHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations, plane));
     setButton(button);
+    button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
     
     // open parentheses button
@@ -384,6 +389,7 @@ public class GuiContainer
       
     });
     setButton(button);
+    button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
     
     // close parentheses button
@@ -411,6 +417,7 @@ public class GuiContainer
       
     });
     setButton(button);
+    button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
     
     // conjugate button
@@ -438,6 +445,7 @@ public class GuiContainer
       
     });
     setButton(button);
+    button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
     
     // division symbol.
@@ -455,6 +463,7 @@ public class GuiContainer
     gbl.setConstraints(button, gbc);
     button.addActionListener(new DivisionHandler(inputField, RimplexDriver.operations));
     setButton(button);
+    button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
     
     // equals button
@@ -472,6 +481,7 @@ public class GuiContainer
     gbl.setConstraints(button, gbc);
     button.addActionListener(new EqualsHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations, plane));
     setButton(button);
+    button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
     
     // complex number plane button
@@ -518,6 +528,7 @@ public class GuiContainer
       
     });
     setButton(button);
+    button.setBorderPainted(false);
     contentPane.add(button);
     
     // 2 button
@@ -562,6 +573,7 @@ public class GuiContainer
       
     });
     setButton(button);
+    button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
 
 
@@ -624,6 +636,7 @@ public class GuiContainer
       
     });
     setButton(button);
+    button.setBorderPainted(false);
     contentPane.add(button);
     
 
@@ -693,6 +706,7 @@ public class GuiContainer
     gbl.setConstraints(button, gbc);  
     button.addActionListener(new MultiplicationHandler(inputField, RimplexDriver.operations));
     setButton(button);
+    button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
     
     // inverse button
@@ -720,6 +734,7 @@ public class GuiContainer
       
     });
     setButton(button);
+    button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
 
     // 7 button
@@ -799,6 +814,7 @@ public class GuiContainer
     });
     setButton(button);
     button.setFont(new Font("TimesRoman", Font.ITALIC, 16));
+    button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
     
     // decimal button
@@ -826,6 +842,7 @@ public class GuiContainer
       
     });
     setButton(button);
+    button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
     
     // 0 button
@@ -845,7 +862,7 @@ public class GuiContainer
     setButton(button);
     contentPane.add(button);
     
-    // back space button
+    // subtraction button
     button = new JButton("-");
     gbc = new GridBagConstraints();
     gbc.gridx = 6;
@@ -860,6 +877,7 @@ public class GuiContainer
     gbl.setConstraints(button, gbc);
     button.addActionListener(new SubtractionHandler(inputField, RimplexDriver.operations));
     setButton(button);
+    button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
     
     
@@ -932,6 +950,7 @@ public class GuiContainer
     gbc.weighty = 0;
     gbl.setConstraints(button, gbc); 
     button.setBackground(new Color(199, 238, 255));
+    button.setBorderPainted(false);
     button.addActionListener((ActionListener) new ActionListener() {
 
       @Override
@@ -1004,6 +1023,7 @@ public class GuiContainer
     gbc.insets = new Insets(90, 0, 0, 0);
     gbl.setConstraints(button, gbc); 
     button.setBackground(new Color(199, 238, 255));
+    button.setBorderPainted(false);
     button.addActionListener((ActionListener) new ActionListener() {
 
       @Override
