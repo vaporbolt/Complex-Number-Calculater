@@ -33,7 +33,7 @@ public class GuiContainer
   // keeps track if a GUIContainer exists or not.
   private static boolean exists = false;
   
-  private final int jframeWidth = 450;
+  private final int jframeWidth = 340;
   private final int jframeHeight = 450;
   
   // holds the frame
@@ -47,8 +47,6 @@ public class GuiContainer
   private DisplayComponent display;
   
   private CartesianPlane plane;
-  
-  private JTextPane block = new JTextPane();
   
   private JWindow historyWindow;
   
@@ -118,15 +116,7 @@ public class GuiContainer
   {
     return this.frame;
   }
-  
-  /**
-   * @return the block for the gui.
-   */
-  public JTextPane getBlock()
-  {
-    return this.block;
-  }
-  
+
   /**
    * Sets the style for the buttons
    * 
@@ -156,13 +146,13 @@ public class GuiContainer
     this.historyWindow.getContentPane().setBackground(new Color(199, 238, 255));
     this.historyWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
     this.historyWindow.setVisible(true);
-    this.historyWindow.setLocation(frame.getX() + 150, frame.getY() + 165);
+    this.historyWindow.setLocation(frame.getX() + 305, frame.getY() + 165);
     this.historyWindow.setVisible(false);
     this.historyWindow.setAlwaysOnTop(true);
     this.planeWindow.getContentPane().setBackground(new Color(199, 238, 255));
     this.planeWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
     this.planeWindow.setVisible(true);
-    this.planeWindow.setLocation(frame.getX() - 275, frame.getY() + 165);
+    this.planeWindow.setLocation(frame.getX() - 300, frame.getY() + 165);
     this.planeWindow.setVisible(false);
     this.planeWindow.setAlwaysOnTop(true);
     frame.addWindowStateListener(new WindowStateListener() {
@@ -247,24 +237,22 @@ public class GuiContainer
     JLabel label = new JLabel(logo);
     gbc.gridx = 2;
     gbc.gridy = 0;
-    gbc.gridwidth = gbc.REMAINDER - 3;
+    gbc.gridwidth = gbc.REMAINDER;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(0, 0, 0, 90);
+    gbc.insets = new Insets(0, 0, 0, 40);
     gbl.setConstraints(label, gbc);
     contentPane.add(label);
-    
-    
-    
+   
     // InputField/ display.
     JTextPane textField = this.inputField.getTextField();
     
     gbc.gridx = 2;
     gbc.gridy = 1;
-    gbc.gridwidth = gbc.REMAINDER - 4;
+    gbc.gridwidth = gbc.REMAINDER - 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     gbc.anchor = GridBagConstraints.CENTER;
@@ -273,73 +261,6 @@ public class GuiContainer
     gbc.insets = new Insets(40, 0, 0, 0);
     gbl.setConstraints(textField, gbc);
     contentPane.add(textField);
-    
-    // creates blocking text area
-    block.setBackground(Color.LIGHT_GRAY);
-    block.setEditable(false);
-    
-    gbc = new GridBagConstraints();
-    gbc.gridx = 10;
-    gbc.gridy = 2;
-    gbc.gridwidth = 1;
-    gbc.gridheight = 5;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.fill = GridBagConstraints.VERTICAL;
-    gbc.anchor = GridBagConstraints.EAST;
-    gbc.ipadx = 250;
-    gbc.ipady = 200;
-    gbc.weightx = 0;
-    gbc.weighty = 1;
-    gbc.insets = new Insets(0, 100, 10, 10);
-    gbl.setConstraints(block, gbc);  
-    contentPane.add(block);
-    
-    // Display
-    /*
-    display = DisplayComponent.createInstance();
-    
-    // create scroll pane for the display/history and set a restricting size
-    JScrollPane scrollDisplay = new JScrollPane(display.getPanel());
-    scrollDisplay.setPreferredSize(new Dimension(200, 200));
-    
-    gbc = new GridBagConstraints();
-    gbc.gridx = 10;
-    gbc.gridy = 2;
-    gbc.gridwidth = 1;
-    gbc.gridheight = 5;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.fill = GridBagConstraints.VERTICAL;
-    gbc.anchor = GridBagConstraints.EAST;
-    gbc.ipadx = 200;
-    gbc.ipady = 200;
-    gbc.weightx = 0;
-    gbc.weighty = 1;
-    gbc.insets = new Insets(0, 100, 10, 50);
-    gbl.setConstraints(scrollDisplay, gbc);  
-    contentPane.add(scrollDisplay);
-    */
-    
-    // Cartesian Plane
-    CartesianPlane plane2 = new CartesianPlane();
-    //plane.addPoint(new ComplexNumber(4, 5));
-    JScrollPane scrollPlane = new JScrollPane(plane2);
-    scrollPlane.setPreferredSize(new Dimension(200, 200));
-    gbc = new GridBagConstraints();
-    gbc.gridx = 0;
-    gbc.gridy = 2;
-    gbc.gridwidth = 1;
-    gbc.gridheight = 5;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.fill = GridBagConstraints.VERTICAL;
-    gbc.ipadx = 200;
-    gbc.ipady = 200;
-    gbc.weightx = 0;
-    gbc.weighty = 0;
-    gbc.insets = new Insets(0, 50, 10, 0);
-    gbl.setConstraints(scrollPlane, gbc);  
-    contentPane.add(scrollPlane);
-    
-    
     
     // inverse button
     button = new JButton("inv");
@@ -350,7 +271,7 @@ public class GuiContainer
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     gbc.anchor = GridBagConstraints.CENTER;
-    gbc.weightx = 0;
+    gbc.weightx = 0.1;
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
@@ -377,7 +298,7 @@ public class GuiContainer
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     gbc.anchor = GridBagConstraints.CENTER;
-    gbc.weightx = 0;
+    gbc.weightx = 0.1;
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
@@ -393,8 +314,8 @@ public class GuiContainer
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.anchor = GridBagConstraints.CENTER;
-    gbc.weightx = 0;
+    gbc.anchor = GridBagConstraints.WEST;
+    gbc.weightx = 0.1;
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
@@ -432,7 +353,7 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
-    button.addActionListener(new ResetHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations, plane, block));
+    button.addActionListener(new ResetHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations, plane));
     setButton(button);
     contentPane.add(button);
     
@@ -537,7 +458,7 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
-    button.addActionListener(new EqualsHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations, plane, block));
+    button.addActionListener(new EqualsHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations, plane));
     setButton(button);
     contentPane.add(button);
     
@@ -549,10 +470,10 @@ public class GuiContainer
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.anchor = GridBagConstraints.EAST;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(10, 50, 10, 25);
+    gbc.insets = new Insets(10, 10, 10, 10);
     gbl.setConstraints(button, gbc); 
     button.addActionListener((ActionListener) new ActionListener() {
 
@@ -563,7 +484,7 @@ public class GuiContainer
         {
           int w = 325;
           planeWindow.setSize(0, planeWindow.getHeight());
-          planeWindow.setLocation(frame.getX() + 55, planeWindow.getY());
+          planeWindow.setLocation(frame.getX() + 35, planeWindow.getY());
           planeWindow.setVisible(true);
           
           Timer timer = new Timer(1, new ActionListener() {
@@ -681,7 +602,7 @@ public class GuiContainer
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(10, 50, 10, 5);
+    gbc.insets = new Insets(10, 10, 10, 10);
     gbl.setConstraints(button, gbc);  
     button.addActionListener((ActionListener) new ActionListener() {
 

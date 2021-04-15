@@ -27,7 +27,6 @@ public class ResetHandler implements ActionListener
   private ArrayList<ComplexNumber> nums;
   private ArrayList<OperationType> operations;
   private CartesianPlane plane;
-  private JTextPane block;
   
   /**
    * Creates a rest handler.
@@ -36,14 +35,13 @@ public class ResetHandler implements ActionListener
    * @param nums the list of complex numbers
    * @param operations the list of operations
    */
-  public ResetHandler(DisplayComponent display, InputField input, ArrayList<ComplexNumber> nums, ArrayList<OperationType> operations, CartesianPlane plane, JTextPane block)
+  public ResetHandler(DisplayComponent display, InputField input, ArrayList<ComplexNumber> nums, ArrayList<OperationType> operations, CartesianPlane plane)
   {
     this.display = display;
     this.nums = nums;
     this.operations = operations;
     this.input = input;
     this.plane = plane;
-    this.block = block;
   }
   
   /**
@@ -62,13 +60,6 @@ public class ResetHandler implements ActionListener
     operations.clear();
     plane.reset();
     input.getTextField().requestFocus();
-    
-    if (block.isVisible())
-    {
-      display.getPanel().setBackground(new Color(199, 238, 255));
-      block.setVisible(false);
-      block.setVisible(true);
-    }
     
   }
 

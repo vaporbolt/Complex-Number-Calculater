@@ -30,7 +30,6 @@ public class EqualsHandler implements ActionListener
   private ArrayList<OperationType> operations;
   private InputField input;
   private CartesianPlane plane;
-  private JTextPane block;
   
   /**
    * Creates an equals handler.
@@ -39,14 +38,13 @@ public class EqualsHandler implements ActionListener
    * @param nums the list of complex numbers
    * @param operations the list of operations
    */
-  public EqualsHandler(DisplayComponent display, InputField input, ArrayList<ComplexNumber> nums, ArrayList<OperationType> operations, CartesianPlane plane, JTextPane block)
+  public EqualsHandler(DisplayComponent display, InputField input, ArrayList<ComplexNumber> nums, ArrayList<OperationType> operations, CartesianPlane plane)
   {
     this.display = display;
     this.nums = nums;
     this.operations = operations;
     this.input = input;
     this.plane = plane;
-    this.block = block;
   }
   
   /**
@@ -78,13 +76,7 @@ public class EqualsHandler implements ActionListener
       input.inputTypesetting(0, input.getTextField().getText().length());
       plane.addPoint(result);
       input.getTextField().requestFocus();
-      
-      if (block.isVisible())
-      {
-        display.getPanel().setBackground(new Color(199, 238, 255));
-        block.setVisible(false);
-        block.setVisible(true);
-      }
+
     }
     catch (Exception ex)
     {

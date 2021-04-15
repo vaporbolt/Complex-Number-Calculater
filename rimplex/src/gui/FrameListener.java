@@ -29,8 +29,8 @@ public class FrameListener implements ComponentListener
   public void componentMoved(ComponentEvent e)
   {
     // TODO Auto-generated method stub
-    history.setLocation(e.getComponent().getX() + 350, e.getComponent().getY() + 165);
-    graph.setLocation(e.getComponent().getX() - 275, e.getComponent().getY() + 165);
+    history.setLocation(e.getComponent().getX() + 305, e.getComponent().getY() + 165);
+    graph.setLocation(e.getComponent().getX() - 295, e.getComponent().getY() + 165);
     
   }
 
