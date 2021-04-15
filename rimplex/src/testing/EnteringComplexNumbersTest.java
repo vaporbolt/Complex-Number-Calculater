@@ -1,4 +1,4 @@
-package util;
+package testing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import math.ComplexNumber;
 import math.Operation;
+import util.EnteringComplexNumbers;
 
 class EnteringComplexNumbersTest
 {
