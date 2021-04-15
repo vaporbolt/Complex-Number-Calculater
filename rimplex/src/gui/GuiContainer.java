@@ -235,15 +235,15 @@ public class GuiContainer
     // rimplex icon
     ImageIcon logo = new ImageIcon(this.getClass().getResource("/pictures/logoRimplex.png"));
     JLabel label = new JLabel(logo);
-    gbc.gridx = 2;
+    gbc.gridx = 0;
     gbc.gridy = 0;
     gbc.gridwidth = gbc.REMAINDER;
     gbc.gridheight = 1;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.anchor = GridBagConstraints.CENTER;
+  //  gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.NORTHWEST;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(0, 0, 0, 40);
+    gbc.insets = new Insets(10, 20, 0, 40);
     gbl.setConstraints(label, gbc);
     contentPane.add(label);
    
