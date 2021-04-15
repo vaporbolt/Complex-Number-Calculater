@@ -1,18 +1,10 @@
 package gui;
 
-import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
-import javax.swing.BorderFactory;
-import javax.swing.JTextArea;
-import javax.swing.JTextPane;
 
 import math.ComplexNumber;
-import math.Operation;
-import math.OperationType;
 import util.EnteringComplexNumbers;
 import visualization.CartesianPlane;
 
@@ -26,8 +18,6 @@ public class EqualsHandler implements ActionListener
 {
 
   private DisplayComponent display;
-  private ArrayList<ComplexNumber> nums;
-  private ArrayList<OperationType> operations;
   private InputField input;
   private CartesianPlane plane;
   
@@ -35,22 +25,19 @@ public class EqualsHandler implements ActionListener
    * Creates an equals handler.
    * 
    * @param display the system's display
-   * @param nums the list of complex numbers
-   * @param operations the list of operations
+   * @param input the input field
+   * @param plane the graph
    */
-  public EqualsHandler(DisplayComponent display, InputField input, ArrayList<ComplexNumber> nums, ArrayList<OperationType> operations, CartesianPlane plane)
+  public EqualsHandler(DisplayComponent display, InputField input, CartesianPlane plane)
   {
     this.display = display;
-    this.nums = nums;
-    this.operations = operations;
     this.input = input;
     this.plane = plane;
   }
   
   /**
    * When clicked, the system calculates the result of the
-   * list of complex numbers based on the operations it was given, 
-   * and adds the result to the display.
+   * operation and adds the result to the display.
    * 
    * @param e when the user clicks the "=" button
    */

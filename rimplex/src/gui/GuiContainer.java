@@ -341,7 +341,7 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
-    button.addActionListener(new AdditionHandler(inputField, RimplexDriver.operations));
+    button.addActionListener(new AdditionHandler(inputField));
     setButton(button);
     button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
@@ -359,7 +359,7 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
-    button.addActionListener(new ResetHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations, plane));
+    button.addActionListener(new ResetHandler(display, inputField, plane));
     setButton(button);
     button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
@@ -461,7 +461,7 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
-    button.addActionListener(new DivisionHandler(inputField, RimplexDriver.operations));
+    button.addActionListener(new DivisionHandler(inputField));
     setButton(button);
     button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
@@ -479,7 +479,7 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
-    button.addActionListener(new EqualsHandler(display, inputField, RimplexDriver.complexNumbers, RimplexDriver.operations, plane));
+    button.addActionListener(new EqualsHandler(display, inputField, plane));
     setButton(button);
     button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
@@ -704,7 +704,7 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);  
-    button.addActionListener(new MultiplicationHandler(inputField, RimplexDriver.operations));
+    button.addActionListener(new MultiplicationHandler(inputField));
     setButton(button);
     button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
@@ -875,11 +875,10 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
-    button.addActionListener(new SubtractionHandler(inputField, RimplexDriver.operations));
+    button.addActionListener(new SubtractionHandler(inputField));
     setButton(button);
     button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
-    
     
     // 1 button
     button = new JButton("1");

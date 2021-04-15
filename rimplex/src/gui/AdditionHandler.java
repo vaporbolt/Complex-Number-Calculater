@@ -3,9 +3,6 @@ package gui;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
-import math.OperationType;
 
 /**
  * @author Seth Roper
@@ -15,24 +12,20 @@ import math.OperationType;
  */
 public class AdditionHandler implements ActionListener
 {
-  private ArrayList<OperationType> operations;
   private InputField input;
   
   /**
    * Creates an addition handler
    * 
-   * @param display the system's display
-   * @param operations the operations list
+   * @param input the input field
    */
-  public AdditionHandler(InputField input, ArrayList<OperationType> operations)
+  public AdditionHandler(InputField input)
   {
-    this.operations = operations;
     this.input = input;
   }
   
   /**
-   * When clicked, adds addition to the operation list
-   * and adds a "+" to the input field.
+   * When clicked, adds a "+" to the input field.
    * 
    * @param e when the user clicks the "+" button
    */
@@ -41,10 +34,7 @@ public class AdditionHandler implements ActionListener
   {
     // try to use button
     try
-    {
-      // add addition to operation list
-      operations.add(OperationType.ADDITION);
-      
+    { 
       // adds addition sign to input field
       input.getTextField().setText(input.getTextField().getText() + " + ");
       input.inputTypesetting(0, input.getTextField().getText().length());

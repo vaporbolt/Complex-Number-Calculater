@@ -3,9 +3,6 @@ package gui;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
-import math.OperationType;
 
 /**
  * @author Seth Roper
@@ -17,23 +14,19 @@ public class SubtractionHandler implements ActionListener
 {
 
   private InputField input;
-  private ArrayList<OperationType> operations;
   
   /**
    * Creates a subtraction handler.
    * 
-   * @param display the system's display
-   * @param operations the operations list
+   * @param input the input field
    */
-  public SubtractionHandler(InputField input, ArrayList<OperationType> operations)
+  public SubtractionHandler(InputField input)
   {
-    this.operations = operations;
     this.input = input;
   }
   
   /**
-   * When clicked, adds subtraction to the operation list
-   * and adds a "-" to the input field.
+   * When clicked, adds a "-" to the input field.
    * 
    * @param e when the user clicks the "-" button
    */
@@ -42,10 +35,7 @@ public class SubtractionHandler implements ActionListener
   {
     // tries to click button
     try
-    {
-      // adds subtraction to the operations list
-      operations.add(OperationType.SUBTRACTION);
-      
+    { 
       // adds subtraction sign to input field
       input.getTextField().setText(input.getTextField().getText() + " -");
       input.inputTypesetting(0, input.getTextField().getText().length());

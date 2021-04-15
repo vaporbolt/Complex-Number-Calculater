@@ -1,16 +1,7 @@
 package gui;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
-import javax.swing.BorderFactory;
-import javax.swing.JTextArea;
-import javax.swing.JTextPane;
-
-import math.ComplexNumber;
-import math.OperationType;
 import visualization.CartesianPlane;
 
 /**
@@ -24,29 +15,25 @@ public class ResetHandler implements ActionListener
 
   private DisplayComponent display;
   private InputField input;
-  private ArrayList<ComplexNumber> nums;
-  private ArrayList<OperationType> operations;
   private CartesianPlane plane;
   
   /**
-   * Creates a rest handler.
+   * Creates a reset handler.
    * 
    * @param display the system's display
-   * @param nums the list of complex numbers
-   * @param operations the list of operations
+   * @param input the input field
+   * @param plane the graph
    */
-  public ResetHandler(DisplayComponent display, InputField input, ArrayList<ComplexNumber> nums, ArrayList<OperationType> operations, CartesianPlane plane)
+  public ResetHandler(DisplayComponent display, InputField input, CartesianPlane plane)
   {
     this.display = display;
-    this.nums = nums;
-    this.operations = operations;
     this.input = input;
     this.plane = plane;
   }
   
   /**
-   * When clicked, the text from display and input field is cleared, and the 
-   * list of complex numbers and operations is emptied.
+   * When clicked, the text from display and input field is cleared,
+   * the text from display is cleared, and the graph is cleared.
    * 
    * @param e when user clicks the reset button
    */
@@ -56,8 +43,6 @@ public class ResetHandler implements ActionListener
     // resets display text, input field text, complex numbers list, and operations list
     display.reset();
     input.clear();
-    nums.clear();
-    operations.clear();
     plane.reset();
     input.getTextField().requestFocus();
     

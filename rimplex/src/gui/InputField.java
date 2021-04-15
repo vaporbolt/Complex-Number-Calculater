@@ -13,7 +13,6 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
 /**
  * @author Seth Roper
@@ -116,12 +115,12 @@ public class InputField
   
   /**
    * When the user hits enter, the equation from inputField is calculated,
-   * and the result is transfered to display.
+   * and the result is transfered to display and graphed.
    * 
    * @param display the display
-   * @param nums the list of complex numbers
+   * @param plane the graph
    */
-  public void enterText(DisplayComponent display, ArrayList<ComplexNumber> nums, CartesianPlane plane)
+  public void enterText(DisplayComponent display, CartesianPlane plane)
   {
     // to get the correct InputMap
     int condition = JComponent.WHEN_FOCUSED;  

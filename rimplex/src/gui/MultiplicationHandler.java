@@ -3,9 +3,6 @@ package gui;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
-import math.OperationType;
 
 /**
  * @author Seth Roper
@@ -17,23 +14,19 @@ public class MultiplicationHandler implements ActionListener
 {
 
   private InputField input;
-  private ArrayList<OperationType> operations;
   
   /**
    * Creates a multiplication handler.
    * 
-   * @param display the system's display
-   * @param operations the operations list
+   * @param input the input field
    */
-  public MultiplicationHandler(InputField input, ArrayList<OperationType> operations)
+  public MultiplicationHandler(InputField input)
   {
-    this.operations = operations;
     this.input = input;
   }
   
   /**
-   * When clicked, adds multiplication to the operation list
-   * and adds a "*" to the input field.
+   * When clicked, adds a "*" to the input field.
    * 
    * @param e when the user clicks the "+" button
    */
@@ -43,9 +36,6 @@ public class MultiplicationHandler implements ActionListener
     // try to click button
     try
     {
-      // adds multiplication to the operations list
-      operations.add(OperationType.MULTIPLICATION);
-      
       // adds multiplication sign to input field
       input.getTextField().setText(input.getTextField().getText() + " * ");
       input.inputTypesetting(0, input.getTextField().getText().length());
