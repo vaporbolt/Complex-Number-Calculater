@@ -52,7 +52,7 @@ public class GuiContainer
   
   private JWindow planeWindow;
   
-  private JWindow settingWindow = new JWindow();
+  private JWindow settingWindow;
 
   /**
    * creates the GUI container object with the proper gridbagLayout.
@@ -61,6 +61,7 @@ public class GuiContainer
   {
     this.createPlaneWindow();
     this.createHistoryWindow();
+    this.createSettingsWindow();
     this.addComponetsToPane();
   }
   
@@ -146,21 +147,24 @@ public class GuiContainer
     frame.setLocation(500, 200);
     frame.addComponentListener(new FrameListener(historyWindow, planeWindow, settingWindow));
     this.historyWindow.getContentPane().setBackground(new Color(199, 238, 255));
+    this.historyWindow.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.LIGHT_GRAY));
     this.historyWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
     this.historyWindow.setVisible(true);
     this.historyWindow.setLocation(frame.getX() + 305, frame.getY() + 165);
     this.historyWindow.setVisible(false);
     this.historyWindow.setAlwaysOnTop(true);
     this.planeWindow.getContentPane().setBackground(new Color(199, 238, 255));
+    this.planeWindow.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.LIGHT_GRAY));
     this.planeWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
     this.planeWindow.setVisible(true);
     this.planeWindow.setLocation(frame.getX() - 300, frame.getY() + 165);
     this.planeWindow.setVisible(false);
     this.planeWindow.setAlwaysOnTop(true);
-    this.settingWindow.getContentPane().setBackground(new Color(199, 238, 255));
-    this.settingWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
+    this.settingWindow.getContentPane().setBackground(Color.WHITE);
+    //this.settingWindow.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.BLACK));
+    this.settingWindow.setSize(this.jframeWidth / 2 + 50, this.jframeHeight - 300);
     this.settingWindow.setVisible(true);
-    this.settingWindow.setLocation(frame.getX() + 50, frame.getY() + 50);
+    this.settingWindow.setLocation(frame.getX() + 100, frame.getY() + 40);
     this.settingWindow.setVisible(false);
     this.settingWindow.setAlwaysOnTop(true);
     frame.addWindowStateListener(new WindowStateListener() {
@@ -169,6 +173,7 @@ public class GuiContainer
       {
         historyWindow.setVisible(false);
         planeWindow.setVisible(false);
+        settingWindow.setVisible(false);
         
       }
     });
@@ -221,6 +226,7 @@ public class GuiContainer
       {
         historyWindow.setVisible(false);
         planeWindow.setVisible(false);
+        settingWindow.setVisible(false);
         
       }
       
@@ -1097,6 +1103,93 @@ public class GuiContainer
     contentPane.add(button);
   }
 
+  /**
+   * creates a window to hold the settings.
+   */
+  private void createSettingsWindow()
+  {
+    this.settingWindow = new JWindow();
+    Container contentPane = this.settingWindow.getContentPane();
+    GridBagLayout gbl = new GridBagLayout();
+    contentPane.setLayout(gbl);
+    GridBagConstraints gbc = new GridBagConstraints();
+    JButton button;
+    
+    button = new JButton("Close");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.NORTHEAST;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(0, 170, 150, 0);
+    gbl.setConstraints(button, gbc); 
+    button.setBackground(Color.WHITE);
+    button.setBorderPainted(false);
+    button.setFont(new Font("TimesRoman", Font.PLAIN, 13));
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        settingWindow.setVisible(false);
+      }
+      
+    });
+    contentPane.add(button);
+    
+    JLabel l = new JLabel("Language");
+    l.setFont(new Font("TimesRoman", Font.BOLD, 14));
+    gbc = new GridBagConstraints();
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(-90, 90, 0, 0);
+    gbl.setConstraints(l, gbc); 
+    contentPane.add(l);
+    
+    String languages[] = {"English", "Spanish", "French"};
+    JList<String> languageList = new JList<String>(languages);
+    languageList.setFont(new Font("TimesRoman", Font.PLAIN, 13));
+    languageList.setSelectedIndex(0);
+    languageList.setBorder(BorderFactory.createMatteBorder(2, 0, 2, 2, Color.BLACK));
+    gbc = new GridBagConstraints();
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(0, 0, 0, 0);
+    gbl.setConstraints(languageList, gbc); 
+    contentPane.add(languageList);
+    
+    button = new JButton(" help ");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.anchor = GridBagConstraints.SOUTH;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(0, 0, 15, 0);
+    gbl.setConstraints(button, gbc); 
+    button.setBackground(Color.WHITE);
+    button.setFont(new Font("TimesRoman", Font.PLAIN, 13));
+    button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+    contentPane.add(button);
+  }
 
 }
 

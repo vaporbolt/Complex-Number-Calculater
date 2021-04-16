@@ -34,7 +34,7 @@ public class FrameListener implements ComponentListener
     // TODO Auto-generated method stub
     history.setLocation(e.getComponent().getX() + 305, e.getComponent().getY() + 165);
     graph.setLocation(e.getComponent().getX() - 295, e.getComponent().getY() + 165);
-    settings.setLocation(e.getComponent().getX() + 50, e.getComponent().getY() + 50);
+    settings.setLocation(e.getComponent().getX() + 100, e.getComponent().getY() + 40);
     
   }
 
