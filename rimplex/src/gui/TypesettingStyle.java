@@ -33,6 +33,8 @@ public final class TypesettingStyle
     StyleContext sc = new StyleContext();
     Style italic = sc.addStyle("BLACK", null);
     italic.addAttribute(StyleConstants.Italic, true);
+    italic.addAttribute(StyleConstants.Family, "TimesRoman");
+    italic.addAttribute(StyleConstants.FontSize, 20);
     return italic;
   }
   

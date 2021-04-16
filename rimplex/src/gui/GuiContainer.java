@@ -34,7 +34,7 @@ public class GuiContainer
   private static boolean exists = false;
   
   private final int jframeWidth = 340;
-  private final int jframeHeight = 450;
+  private final int jframeHeight = 460;
   
   // holds the frame
   private JFrame frame = new JFrame("Rimplex");
@@ -243,12 +243,17 @@ public class GuiContainer
     gbc.anchor = GridBagConstraints.NORTHWEST;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(10, 20, 0, 40);
+    gbc.insets = new Insets(0, 20, -20, 0);
     gbl.setConstraints(label, gbc);
     contentPane.add(label);
    
     // InputField/ display.
     JTextPane textField = this.inputField.getTextField();
+    textField.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+    JScrollPane inputScroll = new JScrollPane(textField);
+    inputScroll.setViewportBorder(null);
+    inputScroll.setBorder(null);
+    inputScroll.setPreferredSize(new Dimension(40, 40));
     
     gbc.gridx = 2;
     gbc.gridy = 1;
@@ -259,8 +264,8 @@ public class GuiContainer
     gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.insets = new Insets(40, 0, 0, 0);
-    gbl.setConstraints(textField, gbc);
-    contentPane.add(textField);
+    gbl.setConstraints(inputScroll, gbc);
+    contentPane.add(inputScroll);
     
     // clear button
     button = new JButton("C");
@@ -916,6 +921,7 @@ public class GuiContainer
     JButton button;
     // Display
     display = DisplayComponent.createInstance();
+    display.getPanel().setFont(new Font("TimesRoman", Font.PLAIN, 20));
     // create scroll pane for the display/history and set a restricting size
     JScrollPane scrollDisplay = new JScrollPane(display.getPanel());
     scrollDisplay.setViewportBorder(null);
