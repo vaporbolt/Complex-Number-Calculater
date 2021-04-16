@@ -51,6 +51,8 @@ public class GuiContainer
   private JWindow historyWindow;
   
   private JWindow planeWindow;
+  
+  private JWindow settingWindow = new JWindow();
 
   /**
    * creates the GUI container object with the proper gridbagLayout.
@@ -142,7 +144,7 @@ public class GuiContainer
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setResizable(false); 
     frame.setLocation(500, 200);
-    frame.addComponentListener(new FrameListener(historyWindow, planeWindow));
+    frame.addComponentListener(new FrameListener(historyWindow, planeWindow, settingWindow));
     this.historyWindow.getContentPane().setBackground(new Color(199, 238, 255));
     this.historyWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
     this.historyWindow.setVisible(true);
@@ -155,6 +157,12 @@ public class GuiContainer
     this.planeWindow.setLocation(frame.getX() - 300, frame.getY() + 165);
     this.planeWindow.setVisible(false);
     this.planeWindow.setAlwaysOnTop(true);
+    this.settingWindow.getContentPane().setBackground(new Color(199, 238, 255));
+    this.settingWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
+    this.settingWindow.setVisible(true);
+    this.settingWindow.setLocation(frame.getX() + 50, frame.getY() + 50);
+    this.settingWindow.setVisible(false);
+    this.settingWindow.setAlwaysOnTop(true);
     frame.addWindowStateListener(new WindowStateListener() {
       @Override
       public void windowStateChanged(WindowEvent e)
@@ -246,6 +254,37 @@ public class GuiContainer
     gbc.insets = new Insets(0, 20, -20, 0);
     gbl.setConstraints(label, gbc);
     contentPane.add(label);
+    
+    // rimplex icon
+    button = new JButton(" S ");
+    gbc.gridx = 2;
+    gbc.gridy = 0;
+    gbc.gridwidth = gbc.REMAINDER;
+    gbc.gridheight = 1;
+    gbc.anchor = GridBagConstraints.NORTHEAST;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(0, 20, 0, 10);
+    setButton(button);
+    button.setBorderPainted(false);
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        
+        if (settingWindow.isVisible())
+        {
+          settingWindow.setVisible(false);
+        } else
+        {
+          settingWindow.setVisible(true);
+        }
+      }
+      
+    });
+    gbl.setConstraints(button, gbc);
+    contentPane.add(button);
    
     // InputField/ display.
     JTextPane textField = this.inputField.getTextField();

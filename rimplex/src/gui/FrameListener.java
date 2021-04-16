@@ -10,11 +10,13 @@ public class FrameListener implements ComponentListener
 
   private JWindow history;
   private JWindow graph;
+  private JWindow settings;
   
-  public FrameListener(JWindow history, JWindow graph)
+  public FrameListener(JWindow history, JWindow graph, JWindow settings)
   {
     this.history = history;
     this.graph = graph;
+    this.settings = settings;
   }
   @Override
   public void componentResized(ComponentEvent e)
@@ -22,6 +24,7 @@ public class FrameListener implements ComponentListener
     // TODO Auto-generated method stub
     history.setVisible(false);
     graph.setVisible(false);
+    settings.setVisible(false);
     
   }
 
@@ -31,6 +34,7 @@ public class FrameListener implements ComponentListener
     // TODO Auto-generated method stub
     history.setLocation(e.getComponent().getX() + 305, e.getComponent().getY() + 165);
     graph.setLocation(e.getComponent().getX() - 295, e.getComponent().getY() + 165);
+    settings.setLocation(e.getComponent().getX() + 50, e.getComponent().getY() + 50);
     
   }
 
@@ -47,6 +51,7 @@ public class FrameListener implements ComponentListener
     // TODO Auto-generated method stub
     history.setVisible(false);
     graph.setVisible(false);
+    settings.setVisible(false);
     
   }
 
