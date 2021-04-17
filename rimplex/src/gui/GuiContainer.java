@@ -868,7 +868,7 @@ public class GuiContainer
     contentPane.add(button);
     
     // square root button
-    button = new JButton("s");
+    button = new JButton("sqt");
     gbc = new GridBagConstraints();
     gbc.gridx = 5;
     gbc.gridy = 7;
