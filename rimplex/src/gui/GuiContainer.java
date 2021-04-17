@@ -152,14 +152,14 @@ public class GuiContainer
     this.historyWindow.setVisible(true);
     this.historyWindow.setLocation(frame.getX() + 305, frame.getY() + 165);
     this.historyWindow.setVisible(false);
-    this.historyWindow.setAlwaysOnTop(true);
+    //this.historyWindow.setAlwaysOnTop(true);
     this.planeWindow.getContentPane().setBackground(new Color(199, 238, 255));
     this.planeWindow.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.LIGHT_GRAY));
     this.planeWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
     this.planeWindow.setVisible(true);
     this.planeWindow.setLocation(frame.getX() - 300, frame.getY() + 165);
     this.planeWindow.setVisible(false);
-    this.planeWindow.setAlwaysOnTop(true);
+    //this.planeWindow.setAlwaysOnTop(true);
     this.settingWindow.getContentPane().setBackground(Color.WHITE);
     //this.settingWindow.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.BLACK));
     this.settingWindow.setSize(this.jframeWidth / 2 + 50, this.jframeHeight - 300);
@@ -1141,7 +1141,7 @@ public class GuiContainer
     });
     contentPane.add(button);
     
-    JLabel l = new JLabel("Language");
+    JLabel l = new JLabel("Settings");
     l.setFont(new Font("TimesRoman", Font.BOLD, 14));
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
@@ -1152,15 +1152,13 @@ public class GuiContainer
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(-90, 90, 0, 0);
+    gbc.insets = new Insets(-110, 90, 0, 0);
     gbl.setConstraints(l, gbc); 
     contentPane.add(l);
     
-    String languages[] = {"English", "Spanish", "French"};
-    JList<String> languageList = new JList<String>(languages);
-    languageList.setFont(new Font("TimesRoman", Font.PLAIN, 13));
-    languageList.setSelectedIndex(0);
-    languageList.setBorder(BorderFactory.createMatteBorder(2, 0, 2, 2, Color.BLACK));
+    JLabel l2 = new JLabel("Language:");
+    l2.setFont(new Font("TimesRoman", Font.BOLD, 13));
+    l2.setBorder(BorderFactory.createMatteBorder(2, 0, 0, 0, Color.BLACK));
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
     gbc.gridy = 0;
@@ -1170,7 +1168,25 @@ public class GuiContainer
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(0, 0, 0, 0);
+    gbc.insets = new Insets(-65, 0, 0, 0);
+    gbl.setConstraints(l2, gbc); 
+    contentPane.add(l2);
+    
+    String languages[] = {"English", "Spanish", "French"};
+    JList<String> languageList = new JList<String>(languages);
+    languageList.setFont(new Font("TimesRoman", Font.PLAIN, 13));
+    languageList.setSelectedIndex(0);
+    languageList.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 2, Color.BLACK));
+    gbc = new GridBagConstraints();
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(20, 0, 0, 0);
     gbl.setConstraints(languageList, gbc); 
     contentPane.add(languageList);
     
