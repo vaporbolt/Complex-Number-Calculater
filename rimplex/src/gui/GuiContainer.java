@@ -867,6 +867,58 @@ public class GuiContainer
     button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
     
+    // square root button
+    button = new JButton("s");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 5;
+    gbc.gridy = 7;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(10, 5, 10, 5);
+    gbl.setConstraints(button, gbc);
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        
+      }
+      
+    });
+    setButton(button);
+    button.setForeground(new Color(0, 112, 117));
+    contentPane.add(button);
+    
+    // square root button
+    button = new JButton("log");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 6;
+    gbc.gridy = 7;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(10, 5, 10, 5);
+    gbl.setConstraints(button, gbc);
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        
+      }
+      
+    });
+    setButton(button);
+    button.setForeground(new Color(0, 112, 117));
+    contentPane.add(button);
+    
     // decimal button
     button = new JButton(".");
     gbc = new GridBagConstraints();
@@ -900,7 +952,7 @@ public class GuiContainer
     gbc = new GridBagConstraints();
     gbc.gridx = 2;
     gbc.gridy = 7;
-    gbc.gridwidth = 1;
+    gbc.gridwidth = 3;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     gbc.anchor = GridBagConstraints.CENTER;
@@ -1028,6 +1080,87 @@ public class GuiContainer
     });
     contentPane.add(button);
     
+    button = new JButton("Print");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.NORTH;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbl.setConstraints(button, gbc); 
+    button.setBackground(new Color(199, 238, 255));
+    button.setBorderPainted(false);
+    button.setFont(new Font("TimesRoman", Font.PLAIN, 13));
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        
+      }
+      
+    });
+    contentPane.add(button);
+    
+    JButton start = new JButton("start");
+    start.setVisible(true);
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.NORTH;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(25, 0, 0, 0);
+    gbl.setConstraints(start, gbc); 
+    start.setBackground(new Color(199, 238, 255));
+    start.setBorderPainted(false);
+    start.setFont(new Font("TimesRoman", Font.PLAIN, 13));
+    contentPane.add(start);
+    
+    JButton stop = new JButton("stop");
+    stop.setVisible(false);
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.NORTH;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(25, 0, 0, 0);
+    gbl.setConstraints(stop, gbc); 
+    stop.setBackground(new Color(199, 238, 255));
+    stop.setBorderPainted(false);
+    stop.setFont(new Font("TimesRoman", Font.PLAIN, 13));
+    stop.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        stop.setVisible(false);
+        start.setVisible(true);
+      }
+      
+    });
+    contentPane.add(stop);
+    
+    start.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        start.setVisible(false);
+        stop.setVisible(true);
+      }
+      
+    });
     
   }
   
