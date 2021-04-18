@@ -34,7 +34,7 @@ public class GuiContainer
   private static boolean exists = false;
   
   private final int jframeWidth = 340;
-  private final int jframeHeight = 460;
+  private final int jframeHeight = 500;
   
   // holds the frame
   private JFrame frame = new JFrame("Rimplex");
@@ -585,7 +585,7 @@ public class GuiContainer
     button = new JButton("2");
     gbc = new GridBagConstraints();
     gbc.gridx = 3;
-    gbc.gridy = 4;
+    gbc.gridy = 5;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -602,7 +602,7 @@ public class GuiContainer
     button = new JButton("x²");
     gbc = new GridBagConstraints();
     gbc.gridx = 5;
-    gbc.gridy = 4;
+    gbc.gridy = 5;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -631,7 +631,7 @@ public class GuiContainer
     button = new JButton("3");
     gbc = new GridBagConstraints();
     gbc.gridx = 4;
-    gbc.gridy = 4;
+    gbc.gridy = 5;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -694,7 +694,7 @@ public class GuiContainer
     button = new JButton("4");
     gbc = new GridBagConstraints();
     gbc.gridx = 2;
-    gbc.gridy = 5;
+    gbc.gridy = 6;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.BOTH;
@@ -711,7 +711,7 @@ public class GuiContainer
     button = new JButton("5");
     gbc = new GridBagConstraints();
     gbc.gridx = 3;
-    gbc.gridy = 5;
+    gbc.gridy = 6;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.BOTH;
@@ -728,7 +728,7 @@ public class GuiContainer
     button = new JButton("6");
     gbc = new GridBagConstraints();
     gbc.gridx = 4;
-    gbc.gridy = 5;
+    gbc.gridy = 6;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.BOTH;
@@ -745,7 +745,7 @@ public class GuiContainer
     button = new JButton("x");
     gbc = new GridBagConstraints();
     gbc.gridx = 5;
-    gbc.gridy = 5;
+    gbc.gridy = 6;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.BOTH;
@@ -763,7 +763,7 @@ public class GuiContainer
     button = new JButton("inv");
     gbc = new GridBagConstraints();
     gbc.gridx = 6;
-    gbc.gridy = 5;
+    gbc.gridy = 6;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.BOTH;
@@ -791,7 +791,7 @@ public class GuiContainer
     button = new JButton("7");
     gbc = new GridBagConstraints();
     gbc.gridx = 2;
-    gbc.gridy = 6;
+    gbc.gridy = 7;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.BOTH;
@@ -808,7 +808,7 @@ public class GuiContainer
     button = new JButton("8");
     gbc = new GridBagConstraints();
     gbc.gridx = 3;
-    gbc.gridy = 6;
+    gbc.gridy = 7;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.BOTH;
@@ -825,7 +825,7 @@ public class GuiContainer
     button = new JButton("9");
     gbc = new GridBagConstraints();
     gbc.gridx = 4;
-    gbc.gridy = 6;
+    gbc.gridy = 7;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.BOTH;
@@ -842,7 +842,7 @@ public class GuiContainer
     button = new JButton("i");
     gbc = new GridBagConstraints();
     gbc.gridx = 5;
-    gbc.gridy = 6;
+    gbc.gridy = 7;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.BOTH;
@@ -867,11 +867,89 @@ public class GuiContainer
     button.setForeground(new Color(0, 112, 117));
     contentPane.add(button);
     
+    // real part button
+    button = new JButton("real");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 2;
+    gbc.gridy = 4;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(10, 5, 10, 5);
+    gbl.setConstraints(button, gbc);
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        
+      }
+      
+    });
+    setButton(button);
+    button.setForeground(new Color(0, 112, 117));
+    contentPane.add(button);
+    
+    // imaginary part button
+    button = new JButton("im");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 3;
+    gbc.gridy = 4;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(10, 5, 10, 5);
+    gbl.setConstraints(button, gbc);
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        
+      }
+      
+    });
+    setButton(button);
+    button.setForeground(new Color(0, 112, 117));
+    contentPane.add(button);
+    
+    // polar form button
+    button = new JButton("pol");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 4;
+    gbc.gridy = 4;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(10, 5, 10, 5);
+    gbl.setConstraints(button, gbc);
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        
+      }
+      
+    });
+    setButton(button);
+    button.setForeground(new Color(0, 112, 117));
+    contentPane.add(button);
+    
     // square root button
     button = new JButton("sqt");
     gbc = new GridBagConstraints();
     gbc.gridx = 5;
-    gbc.gridy = 7;
+    gbc.gridy = 4;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -897,7 +975,7 @@ public class GuiContainer
     button = new JButton("log");
     gbc = new GridBagConstraints();
     gbc.gridx = 6;
-    gbc.gridy = 7;
+    gbc.gridy = 4;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -923,7 +1001,7 @@ public class GuiContainer
     button = new JButton(".");
     gbc = new GridBagConstraints();
     gbc.gridx = 6;
-    gbc.gridy = 6;
+    gbc.gridy = 7;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.BOTH;
@@ -951,7 +1029,7 @@ public class GuiContainer
     button = new JButton("0");
     gbc = new GridBagConstraints();
     gbc.gridx = 2;
-    gbc.gridy = 7;
+    gbc.gridy = 8;
     gbc.gridwidth = 3;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -968,7 +1046,7 @@ public class GuiContainer
     button = new JButton("-");
     gbc = new GridBagConstraints();
     gbc.gridx = 6;
-    gbc.gridy = 4;
+    gbc.gridy = 5;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -986,7 +1064,7 @@ public class GuiContainer
     button = new JButton("1");
     gbc = new GridBagConstraints();
     gbc.gridx = 2;
-    gbc.gridy = 4;
+    gbc.gridy = 5;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
