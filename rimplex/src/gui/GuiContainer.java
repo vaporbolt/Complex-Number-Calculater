@@ -34,7 +34,7 @@ public class GuiContainer
   private static boolean exists = false;
   
   private final int jframeWidth = 340;
-  private final int jframeHeight = 500;
+  private final int jframeHeight = 470;
   
   // holds the frame
   private JFrame frame = new JFrame("Rimplex");
@@ -164,7 +164,7 @@ public class GuiContainer
     this.settingWindow.getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
     this.settingWindow.setSize(this.jframeWidth / 2 + 50, this.jframeHeight - 300);
     this.settingWindow.setVisible(true);
-    this.settingWindow.setLocation(frame.getX() + 100, frame.getY() + 40);
+    this.settingWindow.setLocation(frame.getX() + 300, frame.getY() + 35);
     this.settingWindow.setVisible(false);
     this.settingWindow.setAlwaysOnTop(true);
     frame.addWindowStateListener(new WindowStateListener() {
@@ -248,6 +248,9 @@ public class GuiContainer
     
     // rimplex icon
     ImageIcon logo = new ImageIcon(this.getClass().getResource("/pictures/logoRimplex.png"));
+    Image image = logo.getImage();
+    Image newimg = image.getScaledInstance(175, 55,  java.awt.Image.SCALE_SMOOTH);
+    logo = new ImageIcon(newimg);
     JLabel label = new JLabel(logo);
     gbc.gridx = 0;
     gbc.gridy = 0;
@@ -257,12 +260,16 @@ public class GuiContainer
     gbc.anchor = GridBagConstraints.NORTHWEST;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(0, 20, -20, 0);
+    gbc.insets = new Insets(0, 20, 0, 0);
     gbl.setConstraints(label, gbc);
     contentPane.add(label);
     
-    // rimplex icon
-    button = new JButton(" S ");
+    // Settings button
+    ImageIcon settingIcon = new ImageIcon(this.getClass().getResource("/pictures/settingIcon.png"));
+    image = settingIcon.getImage();
+    newimg = image.getScaledInstance(15, 15,  java.awt.Image.SCALE_SMOOTH);
+    settingIcon = new ImageIcon(newimg);
+    button = new JButton(settingIcon);
     gbc.gridx = 2;
     gbc.gridy = 0;
     gbc.gridwidth = gbc.REMAINDER;
@@ -308,7 +315,7 @@ public class GuiContainer
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(40, 0, 0, 0);
+    gbc.insets = new Insets(10, 0, 0, 0);
     gbl.setConstraints(inputScroll, gbc);
     contentPane.add(inputScroll);
     
@@ -1158,20 +1165,24 @@ public class GuiContainer
     });
     contentPane.add(button);
     
-    button = new JButton("Print");
+    // print button
+    ImageIcon printIcon = new ImageIcon(this.getClass().getResource("/pictures/printIcon.png"));
+    Image image = printIcon.getImage();
+    Image newimg = image.getScaledInstance(15, 15,  java.awt.Image.SCALE_SMOOTH);
+    printIcon = new ImageIcon(newimg);
+    button = new JButton(printIcon);
     gbc = new GridBagConstraints();
     gbc.gridx = 1;
     gbc.gridy = 0;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.anchor = GridBagConstraints.NORTH;
+    gbc.anchor = GridBagConstraints.NORTHEAST;
     gbc.weightx = 0;
     gbc.weighty = 0;
     gbl.setConstraints(button, gbc); 
     button.setBackground(new Color(199, 238, 255));
     button.setBorderPainted(false);
-    button.setFont(new Font("TimesRoman", Font.PLAIN, 13));
     button.addActionListener((ActionListener) new ActionListener() {
 
       @Override
@@ -1183,7 +1194,7 @@ public class GuiContainer
     });
     contentPane.add(button);
     
-    JButton start = new JButton("start");
+    /*JButton start = new JButton("start");
     start.setVisible(true);
     gbc = new GridBagConstraints();
     gbc.gridx = 1;
@@ -1238,7 +1249,7 @@ public class GuiContainer
         stop.setVisible(true);
       }
       
-    });
+    });*/
     
   }
   
@@ -1336,7 +1347,7 @@ public class GuiContainer
     gbc.anchor = GridBagConstraints.NORTHEAST;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(0, 170, 150, 0);
+    gbc.insets = new Insets(0, 170, 190, 0);
     gbl.setConstraints(button, gbc); 
     button.setBackground(new Color(199, 238, 255));
     button.setBorderPainted(false);
@@ -1364,7 +1375,7 @@ public class GuiContainer
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(-110, 90, 0, 0);
+    gbc.insets = new Insets(-110, 90, 30, 0);
     gbl.setConstraints(l, gbc); 
     contentPane.add(l);
     
@@ -1381,7 +1392,7 @@ public class GuiContainer
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(-65, 0, 0, 0);
+    gbc.insets = new Insets(-65, 0, 30, 0);
     gbl.setConstraints(l2, gbc); 
     contentPane.add(l2);
     
@@ -1400,11 +1411,11 @@ public class GuiContainer
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(20, 0, 0, 0);
+    gbc.insets = new Insets(20, 0, 30, 0);
     gbl.setConstraints(languageList, gbc); 
     contentPane.add(languageList);
     
-    button = new JButton(" help ");
+    button = new JButton(" about ");
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
     gbc.gridy = 0;
