@@ -162,7 +162,7 @@ public class GuiContainer
     //this.planeWindow.setAlwaysOnTop(true);
     this.settingWindow.getContentPane().setBackground(new Color(199, 238, 255));
     this.settingWindow.getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-    this.settingWindow.setSize(this.jframeWidth / 2 + 50, this.jframeHeight - 300);
+    this.settingWindow.setSize(this.jframeWidth / 2 + 50, this.jframeHeight - 270);
     this.settingWindow.setVisible(true);
     this.settingWindow.setLocation(frame.getX() + 300, frame.getY() + 35);
     this.settingWindow.setVisible(false);
