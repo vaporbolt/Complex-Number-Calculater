@@ -28,13 +28,14 @@ public final class TypesettingStyle
    * 
    * @return the new string with converted i characters
    */
-  public static Style applyTypesetting()
+  public static Style applyTypesetting(boolean isDisplay)
   {
     StyleContext sc = new StyleContext();
     Style italic = sc.addStyle("BLACK", null);
     italic.addAttribute(StyleConstants.Italic, true);
     italic.addAttribute(StyleConstants.Family, "TimesRoman");
-    italic.addAttribute(StyleConstants.FontSize, 20);
+    if (isDisplay) italic.addAttribute(StyleConstants.FontSize, 16);
+    else italic.addAttribute(StyleConstants.FontSize, 20);
     return italic;
   }
   

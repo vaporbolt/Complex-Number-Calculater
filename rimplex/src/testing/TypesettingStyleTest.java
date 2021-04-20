@@ -20,7 +20,7 @@ class TypesettingStyleTest
     italic.addAttribute(StyleConstants.Italic, true);
     
     assertEquals(italic.getAttribute(italic), 
-        TypesettingStyle.applyTypesetting().getAttribute(TypesettingStyle.applyTypesetting()));
+        TypesettingStyle.applyTypesetting(true).getAttribute(TypesettingStyle.applyTypesetting(true)));
   }
 
 }

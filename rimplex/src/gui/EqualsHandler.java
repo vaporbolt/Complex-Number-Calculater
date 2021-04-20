@@ -3,6 +3,7 @@ package gui;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
 
 import math.ComplexNumber;
 import util.EnteringComplexNumbers;
@@ -53,10 +54,13 @@ public class EqualsHandler implements ActionListener
       result = EnteringComplexNumbers.parseEquation(input.getTextField().getText());
       
       // adds the result to the display
-      display.addText(input.getTextField().getText() + " = " + result.toString() + "\n");
+      Locale locale = Locale.getDefault();
+      String answer = result.toString() + "\n";
+      String format = String.format(locale, input.getTextField().getText() + " = %s", answer);
+      display.addText(format);
       
       // sets the input field to the result to use for the next calculation
-      input.getTextField().setText(result.toString());
+      input.getTextField().setText(String.format(locale, "%s", result.toString()));
       
       // apply typestting for display
       display.displayTypesetting(0, display.getText().length());

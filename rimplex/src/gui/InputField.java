@@ -14,6 +14,8 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
+import java.util.Locale;
+
 /**
  * @author Seth Roper
  * @version 3/24/2020
@@ -150,10 +152,13 @@ public class InputField
             result = EnteringComplexNumbers.parseEquation(field.getText());
             
             // adds the result to the display
-            display.addText(field.getText() + " = " + result.toString() + "\n");
+            Locale locale = Locale.getDefault();
+            String answer = result.toString() + "\n";
+            String format = String.format(locale, field.getText() + " = %s", answer);
+            display.addText(format);
             
             // sets the input field to the result to use for the next calculation
-            field.setText(result.toString());
+            field.setText(String.format(locale, "%s", result.toString()));
             plane.addPoint(result);
             
             // apply typestting to display
@@ -195,7 +200,7 @@ public class InputField
         field.getDocument().remove(index, 1);
         
         // adds the now italicized i to the location the un-italic i was in
-        field.getDocument().insertString(index, "i", TypesettingStyle.applyTypesetting());
+        field.getDocument().insertString(index, "i", TypesettingStyle.applyTypesetting(false));
         
         // sets length to the length of text that has been removed from string s
         length += s.substring(0, s.indexOf("i") + 1).length();

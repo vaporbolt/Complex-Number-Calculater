@@ -50,7 +50,7 @@ public class InputFieldDocumentFilter extends DocumentFilter
       final String string, final AttributeSet attr) throws BadLocationException
   {
     if (string.equals(i))
-      super.insertString(fb, offset, string, TypesettingStyle.applyTypesetting());
+      super.insertString(fb, offset, string, TypesettingStyle.applyTypesetting(false));
     else
       super.insertString(fb, offset, string, null);
   }
@@ -75,7 +75,7 @@ public class InputFieldDocumentFilter extends DocumentFilter
     }
 
     if (string.equals(i))
-      super.replace(fb, offset, length, string, TypesettingStyle.applyTypesetting());
+      super.replace(fb, offset, length, string, TypesettingStyle.applyTypesetting(false));
     else
       super.replace(fb, offset, length, string, null);
   }

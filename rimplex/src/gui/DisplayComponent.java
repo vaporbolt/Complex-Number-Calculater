@@ -139,7 +139,7 @@ public class DisplayComponent
         panel.getDocument().remove(index, 1);
         
         // adds the now italicized i to the location the un-italic i was in
-        panel.getDocument().insertString(index, "i", TypesettingStyle.applyTypesetting());
+        panel.getDocument().insertString(index, "i", TypesettingStyle.applyTypesetting(true));
         
         // sets length to the length of text that has been removed from string s
         length += s.substring(0, s.indexOf("i") + 1).length();
