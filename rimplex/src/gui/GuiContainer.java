@@ -157,21 +157,18 @@ public class GuiContainer
     this.historyWindow.getContentPane().setBackground(new Color(199, 238, 255));
     this.historyWindow.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.LIGHT_GRAY));
     this.historyWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
-    this.historyWindow.setVisible(true);
     this.historyWindow.setLocation(frame.getX() + 305, frame.getY() + 135);
     this.historyWindow.setVisible(false);
-    //this.historyWindow.setAlwaysOnTop(true);
+    this.historyWindow.setAlwaysOnTop(true);
     this.planeWindow.getContentPane().setBackground(new Color(199, 238, 255));
     this.planeWindow.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.LIGHT_GRAY));
     this.planeWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
-    this.planeWindow.setVisible(true);
     this.planeWindow.setLocation(frame.getX() - 300, frame.getY() + 135);
     this.planeWindow.setVisible(false);
-    //this.planeWindow.setAlwaysOnTop(true);
+    this.planeWindow.setAlwaysOnTop(true);
     this.settingWindow.getContentPane().setBackground(new Color(199, 238, 255));
     this.settingWindow.getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
     this.settingWindow.setSize(this.jframeWidth / 2 + 50, this.jframeHeight - 310);
-    this.settingWindow.setVisible(true);
     this.settingWindow.setLocation(frame.getX() + 300, frame.getY() + 35);
     this.settingWindow.setVisible(false);
     this.settingWindow.setAlwaysOnTop(true);
@@ -703,6 +700,7 @@ public class GuiContainer
               }
             }
           });
+          settingWindow.setVisible(false);
           timer.start();
 
         }
@@ -1219,6 +1217,7 @@ public class GuiContainer
               }
             }
           });
+          settingWindow.setVisible(false);
           timer.start();
         }
       }
