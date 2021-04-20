@@ -13,6 +13,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import app.RimplexDriver;
 import math.ComplexNumber;
@@ -1393,7 +1395,7 @@ public class GuiContainer
     GridBagConstraints gbc = new GridBagConstraints();
     JButton button;
     
-    button = new JButton("Close");
+    JButton closeButton = new JButton("Close");
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
     gbc.gridy = 0;
@@ -1404,11 +1406,11 @@ public class GuiContainer
     gbc.weightx = 0;
     gbc.weighty = 0;
     gbc.insets = new Insets(0, 170, 190, 0);
-    gbl.setConstraints(button, gbc); 
-    button.setBackground(new Color(199, 238, 255));
-    button.setBorderPainted(false);
-    button.setFont(new Font("TimesRoman", Font.PLAIN, 13));
-    button.addActionListener((ActionListener) new ActionListener() {
+    gbl.setConstraints(closeButton, gbc); 
+    closeButton.setBackground(new Color(199, 238, 255));
+    closeButton.setBorderPainted(false);
+    closeButton.setFont(new Font("TimesRoman", Font.PLAIN, 13));
+    closeButton.addActionListener((ActionListener) new ActionListener() {
 
       @Override
       public void actionPerformed(ActionEvent e)
@@ -1417,9 +1419,9 @@ public class GuiContainer
       }
       
     });
-    contentPane.add(button);
+    contentPane.add(closeButton);
     
-    JLabel l = new JLabel("Settings");
+    JLabel l = new JLabel("    Settings");
     l.setFont(new Font("TimesRoman", Font.BOLD, 14));
     l.setBackground(new Color(199, 238, 255));
     gbc = new GridBagConstraints();
@@ -1431,7 +1433,7 @@ public class GuiContainer
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(-110, 90, 30, 0);
+    gbc.insets = new Insets(-110, 75, 30, 0);
     gbl.setConstraints(l, gbc); 
     contentPane.add(l);
     
@@ -1452,25 +1454,6 @@ public class GuiContainer
     gbl.setConstraints(l2, gbc); 
     contentPane.add(l2);
     
-    String languages[] = {"English", "Spanish", "French"};
-    JList<String> languageList = new JList<String>(languages);
-    languageList.setFont(new Font("TimesRoman", Font.PLAIN, 13));
-    languageList.setSelectedIndex(0);
-    languageList.setBackground(new Color(199, 238, 255));
-    languageList.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 2, Color.BLACK));
-    gbc = new GridBagConstraints();
-    gbc.gridx = 0;
-    gbc.gridy = 0;
-    gbc.gridwidth = 1;
-    gbc.gridheight = 1;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.anchor = GridBagConstraints.CENTER;
-    gbc.weightx = 0;
-    gbc.weighty = 0;
-    gbc.insets = new Insets(20, 0, 30, 0);
-    gbl.setConstraints(languageList, gbc); 
-    contentPane.add(languageList);
-    
     button = new JButton(" about ");
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
@@ -1486,6 +1469,31 @@ public class GuiContainer
     button.setFont(new Font("TimesRoman", Font.PLAIN, 13));
     button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
     contentPane.add(button);
+    
+    String languages[] = {"English", "Spanish", "French"};
+    DefaultListModel<String> model = new DefaultListModel<String>();
+    //JList<String> languageList = new JList<String>(languages);
+    JList<String> languageList = new JList<String>(model);
+    model.add(0, "English");
+    model.add(1, "Spanish");
+    model.add(2, "French");
+    languageList.setFont(new Font("TimesRoman", Font.PLAIN, 13));
+    languageList.setSelectedIndex(0);
+    languageList.setBackground(new Color(199, 238, 255));
+    languageList.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 2, Color.BLACK));
+    gbc = new GridBagConstraints();
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(20, 0, 30, 0);
+    gbl.setConstraints(languageList, gbc); 
+    languageList.addListSelectionListener(new LanguageListener(languageList, model, closeButton, l, l2, button));
+    contentPane.add(languageList);
   }
   
   /**
