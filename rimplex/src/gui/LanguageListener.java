@@ -48,7 +48,7 @@ public class LanguageListener implements ListSelectionListener
         model.setElementAt("Spanish", 1);
         model.setElementAt("French", 2);
         close.setText("Close");
-        settings.setText("    Settings");
+        settings.setText("Settings");
         language.setText("Language:");
         about.setText("about");
       }
@@ -58,7 +58,7 @@ public class LanguageListener implements ListSelectionListener
         model.setElementAt("L'espagnol", 1);
         model.setElementAt("Français", 2);
         close.setText("Fermer");
-        settings.setText("   Paramètres");
+        settings.setText("Paramètres");
         language.setText("Langue:");
         about.setText("à propos de");
       }

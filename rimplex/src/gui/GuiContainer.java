@@ -1,6 +1,7 @@
 package gui;
 
 import java.util.HashMap;
+import java.util.ResourceBundle;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,6 +44,8 @@ public class GuiContainer
   
   // holds all of the buttons(add subtract reset etc.)
   //private HashMap<String, JButton> buttons = new HashMap<String, JButton>();
+  
+  final ResourceBundle STRINGS = ResourceBundle.getBundle("languages.Strings");
   
   private InputField inputField = InputField.createInstance();
 
@@ -1395,7 +1398,7 @@ public class GuiContainer
     GridBagConstraints gbc = new GridBagConstraints();
     JButton button;
     
-    JButton closeButton = new JButton("Close");
+    JButton closeButton = new JButton(STRINGS.getString("Close"));
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
     gbc.gridy = 0;
@@ -1421,7 +1424,7 @@ public class GuiContainer
     });
     contentPane.add(closeButton);
     
-    JLabel l = new JLabel("    Settings");
+    JLabel l = new JLabel(STRINGS.getString("Settings"));
     l.setFont(new Font("TimesRoman", Font.BOLD, 14));
     l.setBackground(new Color(199, 238, 255));
     gbc = new GridBagConstraints();
@@ -1433,11 +1436,11 @@ public class GuiContainer
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(-110, 75, 30, 0);
+    gbc.insets = new Insets(0, 0, 135, 0);
     gbl.setConstraints(l, gbc); 
     contentPane.add(l);
     
-    JLabel l2 = new JLabel("Language:");
+    JLabel l2 = new JLabel(STRINGS.getString("Language") + ":");
     l2.setFont(new Font("TimesRoman", Font.BOLD, 13));
     l2.setBorder(BorderFactory.createMatteBorder(2, 0, 0, 0, Color.BLACK));
     l2.setBackground(new Color(199, 238, 255));
@@ -1454,7 +1457,7 @@ public class GuiContainer
     gbl.setConstraints(l2, gbc); 
     contentPane.add(l2);
     
-    button = new JButton(" about ");
+    button = new JButton(STRINGS.getString("about"));
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
     gbc.gridy = 0;
@@ -1474,11 +1477,10 @@ public class GuiContainer
     DefaultListModel<String> model = new DefaultListModel<String>();
     //JList<String> languageList = new JList<String>(languages);
     JList<String> languageList = new JList<String>(model);
-    model.add(0, "English");
-    model.add(1, "Spanish");
-    model.add(2, "French");
+    model.add(0, STRINGS.getString("English"));
+    model.add(1, STRINGS.getString("Spanish"));
+    model.add(2, STRINGS.getString("French"));
     languageList.setFont(new Font("TimesRoman", Font.PLAIN, 13));
-    languageList.setSelectedIndex(0);
     languageList.setBackground(new Color(199, 238, 255));
     languageList.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 2, Color.BLACK));
     gbc = new GridBagConstraints();
