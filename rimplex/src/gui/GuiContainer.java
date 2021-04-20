@@ -34,7 +34,7 @@ public class GuiContainer
   private static boolean exists = false;
   
   private final int jframeWidth = 340;
-  private final int jframeHeight = 470;
+  private final int jframeHeight = 510;
   
   // holds the frame
   private JFrame frame = new JFrame("Rimplex");
@@ -53,6 +53,8 @@ public class GuiContainer
   private JWindow planeWindow;
   
   private JWindow settingWindow;
+  
+  private JWindow stepWindow;
 
   /**
    * creates the GUI container object with the proper gridbagLayout.
@@ -62,6 +64,7 @@ public class GuiContainer
     this.createPlaneWindow();
     this.createHistoryWindow();
     this.createSettingsWindow();
+    this.createStepWindow();
     this.addComponetsToPane();
   }
   
@@ -145,28 +148,35 @@ public class GuiContainer
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setResizable(false); 
     frame.setLocation(500, 200);
-    frame.addComponentListener(new FrameListener(historyWindow, planeWindow, settingWindow));
+    frame.addComponentListener(new FrameListener(historyWindow, planeWindow, settingWindow, stepWindow));
     this.historyWindow.getContentPane().setBackground(new Color(199, 238, 255));
     this.historyWindow.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.LIGHT_GRAY));
     this.historyWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
     this.historyWindow.setVisible(true);
-    this.historyWindow.setLocation(frame.getX() + 305, frame.getY() + 165);
+    this.historyWindow.setLocation(frame.getX() + 305, frame.getY() + 135);
     this.historyWindow.setVisible(false);
     //this.historyWindow.setAlwaysOnTop(true);
     this.planeWindow.getContentPane().setBackground(new Color(199, 238, 255));
     this.planeWindow.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.LIGHT_GRAY));
     this.planeWindow.setSize(this.jframeWidth / 2 + 100, this.jframeHeight - 180);
     this.planeWindow.setVisible(true);
-    this.planeWindow.setLocation(frame.getX() - 300, frame.getY() + 165);
+    this.planeWindow.setLocation(frame.getX() - 300, frame.getY() + 135);
     this.planeWindow.setVisible(false);
     //this.planeWindow.setAlwaysOnTop(true);
     this.settingWindow.getContentPane().setBackground(new Color(199, 238, 255));
-    this.settingWindow.getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-    this.settingWindow.setSize(this.jframeWidth / 2 + 50, this.jframeHeight - 270);
+    this.settingWindow.getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
+    this.settingWindow.setSize(this.jframeWidth / 2 + 50, this.jframeHeight - 310);
     this.settingWindow.setVisible(true);
     this.settingWindow.setLocation(frame.getX() + 300, frame.getY() + 35);
     this.settingWindow.setVisible(false);
     this.settingWindow.setAlwaysOnTop(true);
+    this.stepWindow.getContentPane().setBackground(new Color(199, 238, 255));
+    this.stepWindow.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.LIGHT_GRAY));
+    this.stepWindow.setSize(this.jframeWidth - 20, this.jframeHeight - 270);
+    //this.stepWindow.setVisible(true);
+    this.stepWindow.setLocation(frame.getX() + 10, frame.getY() + frame.getHeight() - 45);
+    this.stepWindow.setVisible(false);
+    this.stepWindow.setAlwaysOnTop(true);
     frame.addWindowStateListener(new WindowStateListener() {
       @Override
       public void windowStateChanged(WindowEvent e)
@@ -174,6 +184,7 @@ public class GuiContainer
         historyWindow.setVisible(false);
         planeWindow.setVisible(false);
         settingWindow.setVisible(false);
+        stepWindow.setVisible(false);
         
       }
     });
@@ -227,6 +238,7 @@ public class GuiContainer
         historyWindow.setVisible(false);
         planeWindow.setVisible(false);
         settingWindow.setVisible(false);
+        stepWindow.setVisible(false);
         
       }
       
@@ -688,6 +700,50 @@ public class GuiContainer
           });
           timer.start();
 
+        }
+      }
+      
+    });
+    setButton(button);
+    button.setBorderPainted(false);
+    contentPane.add(button);
+    
+    // step button
+    button = new JButton(" ^ ");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 4;
+    gbc.gridy = 9;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(0, 0, 0, 0);
+    gbl.setConstraints(button, gbc);  
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        if (!stepWindow.isVisible())
+        {
+          int h = 240;
+          stepWindow.setSize(stepWindow.getWidth(), 0);
+          stepWindow.setVisible(true);
+          
+          Timer timer = new Timer(1, new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+              if (stepWindow.getHeight() < h)
+              {
+                stepWindow.setSize(stepWindow.getWidth(), stepWindow.getHeight() + 10);
+              } else 
+              {
+                ((Timer)evt.getSource()).stop();
+              }
+            }
+          });
+          timer.start();
         }
       }
       
@@ -1429,6 +1485,60 @@ public class GuiContainer
     button.setBackground(new Color(199, 238, 255));
     button.setFont(new Font("TimesRoman", Font.PLAIN, 13));
     button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+    contentPane.add(button);
+  }
+  
+  /**
+   * Constructs the step window.
+   */
+  private void createStepWindow()
+  {
+    this.stepWindow = new JWindow();
+    Container contentPane = this.stepWindow.getContentPane();
+    GridBagLayout gbl = new GridBagLayout();
+    contentPane.setLayout(gbl);
+    GridBagConstraints gbc = new GridBagConstraints();
+    JButton button;
+    
+    button = new JButton(" ^ ");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 0;
+    gbc.gridy = 2;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.SOUTH;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(0, 0, -110, 0);
+    gbl.setConstraints(button, gbc); 
+    button.setBackground(new Color(199, 238, 255));
+    button.setBorderPainted(false);
+    button.addActionListener((ActionListener) new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        if (stepWindow.isVisible())
+        {
+          stepWindow.setSize(stepWindow.getWidth(), 240);
+          Timer timer = new Timer(1, new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+              if (stepWindow.getHeight() > 0)
+              {
+                stepWindow.setSize(stepWindow.getWidth(), stepWindow.getHeight() - 10);
+              } else 
+              {
+                stepWindow.setVisible(false);
+                ((Timer)evt.getSource()).stop();
+              }
+            }
+          });
+          timer.start();
+        }
+      }
+      
+    });
     contentPane.add(button);
   }
 
