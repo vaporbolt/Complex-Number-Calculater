@@ -1,5 +1,11 @@
 package app;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import color.ColorScheme;
 import gui.DisplayComponent;
 import gui.GuiContainer;
 import gui.InputField;
@@ -27,15 +33,29 @@ public class RimplexDriver
     {
       public void run()
       {
-        // bruh
-        
+        // Get ColorScheme from passed color scheme file
+        ColorScheme scheme = null;
+
+        try
+        {
+          BufferedReader in = new BufferedReader(new FileReader(args[0]));
+          scheme = ColorScheme.createInstance(in);
+        }
+        catch (IllegalStateException | IOException e)
+        {
+          if (e instanceof IllegalStateException)
+            throw new IllegalStateException("a scheme already exists!");
+        }
+
+        // Get Logo from passed logo file
+
         // create GUI
-        GuiContainer container = GuiContainer.createInstance();
+        GuiContainer container = GuiContainer.createInstance(scheme);
         container.showGUI();
 
         // get display
         DisplayComponent display = container.getDisplay();
-        
+
         // get plane
         CartesianPlane plane = container.getPlane();
 
@@ -47,5 +67,5 @@ public class RimplexDriver
       }
     });
   }
-  
+
 }

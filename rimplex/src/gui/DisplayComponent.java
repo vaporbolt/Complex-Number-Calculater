@@ -29,10 +29,10 @@ public class DisplayComponent
   /**
    * Private constructor.
    */
-  private DisplayComponent()
+  private DisplayComponent(Color color)
   {
     panel = new JTextPane();
-    panel.setBackground(new Color(199, 238, 255));
+    panel.setBackground(color);
     panel.setEditable(false);
    
     text = "";
@@ -43,12 +43,12 @@ public class DisplayComponent
    * 
    * @return DisplayComponent
    */
-  public static DisplayComponent createInstance()
+  public static DisplayComponent createInstance(Color color)
   {
     if (!exists)
     {
       exists = true;
-      return new DisplayComponent();
+      return new DisplayComponent(color);
     }
     else
     {
