@@ -106,6 +106,25 @@ public class ComplexNumber
   {
     return new ComplexNumber(this.real, this.imaginary * -1);
   }
+  
+  /**
+   * Returns the real value of this complex number.
+   * @return a new complex number
+   */
+  public ComplexNumber real()
+  {
+    return new ComplexNumber(this.real, 0.0);
+  }
+  
+  
+  /**
+   * Returns the imaginary value of this complex number.
+   * @return a new complex number
+   */
+  public ComplexNumber imaginary()
+  {
+    return new ComplexNumber(0.0, this.imaginary);
+  }
 
   /**
    * return a complex number with parentheses around it.
