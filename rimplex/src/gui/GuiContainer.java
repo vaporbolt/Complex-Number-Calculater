@@ -541,7 +541,7 @@ public class GuiContainer
       public void actionPerformed(ActionEvent e)
       {
 
-        textField.setText(textField.getText() + " con(");
+        textField.setText("con"+textField.getText());
         inputField.inputTypesetting(0, textField.getText().length());
       }
 
@@ -996,7 +996,8 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-
+        textField.setText("real"+textField.getText());
+        inputField.inputTypesetting(0, textField.getText().length());
       }
 
     });
@@ -1023,7 +1024,8 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-
+        textField.setText("im"+textField.getText());
+        inputField.inputTypesetting(0, textField.getText().length());
       }
 
     });
@@ -1050,7 +1052,8 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-
+        textField.setText("pol"+textField.getText());
+        inputField.inputTypesetting(0, textField.getText().length());
       }
 
     });
@@ -1077,7 +1080,8 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-
+        textField.setText("sqrt"+textField.getText());
+        inputField.inputTypesetting(0, textField.getText().length());
       }
 
     });
@@ -1085,7 +1089,7 @@ public class GuiContainer
     button.setForeground(scheme.getButtonSecondary());
     contentPane.add(button);
 
-    // square root button
+    // log button
     button = new JButton("log");
     gbc = new GridBagConstraints();
     gbc.gridx = 6;
@@ -1104,7 +1108,8 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-
+        textField.setText("log"+textField.getText());
+        inputField.inputTypesetting(0, textField.getText().length());
       }
 
     });

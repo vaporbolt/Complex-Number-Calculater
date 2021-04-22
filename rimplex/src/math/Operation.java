@@ -103,10 +103,20 @@ public class Operation
     {
       result = multiply(result, a);
     }
-    if(n < 0)
+    if (n < 0)
     {
       result = inverse(result);
     }
     return result;
+  }
+
+  public static ComplexNumber squareRoot(final ComplexNumber a)
+  {
+    return null;
+  }
+
+  public static ComplexNumber log(final ComplexNumber a)
+  {
+    return null;
   }
 }

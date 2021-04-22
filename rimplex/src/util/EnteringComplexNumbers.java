@@ -138,11 +138,17 @@ public final class EnteringComplexNumbers
     char operation = 0;
     ComplexNumber a = null;
     ComplexNumber b = null;
+    ComplexNumber result = null;
     int opId = -1;
 
     int i = 0;
+    if (input.contains("im"))
+    {
+      i = input.indexOf('m');
+    }
     while (i < input.length())
     {
+
       char token = input.charAt(i);
       if (token == '(')
       {
@@ -150,7 +156,7 @@ public final class EnteringComplexNumbers
         {
           negitive = true;
         }
-        if (a==null)
+        if (a == null)
 
         {
           a = parseComplexNumber(input.substring(i + 1, input.indexOf(')')));
@@ -213,32 +219,68 @@ public final class EnteringComplexNumbers
       throw new NumberFormatException();
     }
 
+    int opCount = 0;
     if (input.contains("con"))
     {
-      if (b != null)
-      {
-        throw new NumberFormatException();
-      }
-      return a.conjugate();
+      result = a.conjugate();
+      opCount++;
+    }
+    if (input.contains("sqrt"))
+    {
+      result = Operation.squareRoot(a);
+      opCount++;
+    }
+    if (input.contains("log"))
+    {
+      result = Operation.log(a);
+      opCount++;
+    }
+    if (input.contains("real"))
+    {
+      result = a.realPart();
+      opCount++;
+    }
+    if (input.contains("m"))
+    {
+      result = a.imaginaryPart();
+      opCount++;
+    }
+    if (input.contains("pol"))
+    {
+      result = a.polarFrom();
+      opCount++;
+    }
+
+    if (opCount > 1 || (result != null && b != null))
+    {
+      throw new NumberFormatException();
     }
 
     switch (operation)
     {
       case '+':
-        return Operation.add(a, b);
+        result = Operation.add(a, b);
+        break;
       case '*':
-        return Operation.multiply(a, b);
+        result = Operation.multiply(a, b);
+        break;
       case 'x':
-        return Operation.multiply(a, b);
+        result = Operation.multiply(a, b);
+        break;
       case '/':
-        return Operation.divide(a, b);
+        result = Operation.divide(a, b);
+        break;
       case '-':
-        return Operation.subtract(a, b);
+        result = Operation.subtract(a, b);
+        break;
       case '^':
-        return Operation.exponential(a, (int) b.getReal());
+        result = Operation.exponential(a, (int) b.getReal());
+        break;
       default:
-        return null;
+        break;
     }
+
+    return result;
 
   }
 

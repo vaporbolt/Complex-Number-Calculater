@@ -111,7 +111,7 @@ public class ComplexNumber
    * Returns the real value of this complex number.
    * @return a new complex number
    */
-  public ComplexNumber real()
+  public ComplexNumber realPart()
   {
     return new ComplexNumber(this.real, 0.0);
   }
@@ -121,9 +121,14 @@ public class ComplexNumber
    * Returns the imaginary value of this complex number.
    * @return a new complex number
    */
-  public ComplexNumber imaginary()
+  public ComplexNumber imaginaryPart()
   {
     return new ComplexNumber(0.0, this.imaginary);
+  }
+  
+  public ComplexNumber polarFrom()
+  {
+    return null;
   }
 
   /**
