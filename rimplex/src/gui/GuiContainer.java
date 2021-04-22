@@ -46,7 +46,7 @@ public class GuiContainer
   // holds all of the buttons(add subtract reset etc.)
   // private HashMap<String, JButton> buttons = new HashMap<String, JButton>();
 
-  final ResourceBundle STRINGS = ResourceBundle.getBundle("languages.Strings");
+  private static final ResourceBundle STRINGS = ResourceBundle.getBundle("languages.Strings");
 
   private InputField inputField = InputField.createInstance();
 
@@ -1541,7 +1541,7 @@ public class GuiContainer
     gbc.insets = new Insets(20, 0, 30, 0);
     gbl.setConstraints(languageList, gbc);
     languageList.addListSelectionListener(
-        new LanguageListener(languageList, model, closeButton, l, l2, button, stepLabel));
+        new LanguageListener(languageList, model, closeButton, l, l2, button, stepLabel, steps));
     contentPane.add(languageList);
   }
 
@@ -1619,7 +1619,7 @@ public class GuiContainer
     
     steps = new StepDisplay();
     steps.getPane().setBackground(scheme.getFieldColor());
-    steps.getPane().setFont(new Font("TimesRoman", Font.PLAIN, 14));
+    steps.getPane().setFont(new Font("TimesRoman", Font.PLAIN, 16));
     JScrollPane scrollDisplay = new JScrollPane(steps.getPane());
     scrollDisplay.setViewportBorder(null);
     scrollDisplay.setBorder(null);

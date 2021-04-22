@@ -17,8 +17,9 @@ public class LanguageListener implements ListSelectionListener
   private JLabel language;
   private JButton about;
   private JLabel stepLabel;
+  private StepDisplay stepWindow;
   
-  public LanguageListener(JList<String> languageList, DefaultListModel<String> model, JButton close, JLabel settings, JLabel language, JButton about, JLabel stepLabel)
+  public LanguageListener(JList<String> languageList, DefaultListModel<String> model, JButton close, JLabel settings, JLabel language, JButton about, JLabel stepLabel, StepDisplay stepWindow)
   {
     this.languageList = languageList;
     this.model = model;
@@ -27,6 +28,7 @@ public class LanguageListener implements ListSelectionListener
     this.language = language;
     this.about = about;
     this.stepLabel = stepLabel;
+    this.stepWindow = stepWindow;
   }
 
   @Override
@@ -44,6 +46,9 @@ public class LanguageListener implements ListSelectionListener
         language.setText("Idioma:");
         about.setText("acerca de");
         stepLabel.setText("Pasos");
+        stepWindow.setLanguage("Spanish");
+        stepWindow.applyLanguage();
+        stepWindow.displayTypesetting(0, stepWindow.getPane().getText().length());
       }
       else if (languageList.getSelectedValue().equals("English") || languageList.getSelectedValue().equals("Inglés") || languageList.getSelectedValue().equals("Anglais"))
       {
@@ -55,8 +60,11 @@ public class LanguageListener implements ListSelectionListener
         language.setText("Language:");
         about.setText("about");
         stepLabel.setText("Steps");
+        stepWindow.setLanguage("English");
+        stepWindow.applyLanguage();
+        stepWindow.displayTypesetting(0, stepWindow.getPane().getText().length());
       }
-      else
+      else 
       {
         model.setElementAt("Anglais", 0);
         model.setElementAt("L'espagnol", 1);
@@ -65,7 +73,10 @@ public class LanguageListener implements ListSelectionListener
         settings.setText("Paramètres");
         language.setText("Langue:");
         about.setText("à propos de");
-        stepLabel.setText("Pas");
+        stepLabel.setText("Des Pas");
+        stepWindow.setLanguage("French");
+        stepWindow.applyLanguage();
+        stepWindow.displayTypesetting(0, stepWindow.getPane().getText().length());
       }
     }
   }

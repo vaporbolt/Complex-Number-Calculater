@@ -63,6 +63,8 @@ public class EqualsHandler implements ActionListener
       String format = String.format(locale, input.getTextField().getText() + " = %s", answer);
       display.addText(format);
       stepWindow.getPane().setText(result.getSteps());
+      System.out.println(stepWindow.getLanguage());
+      stepWindow.applyLanguage();
       stepWindow.displayTypesetting(0, stepWindow.getPane().getText().length());
       
       // sets the input field to the result to use for the next calculation

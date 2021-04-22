@@ -5,9 +5,11 @@ import javax.swing.text.BadLocationException;
 
 public class StepDisplay
 {
-  JTextPane stepWindow;
+  private JTextPane stepWindow;
+  private String newLanguage = "English";
+  private String oldLanguage = null;
   
-  public StepDisplay ()
+  public StepDisplay()
   {
     stepWindow = new JTextPane();
   }
@@ -15,6 +17,17 @@ public class StepDisplay
   public JTextPane getPane()
   {
     return stepWindow;
+  }
+  
+  public String getLanguage()
+  {
+    return newLanguage;
+  }
+  
+  public void setLanguage(String language)
+  {
+    oldLanguage = this.newLanguage;
+    this.newLanguage = language;
   }
   
   /**
@@ -51,12 +64,44 @@ public class StepDisplay
         // removes everything in the string before and including the current i character
         s = s.substring(s.indexOf("i") + 1);
       }
-      int i = stepWindow.getText().indexOf("imaginary");
-      stepWindow.getDocument().remove(i, 9);
-      stepWindow.getDocument().insertString(i, "imaginary", null);
-      
     }
     catch (BadLocationException e)
+    {
+      
+    }
+  }
+  
+  /**
+   * Replaces all i characters in display with italicized i characters.
+   * 
+   * @param start the offset of the string to typeset
+   * @param end the end of the string to typeset
+   */
+  public void applyLanguage()
+  {
+    if (oldLanguage == null) return;
+    
+    if (oldLanguage.equals("English"))
+    {
+      if (newLanguage.equals("English")) applyLanguage("Step", "Step");
+      if (newLanguage.equals("Spanish")) applyLanguage("Step", "Paso");
+      if (newLanguage.equals("French")) applyLanguage("Step", "Pas ");
+    }
+    else if (oldLanguage.equals("Spanish"))
+    {
+      if (newLanguage.equals("English")) applyLanguage("Paso", "Step");
+      if (newLanguage.equals("Spanish")) applyLanguage("Paso", "Paso");
+      if (newLanguage.equals("French")) applyLanguage("Paso", "Pas");
+    }
+  }
+  
+  private void applyLanguage(String step, String step2)
+  {
+    try
+    { 
+      stepWindow.setText(stepWindow.getText().replaceAll(step, step2));
+    }
+    catch (Exception e)
     {
       
     }

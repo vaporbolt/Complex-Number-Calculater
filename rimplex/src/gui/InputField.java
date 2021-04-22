@@ -157,6 +157,7 @@ public class InputField
             String format = String.format(locale, field.getText() + " = %s", answer);
             display.addText(format);
             stepWindow.getPane().setText(result.getSteps());
+            stepWindow.applyLanguage();
             stepWindow.displayTypesetting(0, stepWindow.getPane().getText().length());
             
             // sets the input field to the result to use for the next calculation

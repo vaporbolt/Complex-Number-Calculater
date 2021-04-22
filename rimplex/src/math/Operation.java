@@ -1,5 +1,7 @@
 package math;
 
+import java.util.ResourceBundle;
+
 /**
  * Operation utility class.
  * 
@@ -8,6 +10,8 @@ package math;
  */
 public class Operation
 {
+  private static final ResourceBundle STRINGS = ResourceBundle.getBundle("languages.Strings");
+  
   /**
    * Returns a new ComplexNumber that is the sum of the two given numbers.
    * 
@@ -19,13 +23,14 @@ public class Operation
    */
   public static ComplexNumber add(final ComplexNumber a, final ComplexNumber b)
   {
-    String s = "Step 1, add real numbers: \n";
+    String s = a.toString() + " + " + b.toString() + " =\n";
+    s += STRINGS.getString("Step") + " 1: \n";
     double real = a.getReal() + b.getReal();
     s += "    " + a.getReal() + " + " + b.getReal() + " = " + real + "\n\n";
-    s += "Step 2, add imaginary numbers: \n";
+    s += STRINGS.getString("Step") +" 2: \n";
     double imaginary = a.getImaginary() + b.getImaginary();
     s += "    " + a.getImaginary() + "i + " + b.getImaginary() + "i = " + imaginary + "i\n\n";
-    s += "Step 3, add both results together: \n";
+    s += STRINGS.getString("Step") + " 3: \n";
     ComplexNumber result = new ComplexNumber(a.getReal() + b.getReal(), a.getImaginary() + b.getImaginary());
     s += "    " + real + " + " + imaginary + "i = " + result.toString();
     result.setSteps(s);
