@@ -122,7 +122,7 @@ public class InputField
    * @param display the display
    * @param plane the graph
    */
-  public void enterText(DisplayComponent display, CartesianPlane plane)
+  public void enterText(DisplayComponent display, CartesianPlane plane, StepDisplay stepWindow)
   {
     // to get the correct InputMap
     int condition = JComponent.WHEN_FOCUSED;  
@@ -156,6 +156,8 @@ public class InputField
             String answer = result.toString() + "\n";
             String format = String.format(locale, field.getText() + " = %s", answer);
             display.addText(format);
+            stepWindow.getPane().setText(result.getSteps());
+            stepWindow.displayTypesetting(0, stepWindow.getPane().getText().length());
             
             // sets the input field to the result to use for the next calculation
             field.setText(String.format(locale, "%s", result.toString()));

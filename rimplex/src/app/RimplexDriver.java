@@ -9,6 +9,7 @@ import color.ColorScheme;
 import gui.DisplayComponent;
 import gui.GuiContainer;
 import gui.InputField;
+import gui.StepDisplay;
 import visualization.CartesianPlane;
 
 /**
@@ -58,12 +59,15 @@ public class RimplexDriver
 
         // get plane
         CartesianPlane plane = container.getPlane();
+        
+        // get step window
+        StepDisplay steps = container.getSteps();
 
         // get input field
         InputField inputField = container.getInputField();
 
         // transfers text from inputField to display upon hitting enter
-        inputField.enterText(display, plane);
+        inputField.enterText(display, plane, steps);
       }
     });
   }

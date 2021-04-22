@@ -66,7 +66,7 @@ public class GuiContainer
   
   private JLabel stepLabel;
   
-  private JTextArea steps;
+  private StepDisplay steps;
 
   /**
    * creates the GUI container object with the proper gridbagLayout.
@@ -119,6 +119,16 @@ public class GuiContainer
   public CartesianPlane getPlane()
   {
     return this.plane;
+  }
+  
+  /**
+   * gets the step display.
+   * 
+   * @return steps
+   */
+  public StepDisplay getSteps()
+  {
+    return this.steps;
   }
 
   /**
@@ -585,7 +595,7 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
-    button.addActionListener(new EqualsHandler(display, inputField, plane));
+    button.addActionListener(new EqualsHandler(display, inputField, plane, steps));
     setButton(button);
     button.setForeground(scheme.getButtonSecondary());
     contentPane.add(button);
@@ -1605,15 +1615,15 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(0, 125, 0, 0);
     gbl.setConstraints(stepLabel, gbc);
-    contentPane.add(stepLabel);
+   contentPane.add(stepLabel);
     
-    steps = new JTextArea();
-    steps.setRows(11);
-    steps.setColumns(27);
-    steps.setBackground(scheme.getFieldColor());
-    JScrollPane scrollDisplay = new JScrollPane(steps);
+    steps = new StepDisplay();
+    steps.getPane().setBackground(scheme.getFieldColor());
+    steps.getPane().setFont(new Font("TimesRoman", Font.PLAIN, 14));
+    JScrollPane scrollDisplay = new JScrollPane(steps.getPane());
     scrollDisplay.setViewportBorder(null);
     scrollDisplay.setBorder(null);
+    scrollDisplay.setPreferredSize(new Dimension(300, 170));
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
     gbc.gridy = 1;

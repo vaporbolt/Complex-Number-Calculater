@@ -11,6 +11,7 @@ public class ComplexNumber
 {
   private double real;
   private double imaginary;
+  private String steps;
   
   private int sign;
 
@@ -26,6 +27,7 @@ public class ComplexNumber
   {
     this.real = real;
     this.imaginary = imaginary;
+    this.steps = "";
     
     this.sign = 1;
   }
@@ -188,6 +190,26 @@ public class ComplexNumber
       complete = realNum + " + " + imaginaryNum + "i";
     }
     return complete;
+  }
+  
+  /**
+   * Sets the printable steps for this complex number.
+   * 
+   * @param s the string to set
+   */
+  public void setSteps(String s)
+  {
+    steps = s;
+  }
+  
+  /**
+   * Access the printable steps for this complex number.
+   * 
+   * @return the printable steps
+   */
+  public String getSteps()
+  {
+    return steps;
   }
 
 }

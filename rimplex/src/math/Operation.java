@@ -19,7 +19,17 @@ public class Operation
    */
   public static ComplexNumber add(final ComplexNumber a, final ComplexNumber b)
   {
-    return new ComplexNumber(a.getReal() + b.getReal(), a.getImaginary() + b.getImaginary());
+    String s = "Step 1, add real numbers: \n";
+    double real = a.getReal() + b.getReal();
+    s += "    " + a.getReal() + " + " + b.getReal() + " = " + real + "\n\n";
+    s += "Step 2, add imaginary numbers: \n";
+    double imaginary = a.getImaginary() + b.getImaginary();
+    s += "    " + a.getImaginary() + "i + " + b.getImaginary() + "i = " + imaginary + "i\n\n";
+    s += "Step 3, add both results together: \n";
+    ComplexNumber result = new ComplexNumber(a.getReal() + b.getReal(), a.getImaginary() + b.getImaginary());
+    s += "    " + real + " + " + imaginary + "i = " + result.toString();
+    result.setSteps(s);
+    return result;
   }
 
   /**

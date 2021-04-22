@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
 
+import javax.swing.JTextPane;
+
 import math.ComplexNumber;
 import util.EnteringComplexNumbers;
 import visualization.CartesianPlane;
@@ -21,6 +23,7 @@ public class EqualsHandler implements ActionListener
   private DisplayComponent display;
   private InputField input;
   private CartesianPlane plane;
+  private StepDisplay stepWindow;
   
   /**
    * Creates an equals handler.
@@ -29,11 +32,12 @@ public class EqualsHandler implements ActionListener
    * @param input the input field
    * @param plane the graph
    */
-  public EqualsHandler(DisplayComponent display, InputField input, CartesianPlane plane)
+  public EqualsHandler(DisplayComponent display, InputField input, CartesianPlane plane, StepDisplay stepWindow)
   {
     this.display = display;
     this.input = input;
     this.plane = plane;
+    this.stepWindow = stepWindow;
   }
   
   /**
@@ -58,6 +62,8 @@ public class EqualsHandler implements ActionListener
       String answer = result.toString() + "\n";
       String format = String.format(locale, input.getTextField().getText() + " = %s", answer);
       display.addText(format);
+      stepWindow.getPane().setText(result.getSteps());
+      stepWindow.displayTypesetting(0, stepWindow.getPane().getText().length());
       
       // sets the input field to the result to use for the next calculation
       input.getTextField().setText(String.format(locale, "%s", result.toString()));
