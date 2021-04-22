@@ -16,8 +16,9 @@ public class LanguageListener implements ListSelectionListener
   private JLabel settings;
   private JLabel language;
   private JButton about;
+  private JLabel stepLabel;
   
-  public LanguageListener(JList<String> languageList, DefaultListModel<String> model, JButton close, JLabel settings, JLabel language, JButton about)
+  public LanguageListener(JList<String> languageList, DefaultListModel<String> model, JButton close, JLabel settings, JLabel language, JButton about, JLabel stepLabel)
   {
     this.languageList = languageList;
     this.model = model;
@@ -25,6 +26,7 @@ public class LanguageListener implements ListSelectionListener
     this.settings = settings;
     this.language = language;
     this.about = about;
+    this.stepLabel = stepLabel;
   }
 
   @Override
@@ -41,6 +43,7 @@ public class LanguageListener implements ListSelectionListener
         settings.setText("Configuración");
         language.setText("Idioma:");
         about.setText("acerca de");
+        stepLabel.setText("Pasos");
       }
       else if (languageList.getSelectedValue().equals("English") || languageList.getSelectedValue().equals("Inglés") || languageList.getSelectedValue().equals("Anglais"))
       {
@@ -51,6 +54,7 @@ public class LanguageListener implements ListSelectionListener
         settings.setText("Settings");
         language.setText("Language:");
         about.setText("about");
+        stepLabel.setText("Steps");
       }
       else
       {
@@ -61,6 +65,7 @@ public class LanguageListener implements ListSelectionListener
         settings.setText("Paramètres");
         language.setText("Langue:");
         about.setText("à propos de");
+        stepLabel.setText("Pas");
       }
     }
   }

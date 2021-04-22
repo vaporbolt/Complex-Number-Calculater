@@ -63,6 +63,10 @@ public class GuiContainer
   private JWindow stepWindow;
   
   private ColorScheme scheme;
+  
+  private JLabel stepLabel;
+  
+  private JTextArea steps;
 
   /**
    * creates the GUI container object with the proper gridbagLayout.
@@ -72,8 +76,8 @@ public class GuiContainer
     this.scheme = scheme;
     this.createPlaneWindow();
     this.createHistoryWindow();
-    this.createSettingsWindow();
     this.createStepWindow();
+    this.createSettingsWindow();
     this.addComponetsToPane();
   }
 
@@ -1527,7 +1531,7 @@ public class GuiContainer
     gbc.insets = new Insets(20, 0, 30, 0);
     gbl.setConstraints(languageList, gbc);
     languageList.addListSelectionListener(
-        new LanguageListener(languageList, model, closeButton, l, l2, button));
+        new LanguageListener(languageList, model, closeButton, l, l2, button, stepLabel));
     contentPane.add(languageList);
   }
 
@@ -1545,7 +1549,7 @@ public class GuiContainer
 
     button = new JButton(" ^ ");
     gbc = new GridBagConstraints();
-    gbc.gridx = 0;
+    gbc.gridx = 1;
     gbc.gridy = 2;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
@@ -1553,7 +1557,7 @@ public class GuiContainer
     gbc.anchor = GridBagConstraints.SOUTH;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(0, 0, -110, 0);
+    gbc.insets = new Insets(0, 0, 0, 0);
     gbl.setConstraints(button, gbc);
     button.setBackground(scheme.getStepBackgroundColor());
     button.setBorderPainted(false);
@@ -1587,6 +1591,41 @@ public class GuiContainer
 
     });
     contentPane.add(button);
+    
+    stepLabel = new JLabel("Steps");
+    stepLabel.setFont(new Font("TimesRoman", Font.BOLD, 18));
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.EAST;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(0, 125, 0, 0);
+    gbl.setConstraints(stepLabel, gbc);
+    contentPane.add(stepLabel);
+    
+    steps = new JTextArea();
+    steps.setRows(11);
+    steps.setColumns(27);
+    steps.setBackground(scheme.getFieldColor());
+    JScrollPane scrollDisplay = new JScrollPane(steps);
+    scrollDisplay.setViewportBorder(null);
+    scrollDisplay.setBorder(null);
+    gbc = new GridBagConstraints();
+    gbc.gridx = 0;
+    gbc.gridy = 1;
+    gbc.gridwidth = 2;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(5, 0, 0, 0);
+    gbl.setConstraints(scrollDisplay, gbc);
+    contentPane.add(scrollDisplay);
   }
 
 }
