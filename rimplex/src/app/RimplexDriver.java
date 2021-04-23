@@ -10,6 +10,7 @@ import gui.DisplayComponent;
 import gui.GuiContainer;
 import gui.InputField;
 import gui.StepDisplay;
+import pictures.RimplexIcon;
 import visualization.CartesianPlane;
 
 /**
@@ -36,6 +37,7 @@ public class RimplexDriver
       {
         // Get ColorScheme from passed color scheme file
         ColorScheme scheme = null;
+        RimplexIcon icon;
 
         try
         {
@@ -47,11 +49,14 @@ public class RimplexDriver
           if (e instanceof IllegalStateException)
             throw new IllegalStateException("a scheme already exists!");
         }
+        
 
-        // Get Logo from passed logo file
+      
 
         // create GUI
         GuiContainer container = GuiContainer.createInstance(scheme);
+        // Get icon from a passed image file, and set the jframe to it.
+        icon = RimplexIcon.createInstance(args[1], container.getJframe());
         container.showGUI();
 
         // get display
@@ -68,6 +73,7 @@ public class RimplexDriver
 
         // transfers text from inputField to display upon hitting enter
         inputField.enterText(display, plane, steps);
+        
       }
     });
   }
