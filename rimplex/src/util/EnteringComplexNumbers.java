@@ -247,7 +247,7 @@ public final class EnteringComplexNumbers
     }
     if (input.contains("pol"))
     {
-      result = a.polarFrom();
+      result = a.polarForm();
       opCount++;
     }
 

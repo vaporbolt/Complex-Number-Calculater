@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import math.ComplexNumber;
+import math.PolarForm;
 
 /**
  * Draws a cartesian plane for the purpose of plotting complex numbers on it.
@@ -105,7 +106,15 @@ public class CartesianPlane extends JPanel
     g2.draw(new Line2D.Double(x1, axisY, x2, axisY));
 
     // draw points
-    points.forEach(p -> drawPoint(p, g2));
+    for (ComplexNumberPoint p : points)
+    {
+      drawPoint(p, g2);
+      if (p.getComplexNumber() instanceof PolarForm)
+      {
+        drawPolarArrow(p, g2);
+      }
+    }
+
   }
 
   /**
@@ -136,6 +145,27 @@ public class CartesianPlane extends JPanel
     double y = axisY - point.getY() * spacing;
     g.draw(new Line2D.Double(x, y, x, y));
 
+  }
+
+  /**
+   * draws an arrow to a Polar Complex Number.
+   * 
+   * @param point
+   *          Polar ComplexNumberPoint
+   * @param g
+   *          Graphics2D
+   */
+  private void drawPolarArrow(final ComplexNumberPoint point, final Graphics2D g)
+  {
+    double x = axisX + point.getX() * spacing;
+    double y = axisY - point.getY() * spacing;
+   
+    g.setStroke(new BasicStroke(2));
+    g.setColor(new Color(87, 186, 97));
+    g.draw(new Line2D.Double(axisX, axisY, x, y)); // draws hypotenuse
+    
+    g.setColor(Color.ORANGE);
+    g.draw(new Line2D.Double(x, y, x, getHeight() / 2)); // draws vertical component
   }
 
   /**

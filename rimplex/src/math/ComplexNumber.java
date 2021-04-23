@@ -132,9 +132,9 @@ public class ComplexNumber
    * Returns the polar form of the ComplexNumber.
    * @return the polar form of the Complex Number
    */
-  public ComplexNumber polarFrom()
+  public ComplexNumber polarForm()
   {
-    return null;
+    return new PolarForm(this.real, this.imaginary);
   }
 
   /**
