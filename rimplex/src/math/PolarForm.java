@@ -24,7 +24,7 @@ public class PolarForm extends ComplexNumber
   
   public String toString()
   {
-    return String.format("%.2f ∠ %.2f", r, theta);
+    return String.format("%.2f cis %.2f", r, theta);
   }
   
   public double getR()
