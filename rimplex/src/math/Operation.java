@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 public class Operation
 {
   private static final ResourceBundle STRINGS = ResourceBundle.getBundle("languages.Strings");
-  
+
   /**
    * Returns a new ComplexNumber that is the sum of the two given numbers.
    * 
@@ -27,11 +27,12 @@ public class Operation
     s += STRINGS.getString("Step") + " 1: \n";
     double real = a.getReal() + b.getReal();
     s += "    " + a.getReal() + " + " + b.getReal() + " = " + real + "\n\n";
-    s += STRINGS.getString("Step") +" 2: \n";
+    s += STRINGS.getString("Step") + " 2: \n";
     double imaginary = a.getImaginary() + b.getImaginary();
     s += "    " + a.getImaginary() + "i + " + b.getImaginary() + "i = " + imaginary + "i\n\n";
     s += STRINGS.getString("Step") + " 3: \n";
-    ComplexNumber result = new ComplexNumber(a.getReal() + b.getReal(), a.getImaginary() + b.getImaginary());
+    ComplexNumber result = new ComplexNumber(a.getReal() + b.getReal(),
+        a.getImaginary() + b.getImaginary());
     s += "    " + real + " + " + imaginary + "i = " + result.toString();
     result.setSteps(s);
     return result;
@@ -48,12 +49,12 @@ public class Operation
    */
   public static ComplexNumber subtract(final ComplexNumber a, final ComplexNumber b)
   {
-    
+
     String s = a.toString() + " - " + b.toString() + " =\n";
     s += STRINGS.getString("Step") + " 1: \n";
     double real = a.getReal() - b.getReal();
     s += "    " + a.getReal() + " - " + b.getReal() + " = " + real + "\n\n";
-    s += STRINGS.getString("Step") +" 2: \n";
+    s += STRINGS.getString("Step") + " 2: \n";
     double imaginary = a.getImaginary() - b.getImaginary();
     s += "    " + a.getImaginary() + "i - " + b.getImaginary() + "i = " + imaginary + "i\n\n";
     s += STRINGS.getString("Step") + " 3: \n";
@@ -61,8 +62,8 @@ public class Operation
     s += "    " + real + " + " + imaginary + "i = " + result.toString();
     result.setSteps(s);
     return result;
-    
-    //return new ComplexNumber(a.getReal() - b.getReal(), a.getImaginary() - b.getImaginary());
+
+    // return new ComplexNumber(a.getReal() - b.getReal(), a.getImaginary() - b.getImaginary());
   }
 
   /**
@@ -76,8 +77,23 @@ public class Operation
    */
   public static ComplexNumber multiply(final ComplexNumber a, final ComplexNumber b)
   {
-    return new ComplexNumber(a.getReal() * b.getReal() - a.getImaginary() * b.getImaginary(),
-        a.getReal() * b.getImaginary() + a.getImaginary() * b.getReal());
+    String s = a.toString() + " * " + b.toString() + " =\n";
+    s += STRINGS.getString("Step") + " 1: \n";
+    double real = a.getReal() * b.getReal() - a.getImaginary() * b.getImaginary();
+    s += "    " + a.getReal() + " * " + b.getReal() + " - " + a.getImaginary() + "i *"
+        + b.getImaginary() + " = " + real + "\n\n";
+    s += STRINGS.getString("Step") + " 2: \n";
+    double imaginary = a.getReal() * b.getImaginary() + a.getImaginary() * b.getReal();
+    s += "    " + a.getReal() + " * " + b.getImaginary() + "i + " + a.getImaginary() + "i *"
+        + b.getReal() + " = " + imaginary + "i\n\n";
+    s += STRINGS.getString("Step") + " 3: \n";
+    ComplexNumber result = new ComplexNumber(real, imaginary);
+    s += "    " + real + " + " + imaginary + "i = " + result.toString();
+    result.setSteps(s);
+    return result;
+
+    // return new ComplexNumber(a.getReal() * b.getReal() - a.getImaginary() *
+    // b.getImaginary(),a.getReal() * b.getImaginary() + a.getImaginary() * b.getReal());
   }
 
   /**
@@ -91,13 +107,33 @@ public class Operation
    */
   public static ComplexNumber divide(final ComplexNumber a, final ComplexNumber b)
   {
-    ComplexNumber top = Operation.multiply(a, b.conjugate());
+    String s = a.toString() + " / " + b.toString() + " =\n";
+    s += STRINGS.getString("Step") + " 1: \n";
+    s += "    Con" + b.toString() + " = " + b.conjugate().toString() + "\n\n";
+    s += STRINGS.getString("Step") + " 2: \n";
+    ComplexNumber top = multiply(a, b.conjugate());
+    s += "    " + a.toString() + " * " + b.conjugate().toString() + " = " + top.toString() + "\n\n";
+    s += STRINGS.getString("Step") + " 3: \n";
+    double bottom = multiply(b, b.conjugate()).getReal();
+    if (bottom == 0)
+    {
+      throw new IllegalArgumentException();
+    }
+    s += "    " + b.toString() + " * " + b.conjugate().toString() + " = " + bottom + "\n\n";
+
+    s += STRINGS.getString("Step") + " 4: \n";
+    ComplexNumber result = new ComplexNumber(top.getReal() / bottom, top.getImaginary() / bottom);
+    s += "    " + top.toString() + " / " + bottom + " = " + result.toString();
+    result.setSteps(s);
+    return result;
+
+    /*ComplexNumber top = Operation.multiply(a, b.conjugate());
     double bottom = b.getReal() * b.getReal() + b.getImaginary() * b.getImaginary();
     if (bottom == 0)
     {
       throw new IllegalArgumentException();
     }
-    return new ComplexNumber(top.getReal() / bottom, top.getImaginary() / bottom);
+    return new ComplexNumber(top.getReal() / bottom, top.getImaginary() / bottom);*/
   }
 
   /**
