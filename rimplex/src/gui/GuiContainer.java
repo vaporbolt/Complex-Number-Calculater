@@ -207,7 +207,7 @@ public class GuiContainer
     this.settingWindow.setAlwaysOnTop(true);
     
     // step window
-    this.stepWindow.getContentPane().setBackground(scheme.getStepBackgroundColor());
+    this.stepWindow.getContentPane().setBackground(scheme.getHistoryBackgroundColor());
     this.stepWindow.getRootPane()
         .setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, scheme.getBackgroundColor()));
     this.stepWindow.setSize(this.jframeWidth - 20, this.jframeHeight - 270);
@@ -1530,7 +1530,7 @@ public class GuiContainer
     model.add(1, STRINGS.getString("Spanish"));
     model.add(2, STRINGS.getString("French"));
     languageList.setFont(new Font("TimesRoman", Font.PLAIN, 13));
-    languageList.setBackground(new Color(199, 238, 255));
+    languageList.setBackground(scheme.getSettingsBackgroundColor());
     languageList.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 2, Color.BLACK));
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
