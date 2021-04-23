@@ -7,6 +7,12 @@ import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+/**
+ * Creates a listener to the language menu component.
+ * 
+ * @author Jackson Brantley
+ *
+ */
 public class LanguageListener implements ListSelectionListener
 {
   
@@ -19,7 +25,20 @@ public class LanguageListener implements ListSelectionListener
   private JLabel stepLabel;
   private StepDisplay stepWindow;
   
-  public LanguageListener(JList<String> languageList, DefaultListModel<String> model, JButton close, JLabel settings, JLabel language, JButton about, JLabel stepLabel, StepDisplay stepWindow)
+  /**
+   * Creates a language listener.
+   * 
+   * @param languageList the language menu
+   * @param model the language menu
+   * @param close the settings close button
+   * @param settings the settings window
+   * @param language the language label for settings
+   * @param about the about button
+   * @param stepLabel the label for the step window
+   * @param stepWindow the step window
+   */
+  public LanguageListener(JList<String> languageList, DefaultListModel<String> model, JButton close, JLabel settings,
+      JLabel language, JButton about, JLabel stepLabel, StepDisplay stepWindow)
   {
     this.languageList = languageList;
     this.model = model;
@@ -31,12 +50,18 @@ public class LanguageListener implements ListSelectionListener
     this.stepWindow = stepWindow;
   }
 
+  /**
+   * Sets the new language for all of the items the language listener is parsed.
+   * 
+   * @param e the list selection event
+   */
   @Override
   public void valueChanged(ListSelectionEvent e)
   {
     if (!e.getValueIsAdjusting())
     {
-      if (languageList.getSelectedValue().equals("Spanish") || languageList.getSelectedValue().equals("Español") || languageList.getSelectedValue().equals("L'espagnol"))
+      if (languageList.getSelectedValue().equals("Spanish") || languageList.getSelectedValue().equals("Español") 
+          || languageList.getSelectedValue().equals("L'espagnol"))
       {
         model.setElementAt("Inglés", 0);
         model.setElementAt("Español", 1);
@@ -50,7 +75,8 @@ public class LanguageListener implements ListSelectionListener
         stepWindow.applyLanguage();
         stepWindow.displayTypesetting(0, stepWindow.getPane().getText().length());
       }
-      else if (languageList.getSelectedValue().equals("English") || languageList.getSelectedValue().equals("Inglés") || languageList.getSelectedValue().equals("Anglais"))
+      else if (languageList.getSelectedValue().equals("English") || languageList.getSelectedValue().equals("Inglés") 
+          || languageList.getSelectedValue().equals("Anglais"))
       {
         model.setElementAt("English", 0);
         model.setElementAt("Spanish", 1);

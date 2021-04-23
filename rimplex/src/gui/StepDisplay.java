@@ -1,29 +1,60 @@
 package gui;
 
+import java.util.Locale;
+
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 
+/**
+ * The step window class.
+ * 
+ * @author Jackson Brantley
+ *
+ */
 public class StepDisplay
 {
   private JTextPane stepWindow;
-  private String newLanguage = "English";
-  private String oldLanguage = null;
+  private String newLanguage;
+  private String oldLanguage;
   
+  /**
+   * Constructs a step display.
+   */
   public StepDisplay()
   {
     stepWindow = new JTextPane();
+    if (Locale.getDefault().getLanguage().equals("en")) newLanguage = "English";
+    else if (Locale.getDefault().getLanguage().equals("fr")) newLanguage = "French";
+    else if (Locale.getDefault().getLanguage().equals("es")) newLanguage = "Spanish";
+    else newLanguage = "English";
+    oldLanguage = null;
   }
   
+  /**
+   * Gets the text area for the step window.
+   * 
+   * @return the text pane
+   */
   public JTextPane getPane()
   {
     return stepWindow;
   }
   
+  /**
+   * Gets the current language for the window.
+   * 
+   * @return the language
+   */
   public String getLanguage()
   {
     return newLanguage;
   }
   
+  /**
+   * Sets the current language.
+   * 
+   * @param language the new language
+   */
   public void setLanguage(String language)
   {
     oldLanguage = this.newLanguage;
@@ -31,7 +62,7 @@ public class StepDisplay
   }
   
   /**
-   * Replaces all i characters in display with italicized i characters.
+   * Replaces all i characters in stepDisplay with italicized i characters.
    * 
    * @param start the offset of the string to typeset
    * @param end the end of the string to typeset
@@ -72,39 +103,32 @@ public class StepDisplay
   }
   
   /**
-   * Replaces all i characters in display with italicized i characters.
-   * 
-   * @param start the offset of the string to typeset
-   * @param end the end of the string to typeset
+   * Replaces all words with the correct language.
    */
   public void applyLanguage()
   {
     if (oldLanguage == null) return;
-    
-    if (oldLanguage.equals("English"))
-    {
-      if (newLanguage.equals("English")) applyLanguage("Step", "Step");
-      if (newLanguage.equals("Spanish")) applyLanguage("Step", "Paso");
-      if (newLanguage.equals("French")) applyLanguage("Step", "Pas ");
-    }
-    else if (oldLanguage.equals("Spanish"))
-    {
-      if (newLanguage.equals("English")) applyLanguage("Paso", "Step");
-      if (newLanguage.equals("Spanish")) applyLanguage("Paso", "Paso");
-      if (newLanguage.equals("French")) applyLanguage("Paso", "Pas");
-    }
+
+    if (stepWindow.getText().contains("Step") && newLanguage.equals("French")) applyLanguage("Step", "Pas ");
+    else if (stepWindow.getText().contains("Step") && newLanguage.equals("English")) applyLanguage("Step", "Step");
+    else if (stepWindow.getText().contains("Step") && newLanguage.equals("Spanish")) applyLanguage("Step", "Paso");
+    else if (stepWindow.getText().contains("Pas ") && newLanguage.equals("French")) applyLanguage("Pas ", "Pas ");
+    else if (stepWindow.getText().contains("Pas ") && newLanguage.equals("English")) applyLanguage("Pas ", "Step");
+    else if (stepWindow.getText().contains("Pas ") && newLanguage.equals("Spanish")) applyLanguage("Pas ", "Paso");
+    else if (stepWindow.getText().contains("Paso") && newLanguage.equals("French")) applyLanguage("Paso", "Pas ");
+    else if (stepWindow.getText().contains("Paso") && newLanguage.equals("English")) applyLanguage("Paso", "Step");
+    else if (stepWindow.getText().contains("Paso") && newLanguage.equals("Spanish")) applyLanguage("Paso", "Paso");
   }
   
+  /**
+   * Helper method for the applyLanguage method.
+   * 
+   * @param step the old language to replace
+   * @param step2 the new language to replace with
+   */
   private void applyLanguage(String step, String step2)
   {
-    try
-    { 
-      stepWindow.setText(stepWindow.getText().replaceAll(step, step2));
-    }
-    catch (Exception e)
-    {
-      
-    }
+    stepWindow.setText(stepWindow.getText().replaceAll(step, step2));
   }
 
 }
