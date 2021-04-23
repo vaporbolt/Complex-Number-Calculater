@@ -1605,7 +1605,7 @@ public class GuiContainer
     });
     contentPane.add(button);
     
-    stepLabel = new JLabel("Steps");
+    stepLabel = new JLabel(STRINGS.getString("Steps"));
     stepLabel.setFont(new Font("TimesRoman", Font.BOLD, 18));
     gbc = new GridBagConstraints();
     gbc.gridx = 1;
