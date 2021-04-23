@@ -1300,6 +1300,9 @@ public class GuiContainer
     Image newimg = image.getScaledInstance(15, 15, java.awt.Image.SCALE_SMOOTH);
     printIcon = new ImageIcon(newimg);
     button = new JButton(printIcon);
+    // add listener to button.
+    HistoryPrinterHandeler handeler = new HistoryPrinterHandeler(this.getDisplay().getPanel());
+    button.addActionListener(handeler);
     gbc = new GridBagConstraints();
     gbc.gridx = 1;
     gbc.gridy = 0;
