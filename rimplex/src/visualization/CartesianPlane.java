@@ -19,32 +19,37 @@ import math.ComplexNumber;
  */
 public class CartesianPlane extends JPanel
 {
-  
+
   private static final long serialVersionUID = -5340977851975906294L;
-  
-  private final double spacing = 7;
+
+  private final String i = "i";
+
+  private final double spacing = 10;
   private double height;
   private double width;
   private double axisX;
   private double axisY;
-  
+
   private ArrayList<ComplexNumberPoint> points = new ArrayList<ComplexNumberPoint>();
-  
+
   /**
-   * Basic Constructor
+   * Basic Constructor.
    */
   public CartesianPlane()
   {
     this.setBackground(Color.WHITE);
   }
-  
+
   /**
-   * paints the axis's and points if there are any
+   * paints the axis's and points if there are any.
+   * 
+   * @param g
+   *          Graphics
    */
-  public void paintComponent(Graphics g)
+  public void paintComponent(final Graphics g)
   {
     super.paintComponent(g);
-    
+
     this.height = getHeight();
     this.width = getWidth();
     this.axisX = width / 2.0;
@@ -53,60 +58,86 @@ public class CartesianPlane extends JPanel
     final double y1 = 0;
     final double x2 = width;
     final double y2 = height;
-    
+
     Graphics2D g2 = (Graphics2D) g;
-    
+
     g2.setColor(Color.GRAY);
     g2.setStroke(new BasicStroke(1));
-    
-    // draw y lines
-    for (double x = spacing; axisX + x <= width ; x += spacing)
+
+    // draw vertical lines with real number axis numbers
+    for (double x = spacing; axisX + x <= width; x += spacing)
     {
+      g2.setColor(Color.GRAY);
       g2.draw(new Line2D.Double(axisX + x, y1, axisX + x, y2));
       g2.draw(new Line2D.Double(axisX - x, y1, axisX - x, y2));
+
+      if (x / spacing % 2 == 0)
+      {
+        g2.setColor(Color.BLACK);
+        g2.drawString(Integer.toString((int) (x / spacing)), (int) (axisX + x), (int) (axisX));
+        g2.drawString(Integer.toString((int) ((-x) / spacing)), (int) (axisX - x), (int) (axisX));
+      }
     }
-    
-    // draw x lines
+
+    // draw horizontal lines with imaginary number axis numbers
     for (double y = spacing; axisY + y <= height; y += spacing)
     {
+      g2.setColor(Color.GRAY);
       g2.draw(new Line2D.Double(x1, axisY + y, x2, axisY + y));
       g2.draw(new Line2D.Double(x1, axisY - y, x2, axisY - y));
+
+      if (y / spacing % 2 == 0)
+      {
+        g2.setColor(Color.BLACK);
+        g2.drawString(Integer.toString((int) ((-y) / spacing)) + i, (int) (axisY),
+            (int) (axisY + y));
+        g2.drawString(Integer.toString((int) (y / spacing)) + i, (int) (axisY), (int) (axisY - y));
+      }
     }
-    
+
     // draw x axis and y axis
-    g2.setColor(Color.BLACK);
     g2.setStroke(new BasicStroke(2));
+    // x axis
+    g2.setColor(Color.BLUE);
     g2.draw(new Line2D.Double(axisX, y1, axisX, y2));
+    // y axis
+    g2.setColor(Color.RED);
     g2.draw(new Line2D.Double(x1, axisY, x2, axisY));
-    
+
     // draw points
     points.forEach(p -> drawPoint(p, g2));
   }
-  
+
   /**
    * Adds point to the points arrayList.
-   * @param point ComplexNumberPoint
+   * 
+   * @param number
+   *          ComplexNumberPoint
    */
-  public void addPoint(ComplexNumber number)
+  public void addPoint(final ComplexNumber number)
   {
     points.add(new ComplexNumberPoint(number));
     repaint();
   }
-  
+
   /**
    * draws point on the Cartesian plane.
-   * @param point ComplexNumberPoint
+   * 
+   * @param point
+   *          ComplexNumberPoint
+   * @param g
+   *          Graphics
    */
-  private void drawPoint(ComplexNumberPoint point, Graphics2D g)
+  private void drawPoint(final ComplexNumberPoint point, final Graphics2D g)
   {
     g.setStroke(new BasicStroke(5));
     g.setColor(Color.BLUE);
     double x = axisX + point.getX() * spacing;
     double y = axisY - point.getY() * spacing;
     g.draw(new Line2D.Double(x, y, x, y));
-    
+
   }
-  
+
   /**
    * clear plane of drawn points.
    */
@@ -115,5 +146,5 @@ public class CartesianPlane extends JPanel
     points.removeAll(points);
     repaint();
   }
-  
+
 }
