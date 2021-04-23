@@ -128,6 +128,10 @@ public class ComplexNumber
     return new ComplexNumber(0.0, this.imaginary);
   }
   
+  /**
+   * Returns the polar form of the ComplexNumber.
+   * @return the polar form of the Complex Number
+   */
   public ComplexNumber polarFrom()
   {
     return null;

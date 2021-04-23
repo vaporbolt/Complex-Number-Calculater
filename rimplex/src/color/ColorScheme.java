@@ -36,7 +36,10 @@ public class ColorScheme
   /**
    * Private Constructor.
    * 
+   * @param in
+   *          BufferedReader
    * @throws IOException
+   *           If file reading fails
    */
   private ColorScheme(final BufferedReader in) throws IOException
   {
@@ -46,6 +49,8 @@ public class ColorScheme
   /**
    * Factory method for ColorScheme.
    * 
+   * @param in
+   *          BufferedReader
    * @return ColorScheme
    * @throws IOException,
    *           IllegalStateException
@@ -87,16 +92,19 @@ public class ColorScheme
     String[] bBorder = in.readLine().split(regex);
     this.buttonBorderColor = new Color(Integer.parseInt(bBorder[0]), Integer.parseInt(bBorder[1]),
         Integer.parseInt(bBorder[2]));
-    
+
     String[] bDefault = in.readLine().split(regex);
-    this.buttonDefault = new Color(Integer.parseInt(bDefault[0]), Integer.parseInt(bDefault[1]), Integer.parseInt(bDefault[2]));
+    this.buttonDefault = new Color(Integer.parseInt(bDefault[0]), Integer.parseInt(bDefault[1]),
+        Integer.parseInt(bDefault[2]));
 
     String[] bSecondary = in.readLine().split(regex);
-    this.buttonSecondary = new Color(Integer.parseInt(bSecondary[0]), Integer.parseInt(bSecondary[1]), Integer.parseInt(bSecondary[2]));
-    
+    this.buttonSecondary = new Color(Integer.parseInt(bSecondary[0]),
+        Integer.parseInt(bSecondary[1]), Integer.parseInt(bSecondary[2]));
+
     String[] bTertiary = in.readLine().split(regex);
-    this.buttonTertiary = new Color(Integer.parseInt(bTertiary[0]), Integer.parseInt(bTertiary[1]), Integer.parseInt(bTertiary[2]));
-    
+    this.buttonTertiary = new Color(Integer.parseInt(bTertiary[0]), Integer.parseInt(bTertiary[1]),
+        Integer.parseInt(bTertiary[2]));
+
     // Section Specific
     String[] hBack = in.readLine().split(regex);
     this.historyBackgroundColor = new Color(Integer.parseInt(hBack[0]), Integer.parseInt(hBack[1]),
