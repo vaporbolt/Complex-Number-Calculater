@@ -127,7 +127,12 @@ public class ComplexNumber
    */
   public ComplexNumber realPart()
   {
-    return new ComplexNumber(this.real, 0.0);
+    ComplexNumber result = new ComplexNumber(this.real, 0.0);
+    String s = "real" + this.toString() + " =\n";
+    s += STRINGS.getString("Step") + " 1:\n";
+    s += "    = " + result.toString();
+    result.setSteps(s);
+    return result;
   }
   
   
@@ -137,7 +142,12 @@ public class ComplexNumber
    */
   public ComplexNumber imaginaryPart()
   {
-    return new ComplexNumber(0.0, this.imaginary);
+    ComplexNumber result = new ComplexNumber(0.0, this.imaginary);
+    String s = "imaginary" + this.toString() + " =\n";
+    s += STRINGS.getString("Step") + " 1:\n";
+    s += "    = " + result.toString();
+    result.setSteps(s);
+    return result;
   }
   
   /**

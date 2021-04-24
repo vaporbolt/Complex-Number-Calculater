@@ -235,7 +235,7 @@ public final class EnteringComplexNumbers
       result = Operation.log(a);
       opCount++;
     }
-    if (input.contains("real"))
+    if (input.contains("r"))
     {
       result = a.realPart();
       opCount++;

@@ -117,15 +117,35 @@ public class StepDisplay
   {
     if (oldLanguage == null) return;
 
-    if (stepWindow.getText().contains("Step") && newLanguage.equals("French")) applyLanguage("Step", "Pas ");
-    else if (stepWindow.getText().contains("Step") && newLanguage.equals("English")) applyLanguage("Step", "Step");
-    else if (stepWindow.getText().contains("Step") && newLanguage.equals("Spanish")) applyLanguage("Step", "Paso");
-    else if (stepWindow.getText().contains("Pas ") && newLanguage.equals("French")) applyLanguage("Pas ", "Pas ");
-    else if (stepWindow.getText().contains("Pas ") && newLanguage.equals("English")) applyLanguage("Pas ", "Step");
-    else if (stepWindow.getText().contains("Pas ") && newLanguage.equals("Spanish")) applyLanguage("Pas ", "Paso");
-    else if (stepWindow.getText().contains("Paso") && newLanguage.equals("French")) applyLanguage("Paso", "Pas ");
-    else if (stepWindow.getText().contains("Paso") && newLanguage.equals("English")) applyLanguage("Paso", "Step");
-    else if (stepWindow.getText().contains("Paso") && newLanguage.equals("Spanish")) applyLanguage("Paso", "Paso");
+    if (stepWindow.getText().contains("Step") && newLanguage.equals("French")) 
+    {
+      applyLanguage("Step", "Pas ");
+      applyLanguage("real", "réel");
+    }
+    else if (stepWindow.getText().contains("Step") && newLanguage.equals("Spanish")) 
+    {
+      applyLanguage("Step", "Paso");
+    }
+    else if (stepWindow.getText().contains("Pas ") && newLanguage.equals("English"))
+    {
+      applyLanguage("Pas ", "Step");
+      applyLanguage("réel", "real");
+      
+    }
+    else if (stepWindow.getText().contains("Pas ") && newLanguage.equals("Spanish")) 
+    {
+      applyLanguage("Pas ", "Paso");
+      applyLanguage("réel", "real");
+    }
+    else if (stepWindow.getText().contains("Paso") && newLanguage.equals("French")) 
+    {
+      applyLanguage("Paso", "Pas ");
+      applyLanguage("real", "réel");
+    }
+    else if (stepWindow.getText().contains("Paso") && newLanguage.equals("English")) 
+    {
+      applyLanguage("Paso", "Step");
+    }
   }
   
   /**

@@ -1010,7 +1010,7 @@ public class GuiContainer
       @Override
       public void actionPerformed(ActionEvent e)
       {
-        textField.setText("real"+textField.getText());
+        textField.setText("r"+textField.getText());
         inputField.inputTypesetting(0, textField.getText().length());
       }
 

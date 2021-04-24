@@ -1,5 +1,7 @@
 package math;
 
+import java.util.ResourceBundle;
+
 /**
  * Polar Form Representation of a ComplexNumber.
  * 
@@ -9,6 +11,7 @@ package math;
  */
 public class PolarForm extends ComplexNumber
 {
+  private static final ResourceBundle STRINGS = ResourceBundle.getBundle("languages.Strings");
   private double a;
   private double b;
 
@@ -28,6 +31,8 @@ public class PolarForm extends ComplexNumber
     super(real, imaginary);
     a = real;
     b = imaginary;
+    String s = "pol" + super.toString() + " =\n";
+    s += STRINGS.getString("Step") + " 1:\n";
     // calculate polar form
     if (real == 0 && imaginary == 0)
     {
@@ -43,6 +48,12 @@ public class PolarForm extends ComplexNumber
         theta += Math.PI;
       }
     }
+    s += String.format("    (" + a + "^2 + " + b + "^2) ^ 0.5 = " + "%.2f" + "\n\n", r);
+    s += STRINGS.getString("Step") + " 2:\n";
+    s += String.format("    tan^-1(" + a + " / " + b + ") = %.2f\n\n", theta);
+    s += STRINGS.getString("Step") + " 3:\n";
+    s += "    = " + this.toString();
+    super.setSteps(s);
   }
 
   /**
