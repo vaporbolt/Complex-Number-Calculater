@@ -1,5 +1,7 @@
 package math;
 
+import java.util.ResourceBundle;
+
 /**
  * ComplexNumber class. It can represent either a real number, an imaginary number, or a real number
  * plus an imaginary number
@@ -9,6 +11,7 @@ package math;
  */
 public class ComplexNumber
 {
+  private static final ResourceBundle STRINGS = ResourceBundle.getBundle("languages.Strings");
   private double real;
   private double imaginary;
   private String steps;
@@ -106,7 +109,16 @@ public class ComplexNumber
    */
   public ComplexNumber conjugate()
   {
-    return new ComplexNumber(this.real, this.imaginary * -1);
+    String s = "con" + this.toString() + " =\n";
+    s += STRINGS.getString("Step") + " 1:\n";
+    s += "    " + this.imaginaryPart().toString() + " * - 1 =\n\n";
+    s += STRINGS.getString("Step") + " 2:\n";
+    s += "    " + this.realPart() + " + " + this.getImaginary() * -1 + "i =\n\n";
+    ComplexNumber result = new ComplexNumber(this.real, this.imaginary * -1);
+    s += STRINGS.getString("Step") + " 3:\n";
+    s += "    " + result.toString();
+    result.setSteps(s);
+    return result;
   }
   
   /**
@@ -161,6 +173,7 @@ public class ComplexNumber
     String realNum = "";
     String imaginaryNum = "";
 
+    if (this.real == 0 && this.imaginary == 0) return "(0)";
     // check for integer or double
     if (this.real == (int) this.real)
       realNum += (int) this.real;

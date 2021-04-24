@@ -472,7 +472,7 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(10, 5, 10, 5);
     gbl.setConstraints(button, gbc);
-    button.addActionListener(new ResetHandler(display, inputField, plane));
+    button.addActionListener(new ResetHandler(display, inputField, plane, steps));
     setButton(button);
     button.setForeground(scheme.getButtonSecondary());
     contentPane.add(button);

@@ -51,6 +51,14 @@ public class StepDisplay
   }
   
   /**
+   * Clears the display.
+   */
+  public void reset()
+  {
+    stepWindow.setText("");
+  }
+  
+  /**
    * Sets the current language.
    * 
    * @param language the new language

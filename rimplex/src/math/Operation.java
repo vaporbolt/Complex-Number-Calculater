@@ -80,12 +80,12 @@ public class Operation
     String s = a.toString() + " * " + b.toString() + " =\n";
     s += STRINGS.getString("Step") + " 1: \n";
     double real = a.getReal() * b.getReal() - a.getImaginary() * b.getImaginary();
-    s += "    " + a.getReal() + " * " + b.getReal() + " - " + a.getImaginary() + "i *"
-        + b.getImaginary() + " = " + real + "\n\n";
+    s += "    (" + a.getReal() + " * " + b.getReal() + ") - (" + a.getImaginary() + "i * "
+        + b.getImaginary() + ") = " + real + "\n\n";
     s += STRINGS.getString("Step") + " 2: \n";
     double imaginary = a.getReal() * b.getImaginary() + a.getImaginary() * b.getReal();
-    s += "    " + a.getReal() + " * " + b.getImaginary() + "i + " + a.getImaginary() + "i *"
-        + b.getReal() + " = " + imaginary + "i\n\n";
+    s += "    (" + a.getReal() + " * " + b.getImaginary() + "i) + (" + a.getImaginary() + "i * "
+        + b.getReal() + ") = " + imaginary + "i\n\n";
     s += STRINGS.getString("Step") + " 3: \n";
     ComplexNumber result = new ComplexNumber(real, imaginary);
     s += "    " + real + " + " + imaginary + "i = " + result.toString();
@@ -123,7 +123,7 @@ public class Operation
 
     s += STRINGS.getString("Step") + " 4: \n";
     ComplexNumber result = new ComplexNumber(top.getReal() / bottom, top.getImaginary() / bottom);
-    s += "    " + top.toString() + " / " + bottom + " = " + result.toString();
+    s += "    " + top.toString() + " / (" + bottom + ") = " + result.toString();
     result.setSteps(s);
     return result;
 
@@ -145,11 +145,23 @@ public class Operation
    */
   public static ComplexNumber inverse(final ComplexNumber a)
   {
+    String s = a.toString() + " ^ -1 =\n";
+    s += STRINGS.getString("Step") + " 1:\n";
+    s += "    1 / " + a.toString() + "\n\n";
+    s += STRINGS.getString("Step") + " 2:\n";
+    s += "    (1 / " + a.toString() + ") * (" + a.conjugate().toString()
+        + " / " + a.conjugate().toString() + ") =\n\n";
+    s += STRINGS.getString("Step") + " 3:\n";
+    s += "    " + a.conjugate().toString() + " / " + multiply(a, a.conjugate()).toString() + " =\n\n";
+    s += STRINGS.getString("Step") + " 4:\n";
     if (a.getImaginary() == 0)
       return new ComplexNumber(1 / a.getReal(), 0);
     ComplexNumber numerator = a.conjugate();
     ComplexNumber denominator = multiply(a, numerator);
-    return divide(numerator, denominator);
+    ComplexNumber result = divide(numerator, denominator);
+    s += "    " + result.toString();
+    result.setSteps(s);
+    return result;
   }
 
   /**

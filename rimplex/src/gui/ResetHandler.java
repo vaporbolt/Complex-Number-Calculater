@@ -16,6 +16,7 @@ public class ResetHandler implements ActionListener
   private DisplayComponent display;
   private InputField input;
   private CartesianPlane plane;
+  private StepDisplay steps;
   
   /**
    * Creates a reset handler.
@@ -24,11 +25,12 @@ public class ResetHandler implements ActionListener
    * @param input the input field
    * @param plane the graph
    */
-  public ResetHandler(DisplayComponent display, InputField input, CartesianPlane plane)
+  public ResetHandler(DisplayComponent display, InputField input, CartesianPlane plane, StepDisplay steps)
   {
     this.display = display;
     this.input = input;
     this.plane = plane;
+    this.steps = steps;
   }
   
   /**
@@ -44,6 +46,7 @@ public class ResetHandler implements ActionListener
     display.reset();
     input.clear();
     plane.reset();
+    steps.reset();
     input.getTextField().requestFocus();
     
   }
