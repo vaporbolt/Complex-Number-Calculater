@@ -214,7 +214,6 @@ public class Operation
     s += STRINGS.getString("Step") + " 4:\n";
     s += "    " + result.getReal() + " + " + result.getImaginary() + "i = " + result.toString();
     result.setSteps(s);
-
     return result;
   }
 
