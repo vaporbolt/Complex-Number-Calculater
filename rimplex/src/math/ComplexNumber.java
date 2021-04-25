@@ -18,6 +18,13 @@ public class ComplexNumber
 
   private int sign;
 
+  private final String step = "Step";
+  private final String equalNewline = " =\n";
+  private final String one = " 1:\n";
+  private final String two = " 2:\n";
+  private final String plus = " + ";
+  private final String equals = "    = ";
+
   /**
    * ComplexNumber Constructor.
    * 
@@ -108,14 +115,16 @@ public class ComplexNumber
    */
   public ComplexNumber conjugate()
   {
-    String s = "con" + this.toString() + " =\n";
-    s += STRINGS.getString("Step") + " 1:\n";
-    s += "    " + this.imaginaryPart().toString() + " * - 1 =\n\n";
-    s += STRINGS.getString("Step") + " 2:\n";
-    s += "    " + this.realPart() + " + " + this.getImaginary() * -1 + "i =\n\n";
+    final String spacing = "    ";
+
+    String s = "con" + this.toString() + equalNewline;
+    s += STRINGS.getString(step) + one;
+    s += spacing + this.imaginaryPart().toString() + " * - 1 =\n\n";
+    s += STRINGS.getString(step) + two;
+    s += spacing + this.realPart() + plus + this.getImaginary() * -1 + "i =\n\n";
     ComplexNumber result = new ComplexNumber(this.real, this.imaginary * -1);
-    s += STRINGS.getString("Step") + " 3:\n";
-    s += "    " + result.toString();
+    s += STRINGS.getString(step) + " 3:\n";
+    s += spacing + result.toString();
     result.setSteps(s);
     return result;
   }
@@ -128,9 +137,9 @@ public class ComplexNumber
   public ComplexNumber realPart()
   {
     ComplexNumber result = new ComplexNumber(this.real, 0.0);
-    String s = "real" + this.toString() + " =\n";
-    s += STRINGS.getString("Step") + " 1:\n";
-    s += "    = " + result.toString();
+    String s = "real" + this.toString() + equalNewline;
+    s += STRINGS.getString(step) + one;
+    s += equals + result.toString();
     result.setSteps(s);
     return result;
   }
@@ -143,9 +152,9 @@ public class ComplexNumber
   public ComplexNumber imaginaryPart()
   {
     ComplexNumber result = new ComplexNumber(0.0, this.imaginary);
-    String s = "imaginary" + this.toString() + " =\n";
-    s += STRINGS.getString("Step") + " 1:\n";
-    s += "    = " + result.toString();
+    String s = "imaginary" + this.toString() + equalNewline;
+    s += STRINGS.getString(step) + one;
+    s += equals + result.toString();
     result.setSteps(s);
     return result;
   }
@@ -178,8 +187,11 @@ public class ComplexNumber
    *          if true add parentheses around the complex number
    * @return the string form of a complex number.
    */
-  public String toString(boolean parentheses)
+  public String toString(final boolean parentheses)
   {
+    final String openParenthese = "(";
+    final String iParenthese = "i)";
+
     String complete;
     String realNum = "";
     String imaginaryNum = "";
@@ -202,20 +214,20 @@ public class ComplexNumber
     {
       if (this.imaginary == 0 && this.real != 0)
       {
-        complete = "(" + realNum + ")";
+        complete = openParenthese + realNum + ")";
       }
       else if (this.imaginary != 0 && this.real == 0)
       {
-        complete = "(" + imaginaryNum + "i)";
+        complete = openParenthese + imaginaryNum + iParenthese;
       }
       else
       {
-        complete = "(" + realNum + " + " + imaginaryNum + "i)";
+        complete = openParenthese + realNum + plus + imaginaryNum + iParenthese;
       }
     }
     else
     {
-      complete = realNum + " + " + imaginaryNum + "i";
+      complete = realNum + plus + imaginaryNum + "i";
     }
     return complete;
   }
@@ -226,7 +238,7 @@ public class ComplexNumber
    * @param s
    *          the string to set
    */
-  public void setSteps(String s)
+  public void setSteps(final String s)
   {
     steps = s;
   }

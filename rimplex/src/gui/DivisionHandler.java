@@ -40,7 +40,7 @@ public class DivisionHandler implements ActionListener
       input.getTextField().setText(input.getTextField().getText() + " / ");
       input.inputTypesetting(0, input.getTextField().getText().length());
     }
-    catch (Exception ex)
+    catch (NullPointerException ex)
     {
       // beep if button doesn't work
       Toolkit.getDefaultToolkit().beep();

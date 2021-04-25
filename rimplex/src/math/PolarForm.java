@@ -29,10 +29,12 @@ public class PolarForm extends ComplexNumber
   public PolarForm(final double real, final double imaginary)
   {
     super(real, imaginary);
+    final String step = "Step";
+    
     a = real;
     b = imaginary;
     String s = "pol" + super.toString() + " =\n";
-    s += STRINGS.getString("Step") + " 1:\n";
+    s += STRINGS.getString(step) + " 1:\n";
     // calculate polar form
     if (real == 0 && imaginary == 0)
     {
@@ -49,9 +51,9 @@ public class PolarForm extends ComplexNumber
       }
     }
     s += String.format("    (" + a + "^2 + " + b + "^2) ^ 0.5 = " + "%.2f" + "\n\n", r);
-    s += STRINGS.getString("Step") + " 2:\n";
+    s += STRINGS.getString(step) + " 2:\n";
     s += String.format("    tan^-1(" + a + " / " + b + ") = %.2f\n\n", theta);
-    s += STRINGS.getString("Step") + " 3:\n";
+    s += STRINGS.getString(step) + " 3:\n";
     s += "    = " + this.toString();
     super.setSteps(s);
   }

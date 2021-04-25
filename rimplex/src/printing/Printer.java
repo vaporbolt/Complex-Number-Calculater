@@ -13,17 +13,18 @@ import java.awt.print.PrinterException;
  * @version 4/23/21
  *
  */
-public  class Printer implements Printable
+public class Printer implements Printable
 {
-  
+
   final Component comp;
 
   /**
-   * @param comp the componet to be printed.
+   * @param comp
+   *          the component to be printed.
    */
   public Printer(final Component comp)
   {
-    
+
     this.comp = comp;
   }
 

@@ -173,7 +173,7 @@ public class InputField
           display.displayTypesetting(0, display.getText().length());
           inputTypesetting(0, field.getText().length());
         }
-        catch (Exception e)
+        catch (IllegalStateException e)
         {
           // beep if there are already two operands
           Toolkit.getDefaultToolkit().beep();

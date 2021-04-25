@@ -17,6 +17,9 @@ class EnteringComplexNumbersTest
    * 
    */
 
+  private final String testOne = "4 + 2i";
+  private final String testTwo = "0 + 0i";
+  
   @Test
   void testMultipleFormats()
   {
@@ -100,27 +103,33 @@ class EnteringComplexNumbersTest
   @Test
   void testInvalidInput()
   {
-    assertThrows(NullPointerException.class, () -> {
+    assertThrows(NullPointerException.class, () -> 
+    {
       EnteringComplexNumbers.parseComplexNumber(null);
     });
 
-    assertThrows(IllegalArgumentException.class, () -> {
+    assertThrows(IllegalArgumentException.class, () -> 
+    {
       EnteringComplexNumbers.parseComplexNumber("");
     });
 
-    assertThrows(NumberFormatException.class, () -> {
+    assertThrows(NumberFormatException.class, () -> 
+    {
       EnteringComplexNumbers.parseComplexNumber(" ");
     });
 
-    assertThrows(NumberFormatException.class, () -> {
+    assertThrows(NumberFormatException.class, () -> 
+    {
       EnteringComplexNumbers.parseComplexNumber("abc + 4.0");
     });
 
-    assertThrows(NumberFormatException.class, () -> {
+    assertThrows(NumberFormatException.class, () -> 
+    {
       EnteringComplexNumbers.parseComplexNumber("+");
     });
 
-    assertThrows(NumberFormatException.class, () -> {
+    assertThrows(NumberFormatException.class, () -> 
+    {
       EnteringComplexNumbers.parseComplexNumber("1 * 2i");
     });
   }
@@ -135,14 +144,14 @@ class EnteringComplexNumbersTest
   void testIntegration()
   {
     ComplexNumber num1 = EnteringComplexNumbers.parseComplexNumber("2 + 3i");
-    ComplexNumber num2 = EnteringComplexNumbers.parseComplexNumber("4 + 2i");
+    ComplexNumber num2 = EnteringComplexNumbers.parseComplexNumber(testOne);
     ComplexNumber num3 = Operation.add(num1, num2);
 
     assertEquals(6, num3.getReal());
     assertEquals(5, num3.getImaginary());
 
-    num1 = EnteringComplexNumbers.parseComplexNumber("0 + 0i");
-    num2 = EnteringComplexNumbers.parseComplexNumber("0 + 0i");
+    num1 = EnteringComplexNumbers.parseComplexNumber(testTwo);
+    num2 = EnteringComplexNumbers.parseComplexNumber(testTwo);
 
     num3 = Operation.add(num1, num2);
 
@@ -155,7 +164,7 @@ class EnteringComplexNumbersTest
   void testToString()
   {
     ComplexNumber num = new ComplexNumber(1, 2);
-    ComplexNumber num2 = EnteringComplexNumbers.parseComplexNumber("4 + 2i");
+    ComplexNumber num2 = EnteringComplexNumbers.parseComplexNumber(testOne);
     ComplexNumber num3 = EnteringComplexNumbers.parseComplexNumber("4.5 + 2.7i");
     assertEquals("(1 + 2i)", num.toString());
     assertEquals("(4 + 2i)", num2.toString());
@@ -165,7 +174,7 @@ class EnteringComplexNumbersTest
   @Test
   void testIsComplexNumber()
   {
-    assertTrue(EnteringComplexNumbers.isComplexNumber("4 + 2i"));
+    assertTrue(EnteringComplexNumbers.isComplexNumber(testOne));
     assertTrue(EnteringComplexNumbers.isComplexNumber("-4 - -2i"));
     assertFalse(EnteringComplexNumbers.isComplexNumber("hi"));
     assertTrue(EnteringComplexNumbers.isComplexNumber("4"));
@@ -226,7 +235,7 @@ class EnteringComplexNumbersTest
     num = EnteringComplexNumbers.parseEquation("-(3+2i)--(1+2i)");
     assertEquals(-2, num.getReal());
     assertEquals(0, num.getImaginary());
-    
+
     num = EnteringComplexNumbers.parseEquation("(3+2i)+-(5)");
     assertEquals(-2, num.getReal());
     assertEquals(2, num.getImaginary());
@@ -320,8 +329,7 @@ class EnteringComplexNumbersTest
     num = EnteringComplexNumbers.parseEquation("con(3 + 2i)");
     assertEquals(3, num.getReal());
     assertEquals(-2, num.getImaginary());
-    
-    
+
     num = EnteringComplexNumbers.parseEquation("sqrt(8 - 6i)");
     assertEquals(3, num.getReal());
     assertEquals(-1, num.getImaginary());
@@ -333,19 +341,19 @@ class EnteringComplexNumbersTest
   {
     assertThrows(NumberFormatException.class,
         () -> EnteringComplexNumbers.parseEquation("3 + 2i + 5"));
-    
+
     assertThrows(NumberFormatException.class,
         () -> EnteringComplexNumbers.parseEquation("3 + 2 + 5i"));
-    
+
     assertThrows(NumberFormatException.class,
         () -> EnteringComplexNumbers.parseEquation("3 - 2i + 5"));
-    
+
     assertThrows(NumberFormatException.class,
         () -> EnteringComplexNumbers.parseEquation("3 + 2i - 5"));
 
     assertThrows(NumberFormatException.class,
         () -> EnteringComplexNumbers.parseEquation("con2+3i"));
-    
+
     assertThrows(NumberFormatException.class,
         () -> EnteringComplexNumbers.parseEquation("con(2+3i)+2"));
   }

@@ -14,11 +14,13 @@ import color.ColorScheme;
 import visualization.CartesianPlane;
 
 /**
+ * 
+ * A class that contains all the gui components in a gui layout. a GuiContainer object is a
+ * singleton object that creates a window and holds the JPanel Pane and all components.
+ * 
  * @author Seth Roper
  * @version 3/27/2020
- * 
- *          A class that contains all the gui components in a gui layout. a GuiContainer object is a
- *          singleton object that creates a window and holds the JPanel Pane and all components.
+ *
  *
  */
 @SuppressWarnings("unused")
@@ -32,10 +34,7 @@ public class GuiContainer
 
   // holds the frame
   private JFrame frame = new JFrame("Rimplex");
-
-  // holds all of the buttons(add subtract reset etc.)
-  // private HashMap<String, JButton> buttons = new HashMap<String, JButton>();
-
+  
   private final ResourceBundle strings = ResourceBundle.getBundle("languages.Strings");
 
   private InputField inputField = InputField.createInstance();
@@ -59,29 +58,29 @@ public class GuiContainer
   private StepDisplay steps;
 
   private final String timesRoman = "TimesRoman";
-  
+
   private final String openParentheses = "(";
-  
+
   private final String closedParentheses = ")";
 
   private final String conjugate = "con";
-  
+
   private final String rightArrow = ">";
-  
+
   private final String leftArrow = "<";
-  
+
   private final String upArrow = " ^ ";
-  
+
   private final String i = "i";
-  
+
   private final String imaginary = "im";
-  
+
   private final String polar = "pol";
-  
+
   private final String log = "log";
-  
+
   private final String decimal = ".";
-  
+
   /**
    * creates the GUI container object with the proper gridbagLayout.
    * 

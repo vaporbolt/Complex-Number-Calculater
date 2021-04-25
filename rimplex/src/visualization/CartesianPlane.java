@@ -159,11 +159,11 @@ public class CartesianPlane extends JPanel
   {
     double x = axisX + point.getX() * spacing;
     double y = axisY - point.getY() * spacing;
-   
+
     g.setStroke(new BasicStroke(2));
     g.setColor(new Color(87, 186, 97));
     g.draw(new Line2D.Double(axisX, axisY, x, y)); // draws hypotenuse
-    
+
     g.setColor(Color.ORANGE);
     g.draw(new Line2D.Double(x, y, x, getHeight() / 2)); // draws vertical component
   }

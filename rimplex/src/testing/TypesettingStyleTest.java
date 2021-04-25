@@ -13,14 +13,14 @@ class TypesettingStyleTest
 {
 
   @Test
-  void test()
+  void testTypeSettingStyle()
   {
     StyleContext sc = new StyleContext();
     Style italic = sc.addStyle("BLACK", null);
     italic.addAttribute(StyleConstants.Italic, true);
-    
-    assertEquals(italic.getAttribute(italic), 
-        TypesettingStyle.applyTypesetting(true).getAttribute(TypesettingStyle.applyTypesetting(true)));
+
+    assertEquals(italic.getAttribute(italic), TypesettingStyle.applyTypesetting(true)
+        .getAttribute(TypesettingStyle.applyTypesetting(true)));
   }
 
 }

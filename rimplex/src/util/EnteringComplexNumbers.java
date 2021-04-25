@@ -36,6 +36,10 @@ public final class EnteringComplexNumbers
    */
   public static ComplexNumber parseComplexNumber(final String input)
   {
+    final String plus = "+";
+    final String minus = "-";
+    final String i = "i";
+
     if (input == null)
       throw new NullPointerException();
     if (input.isEmpty())
@@ -46,27 +50,27 @@ public final class EnteringComplexNumbers
     String operator = "";
     int index = 0;
 
-    if (input.contains("+"))
+    if (input.contains(plus))
     {
-      operator = "+";
+      operator = plus;
       index = input.indexOf(operator);
     }
-    else if (input.contains("-"))
+    else if (input.contains(minus))
     {
-      if (input.indexOf("-") == 0)
+      if (input.indexOf(minus) == 0)
       {
 
-        if (input.indexOf("-", input.indexOf("-") + 1) == -1)
+        if (input.indexOf(minus, input.indexOf(minus) + 1) == -1)
           operator = "";
         else
         {
-          operator = "-";
-          index = input.indexOf("-", input.indexOf("-") + 1);
+          operator = minus;
+          index = input.indexOf(minus, input.indexOf(minus) + 1);
         }
       }
-      else if (input.indexOf("-") != 0)
+      else if (input.indexOf(minus) != 0)
       {
-        operator = "-";
+        operator = minus;
         index = input.indexOf(operator);
       }
     }
@@ -75,8 +79,8 @@ public final class EnteringComplexNumbers
     {
       try
       {
-        if (input.contains("i"))
-          imaginary = Double.parseDouble(input.substring(0, input.indexOf("i")));
+        if (input.contains(i))
+          imaginary = Double.parseDouble(input.substring(0, input.indexOf(i)));
         else
           real = Double.parseDouble(input);
       }
@@ -90,8 +94,8 @@ public final class EnteringComplexNumbers
       try
       {
         real = Double.parseDouble(input.substring(0, index));
-        imaginary = Double.parseDouble(input.substring(index + 1, input.indexOf("i")));
-        if (operator.equals("-"))
+        imaginary = Double.parseDouble(input.substring(index + 1, input.indexOf(i)));
+        if (operator.equals(minus))
           imaginary *= -1;
       }
       catch (NumberFormatException e)
@@ -110,14 +114,14 @@ public final class EnteringComplexNumbers
    *          the string to check
    * @return true if a complex number, false otherwise
    */
-  public static boolean isComplexNumber(String input)
+  public static boolean isComplexNumber(final String input)
   {
     try
     {
       parseComplexNumber(input);
       return true;
     }
-    catch (Exception e)
+    catch (IllegalStateException e)
     {
       return false;
     }
@@ -132,6 +136,8 @@ public final class EnteringComplexNumbers
    */
   public static ComplexNumber parseEquation(final String input)
   {
+    final String sqrt = "sqrt";
+
     String number = "()0123456789-.i";
     String operations = "+-*x/^";
     boolean negitive = false;
@@ -225,7 +231,7 @@ public final class EnteringComplexNumbers
       result = a.conjugate();
       opCount++;
     }
-    if (input.contains("sqrt"))
+    if (input.contains(sqrt))
     {
       result = Operation.squareRoot(a);
       opCount++;
@@ -235,7 +241,7 @@ public final class EnteringComplexNumbers
       result = Operation.log(a);
       opCount++;
     }
-    if (input.contains("r") && !input.contains("sqrt"))
+    if (input.contains("r") && !input.contains(sqrt))
     {
       result = a.realPart();
       opCount++;

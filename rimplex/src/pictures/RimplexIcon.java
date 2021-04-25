@@ -10,22 +10,26 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
+ * A Logo object is a Singleton Object which stores and sets the logo.
+ * 
  * @author Seth Roper
- * @version 4/22/2021 A Logo object is a Singleton Object which stores and sets the logo of a
+ * @version 4/22/2021
  *
  */
 public class RimplexIcon
 {
   private static String defaultPath = "/pictures/logoRimplex.png";
-  private  static boolean exists = false;
+  private static boolean exists = false;
   // stores the ImageIcon
   private ImageIcon icon;
   // the frame who's logo will be added.
   private JFrame frame;
 
   /**
-   * @param icon the imageIcon.
-   * @param frame the Jframe.
+   * @param icon
+   *          the imageIcon.
+   * @param frame
+   *          the Jframe.
    */
   private RimplexIcon(final ImageIcon icon, final JFrame frame)
   {
@@ -43,7 +47,7 @@ public class RimplexIcon
    *          the Jframe where the icon will be added.
    * @throws IllegalStateException
    *           If a RimplexIcon already exists.
-   * @return a new RimplexIcon object if one does not exists          
+   * @return a new RimplexIcon object if one does not exists
    */
   public static RimplexIcon createInstance(final String path, final JFrame framee)
       throws IllegalStateException
@@ -55,7 +59,7 @@ public class RimplexIcon
     }
 
     exists = true;
-    
+
     ImageIcon icon = null;
 
     // if args is empty, use default logo.
@@ -64,7 +68,7 @@ public class RimplexIcon
       icon = new ImageIcon(RimplexIcon.class.getResource(defaultPath));
     }
 
-    else 
+    else
     {
       try
       {
@@ -72,15 +76,14 @@ public class RimplexIcon
         ImageIO.read(new File(path));
         icon = new ImageIcon(path);
       }
-      
-      catch(IOException e)
+
+      catch (IOException e)
       {
         System.out.println("that file could not be found. default icon will be used.");
         icon = new ImageIcon(RimplexIcon.class.getResource(defaultPath));
       }
     }
-    
-    
+
     return new RimplexIcon(icon, framee);
   }
 

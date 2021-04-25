@@ -82,7 +82,7 @@ public class EqualsHandler implements ActionListener
       input.getTextField().requestFocus();
 
     }
-    catch (Exception ex)
+    catch (NullPointerException ex)
     {
       // if result could not be calculated, beep
       Toolkit.getDefaultToolkit().beep();

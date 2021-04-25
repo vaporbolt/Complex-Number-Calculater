@@ -76,7 +76,7 @@ public class SignHandler implements ActionListener
       input.inputTypesetting(0, input.getTextField().getText().length());
 
     }
-    catch (Exception ex)
+    catch (NullPointerException ex)
     {
       Toolkit.getDefaultToolkit().beep();
     }
