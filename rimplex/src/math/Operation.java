@@ -127,13 +127,12 @@ public class Operation
     result.setSteps(s);
     return result;
 
-    /*ComplexNumber top = Operation.multiply(a, b.conjugate());
-    double bottom = b.getReal() * b.getReal() + b.getImaginary() * b.getImaginary();
-    if (bottom == 0)
-    {
-      throw new IllegalArgumentException();
-    }
-    return new ComplexNumber(top.getReal() / bottom, top.getImaginary() / bottom);*/
+    /*
+     * ComplexNumber top = Operation.multiply(a, b.conjugate()); double bottom = b.getReal() *
+     * b.getReal() + b.getImaginary() * b.getImaginary(); if (bottom == 0) { throw new
+     * IllegalArgumentException(); } return new ComplexNumber(top.getReal() / bottom,
+     * top.getImaginary() / bottom);
+     */
   }
 
   /**
@@ -149,10 +148,11 @@ public class Operation
     s += STRINGS.getString("Step") + " 1:\n";
     s += "    1 / " + a.toString() + "\n\n";
     s += STRINGS.getString("Step") + " 2:\n";
-    s += "    (1 / " + a.toString() + ") * (" + a.conjugate().toString()
-        + " / " + a.conjugate().toString() + ") =\n\n";
+    s += "    (1 / " + a.toString() + ") * (" + a.conjugate().toString() + " / "
+        + a.conjugate().toString() + ") =\n\n";
     s += STRINGS.getString("Step") + " 3:\n";
-    s += "    " + a.conjugate().toString() + " / " + multiply(a, a.conjugate()).toString() + " =\n\n";
+    s += "    " + a.conjugate().toString() + " / " + multiply(a, a.conjugate()).toString()
+        + " =\n\n";
     s += STRINGS.getString("Step") + " 4:\n";
     if (a.getImaginary() == 0)
       return new ComplexNumber(1 / a.getReal(), 0);
@@ -176,20 +176,46 @@ public class Operation
   public static ComplexNumber exponential(final ComplexNumber a, final int n)
   {
     ComplexNumber result = new ComplexNumber(1, 0);
-    for (int i = 0; i < Math.abs(n); i++)
+    String s = a.toString() + "^" + n + " =\n";
+    int i = 1;
+    while (i < Math.abs(n) + 1)
     {
+      s += STRINGS.getString("Step") + " " + i + ":\n";
+      s += "    " + a.toString() + " * " + result.toString() + " = "
+          + multiply(result, a).toString() + "\n\n";
       result = multiply(result, a);
+      i++;
     }
     if (n < 0)
     {
+      s += STRINGS.getString("Step") + " " + i + ":\n";
+      s += "    inv" + a.toString() + " = " + inverse(result);
       result = inverse(result);
     }
+    result.setSteps(s);
     return result;
   }
 
   public static ComplexNumber squareRoot(final ComplexNumber a)
   {
-    return null;
+    String s = "sqrt" + a.toString() + " =\n";
+    s += STRINGS.getString("Step") + " 1:\n";
+    PolarForm polar = new PolarForm(a.getReal(), a.getImaginary());
+    s += "    pol" + a.toString() + " = " + polar.toString() + "\n\n";
+    s += STRINGS.getString("Step") + " 2:\n";
+    ComplexNumber result = new ComplexNumber(
+        Math.sqrt(polar.getR()) * Math.cos(polar.getTheta() / 2),
+        Math.sqrt(polar.getR()) * Math.sin(polar.getTheta() / 2));
+    s += "    sqrt(" + polar.getR() + ") * cos(" + polar.getTheta() + " / 2) = " + result.getReal()
+        + "\n\n";
+    s += STRINGS.getString("Step") + " 3:\n";
+    s += "    sqrt(" + polar.getR() + ") * sin(" + polar.getTheta() + " / 2)i = "
+        + result.getImaginary() + "i\n\n";
+    s += STRINGS.getString("Step") + " 4:\n";
+    s += "    " + result.getReal() + " + " + result.getImaginary() + "i = " + result.toString();
+    result.setSteps(s);
+
+    return result;
   }
 
   public static ComplexNumber log(final ComplexNumber a)

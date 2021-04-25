@@ -235,7 +235,7 @@ public final class EnteringComplexNumbers
       result = Operation.log(a);
       opCount++;
     }
-    if (input.contains("r"))
+    if (input.contains("r") && !input.contains("sqrt"))
     {
       result = a.realPart();
       opCount++;

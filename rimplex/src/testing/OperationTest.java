@@ -318,4 +318,15 @@ class OperationTest
 
   }
 
+  
+  @Test
+  void testSquareRoot()
+  {
+    ComplexNumber num1 = new ComplexNumber(8, -6);
+    ComplexNumber num2 = Operation.squareRoot(num1);
+
+    assertEquals(3, num2.getReal());
+    assertEquals(-1, num2.getImaginary());    
+  }
+  
 }

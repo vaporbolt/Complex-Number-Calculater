@@ -320,6 +320,11 @@ class EnteringComplexNumbersTest
     num = EnteringComplexNumbers.parseEquation("con(3 + 2i)");
     assertEquals(3, num.getReal());
     assertEquals(-2, num.getImaginary());
+    
+    
+    num = EnteringComplexNumbers.parseEquation("sqrt(8 - 6i)");
+    assertEquals(3, num.getReal());
+    assertEquals(-1, num.getImaginary());
 
   }
 
