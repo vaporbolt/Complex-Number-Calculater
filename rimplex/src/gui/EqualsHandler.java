@@ -10,9 +10,10 @@ import util.EnteringComplexNumbers;
 import visualization.CartesianPlane;
 
 /**
+ * Handles actions for the equals button.
+ * 
  * @author Seth Roper
  * @version 3/31/2021
- * Handles actions for the equals button.
  *
  */
 public class EqualsHandler implements ActionListener
@@ -22,28 +23,34 @@ public class EqualsHandler implements ActionListener
   private InputField input;
   private CartesianPlane plane;
   private StepDisplay stepWindow;
-  
+
   /**
    * Creates an equals handler.
    * 
-   * @param display the system's display
-   * @param input the input field
-   * @param plane the graph
-   * @param stepWindow the step window
+   * @param display
+   *          the system's display
+   * @param input
+   *          the input field
+   * @param plane
+   *          the graph
+   * @param stepWindow
+   *          the step window
    */
-  public EqualsHandler(DisplayComponent display, InputField input, CartesianPlane plane, StepDisplay stepWindow)
+  public EqualsHandler(final DisplayComponent display, final InputField input,
+      final CartesianPlane plane, final StepDisplay stepWindow)
   {
     this.display = display;
     this.input = input;
     this.plane = plane;
     this.stepWindow = stepWindow;
   }
-  
+
   /**
-   * When clicked, the system calculates the result of the
-   * operation and adds the result to the display.
+   * When clicked, the system calculates the result of the operation and adds the result to the
+   * display.
    * 
-   * @param e when the user clicks the "=" button
+   * @param e
+   *          when the user clicks the "=" button
    */
   @Override
   public void actionPerformed(final ActionEvent e)
@@ -52,10 +59,10 @@ public class EqualsHandler implements ActionListener
     try
     {
       ComplexNumber result;
-      
+
       // gets the result of the equation in the input field
       result = EnteringComplexNumbers.parseEquation(input.getTextField().getText());
-      
+
       // adds the result to the display
       Locale locale = Locale.getDefault();
       String answer = result.toString() + "\n";
@@ -64,10 +71,10 @@ public class EqualsHandler implements ActionListener
       stepWindow.getPane().setText(result.getSteps());
       stepWindow.applyLanguage();
       stepWindow.displayTypesetting(0, stepWindow.getPane().getText().length());
-      
+
       // sets the input field to the result to use for the next calculation
       input.getTextField().setText(String.format(locale, "%s", result.toString()));
-      
+
       // apply typestting for display
       display.displayTypesetting(0, display.getText().length());
       input.inputTypesetting(0, input.getTextField().getText().length());

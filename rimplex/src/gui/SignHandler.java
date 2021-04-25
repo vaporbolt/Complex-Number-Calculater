@@ -22,15 +22,20 @@ public class SignHandler implements ActionListener
    * @param input
    *          InputField
    */
-  public SignHandler(InputField input)
+  public SignHandler(final InputField input)
   {
     this.input = input;
   }
 
+  /**
+   * Reverses the sign of the current Complex Number.
+   * 
+   * @param e
+   *          ActionEvent
+   */
   @Override
-  public void actionPerformed(ActionEvent e)
+  public void actionPerformed(final ActionEvent e)
   {
-
     char token;
     String numbers = "0123456789.i";
     int insert = 0;
@@ -38,7 +43,7 @@ public class SignHandler implements ActionListener
     try
     {
       String text = input.getTextField().getText();
-      
+
       for (int i = text.length() - 1; i >= 0; i--)
       {
         token = text.charAt(i);
@@ -56,7 +61,7 @@ public class SignHandler implements ActionListener
           insert = i + 1;
           break;
         }
-        
+
       }
       if (insert != 0 && text.charAt(insert - 1) == '-')
       {

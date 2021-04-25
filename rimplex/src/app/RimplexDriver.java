@@ -1,7 +1,6 @@
 package app;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -29,7 +28,7 @@ public class RimplexDriver
    * @param args
    *          String[]
    */
-  public static void main(String[] args)
+  public static void main(final String[] args)
   {
     javax.swing.SwingUtilities.invokeLater(new Runnable()
     {
@@ -37,7 +36,8 @@ public class RimplexDriver
       {
         // Get ColorScheme from passed color scheme file
         ColorScheme scheme = null;
-        RimplexIcon icon;
+        @SuppressWarnings("unused")
+        RimplexIcon icon = null;
 
         try
         {
@@ -49,9 +49,6 @@ public class RimplexDriver
           if (e instanceof IllegalStateException)
             throw new IllegalStateException("a scheme already exists!");
         }
-        
-
-      
 
         // create GUI
         GuiContainer container = GuiContainer.createInstance(scheme);
@@ -64,7 +61,7 @@ public class RimplexDriver
 
         // get plane
         CartesianPlane plane = container.getPlane();
-        
+
         // get step window
         StepDisplay steps = container.getSteps();
 
@@ -73,7 +70,7 @@ public class RimplexDriver
 
         // transfers text from inputField to display upon hitting enter
         inputField.enterText(display, plane, steps);
-        
+
       }
     });
   }
