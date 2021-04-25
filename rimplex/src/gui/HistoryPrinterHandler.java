@@ -15,15 +15,15 @@ import printing.Printer;
  * A listener for the printHistory button that opens a print dialogue for the history.
  *
  */
-public class HistoryPrinterHandeler implements ActionListener
+public class HistoryPrinterHandler implements ActionListener
 {
   
   private Component comp;
   
   /**
-   * @param comp the componet to be printed.
+   * @param comp the component to be printed.
    */
-  public HistoryPrinterHandeler(final Component comp)
+  public HistoryPrinterHandler(final Component comp)
   {
     this.comp = comp;
   }

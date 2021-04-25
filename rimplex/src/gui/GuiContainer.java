@@ -1,6 +1,5 @@
 package gui;
 
-import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,19 +7,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowStateListener;
 import java.awt.event.WindowListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Field;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
-import app.RimplexDriver;
 import color.ColorScheme;
-import math.ComplexNumber;
 import visualization.CartesianPlane;
 
 /**
@@ -46,7 +36,7 @@ public class GuiContainer
   // holds all of the buttons(add subtract reset etc.)
   // private HashMap<String, JButton> buttons = new HashMap<String, JButton>();
 
-  private static final ResourceBundle STRINGS = ResourceBundle.getBundle("languages.Strings");
+  private final ResourceBundle strings = ResourceBundle.getBundle("languages.Strings");
 
   private InputField inputField = InputField.createInstance();
 
@@ -61,17 +51,44 @@ public class GuiContainer
   private JWindow settingWindow;
 
   private JWindow stepWindow;
-  
+
   private ColorScheme scheme;
-  
+
   private JLabel stepLabel;
-  
+
   private StepDisplay steps;
 
+  private final String timesRoman = "TimesRoman";
+  
+  private final String openParentheses = "(";
+  
+  private final String closedParentheses = ")";
+
+  private final String conjugate = "con";
+  
+  private final String rightArrow = ">";
+  
+  private final String leftArrow = "<";
+  
+  private final String upArrow = " ^ ";
+  
+  private final String i = "i";
+  
+  private final String imaginary = "im";
+  
+  private final String polar = "pol";
+  
+  private final String log = "log";
+  
+  private final String decimal = ".";
+  
   /**
    * creates the GUI container object with the proper gridbagLayout.
+   * 
+   * @param scheme
+   *          ColorScheme
    */
-  private GuiContainer(ColorScheme scheme)
+  private GuiContainer(final ColorScheme scheme)
   {
     this.scheme = scheme;
     this.createPlaneWindow();
@@ -85,9 +102,12 @@ public class GuiContainer
    * creates a GuiContainer object if one doesn't already exist, or throws an IllegalStateException
    * otherwise.
    * 
+   * @param scheme
+   *          ColorScheme
+   * 
    * @return a GUI container containing all of the gui components.
    */
-  public static GuiContainer createInstance(ColorScheme scheme)
+  public static GuiContainer createInstance(final ColorScheme scheme)
   {
     if (exists)
     {
@@ -120,7 +140,7 @@ public class GuiContainer
   {
     return this.plane;
   }
-  
+
   /**
    * gets the step display.
    * 
@@ -150,15 +170,15 @@ public class GuiContainer
   }
 
   /**
-   * Sets the style for the buttons
+   * Sets the style for the buttons.
    * 
    * @param button
    *          a button
    */
-  private void setButton(JButton button)
+  private void setButton(final JButton button)
   {
     button.setFocusPainted(false);
-    button.setFont(new Font("TimesRoman", Font.PLAIN, 16));
+    button.setFont(new Font(timesRoman, Font.PLAIN, 16));
     button.setBorder(BorderFactory.createLineBorder(scheme.getButtonBorderColor(), 2));
     button.setBackground(scheme.getButtonBackgroundColor());
   }
@@ -168,7 +188,7 @@ public class GuiContainer
    */
   public void showGUI()
   {
-    // frame 
+    // frame
     frame.getContentPane().setBackground(scheme.getBackgroundColor());
     frame.setMaximumSize(new Dimension(400, 1000));
     frame.setSize(this.jframeWidth, this.jframeHeight);
@@ -178,7 +198,7 @@ public class GuiContainer
     frame.setLocation(500, 200);
     frame.addComponentListener(
         new FrameListener(historyWindow, planeWindow, settingWindow, stepWindow));
-    
+
     // history window
     this.historyWindow.getContentPane().setBackground(scheme.getHistoryBackgroundColor());
     this.historyWindow.getRootPane()
@@ -187,7 +207,7 @@ public class GuiContainer
     this.historyWindow.setLocation(frame.getX() + 305, frame.getY() + 135);
     this.historyWindow.setVisible(false);
     this.historyWindow.setAlwaysOnTop(true);
-    
+
     // plane window
     this.planeWindow.getContentPane().setBackground(scheme.getPlaneBackgroundColor());
     this.planeWindow.getRootPane()
@@ -196,7 +216,7 @@ public class GuiContainer
     this.planeWindow.setLocation(frame.getX() - 300, frame.getY() + 135);
     this.planeWindow.setVisible(false);
     this.planeWindow.setAlwaysOnTop(true);
-    
+
     // settings window
     this.settingWindow.getContentPane().setBackground(scheme.getSettingsBackgroundColor());
     this.settingWindow.getRootPane()
@@ -205,7 +225,7 @@ public class GuiContainer
     this.settingWindow.setLocation(frame.getX() + 300, frame.getY() + 35);
     this.settingWindow.setVisible(false);
     this.settingWindow.setAlwaysOnTop(true);
-    
+
     // step window
     this.stepWindow.getContentPane().setBackground(scheme.getHistoryBackgroundColor());
     this.stepWindow.getRootPane()
@@ -218,7 +238,7 @@ public class GuiContainer
     frame.addWindowStateListener(new WindowStateListener()
     {
       @Override
-      public void windowStateChanged(WindowEvent e)
+      public void windowStateChanged(final WindowEvent e)
       {
         historyWindow.setVisible(false);
         planeWindow.setVisible(false);
@@ -231,57 +251,43 @@ public class GuiContainer
     {
 
       @Override
-      public void windowOpened(WindowEvent e)
+      public void windowOpened(final WindowEvent e)
       {
-        // TODO Auto-generated method stub
-
       }
 
       @Override
-      public void windowClosing(WindowEvent e)
+      public void windowClosing(final WindowEvent e)
       {
-        // TODO Auto-generated method stub
-
       }
 
       @Override
-      public void windowClosed(WindowEvent e)
+      public void windowClosed(final WindowEvent e)
       {
-        // TODO Auto-generated method stub
-
       }
 
       @Override
-      public void windowIconified(WindowEvent e)
+      public void windowIconified(final WindowEvent e)
       {
-        // TODO Auto-generated method stub
-
       }
 
       @Override
-      public void windowDeiconified(WindowEvent e)
+      public void windowDeiconified(final WindowEvent e)
       {
-        // TODO Auto-generated method stub
-
       }
 
       @Override
-      public void windowActivated(WindowEvent e)
+      public void windowActivated(final WindowEvent e)
       {
-        // TODO Auto-generated method stub
-
       }
 
       @Override
-      public void windowDeactivated(WindowEvent e)
+      public void windowDeactivated(final WindowEvent e)
       {
         historyWindow.setVisible(false);
         planeWindow.setVisible(false);
         settingWindow.setVisible(false);
         stepWindow.setVisible(false);
-
       }
-
     });
   }
 
@@ -336,7 +342,7 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
 
         if (settingWindow.isVisible())
@@ -355,7 +361,7 @@ public class GuiContainer
 
     // InputField/ display.
     JTextPane textField = this.inputField.getTextField();
-    textField.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+    textField.setFont(new Font(timesRoman, Font.PLAIN, 20));
     JScrollPane inputScroll = new JScrollPane(textField);
     inputScroll.setViewportBorder(null);
     inputScroll.setBorder(null);
@@ -426,7 +432,7 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
 
         String s = "";
@@ -478,7 +484,7 @@ public class GuiContainer
     contentPane.add(button);
 
     // open parentheses button
-    button = new JButton("(");
+    button = new JButton(openParentheses);
     gbc = new GridBagConstraints();
     gbc.gridx = 2;
     gbc.gridy = 3;
@@ -494,10 +500,10 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
 
-        textField.setText(textField.getText() + "(");
+        textField.setText(textField.getText() + openParentheses);
         inputField.inputTypesetting(0, textField.getText().length());
       }
 
@@ -507,7 +513,7 @@ public class GuiContainer
     contentPane.add(button);
 
     // close parentheses button
-    button = new JButton(")");
+    button = new JButton(closedParentheses);
     gbc = new GridBagConstraints();
     gbc.gridx = 3;
     gbc.gridy = 3;
@@ -523,10 +529,10 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
 
-        textField.setText(textField.getText() + ")");
+        textField.setText(textField.getText() + closedParentheses);
         inputField.inputTypesetting(0, textField.getText().length());
       }
 
@@ -536,7 +542,7 @@ public class GuiContainer
     contentPane.add(button);
 
     // conjugate button
-    button = new JButton("con");
+    button = new JButton(conjugate);
     gbc = new GridBagConstraints();
     gbc.gridx = 4;
     gbc.gridy = 3;
@@ -552,10 +558,10 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
 
-        textField.setText("con"+textField.getText());
+        textField.setText(conjugate + textField.getText());
         inputField.inputTypesetting(0, textField.getText().length());
       }
 
@@ -601,7 +607,7 @@ public class GuiContainer
     contentPane.add(button);
 
     // complex number plane button
-    button = new JButton("<");
+    button = new JButton(leftArrow);
     gbc = new GridBagConstraints();
     gbc.gridx = 1;
     gbc.gridy = 4;
@@ -617,7 +623,7 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
         if (!planeWindow.isVisible())
         {
@@ -628,7 +634,7 @@ public class GuiContainer
 
           Timer timer = new Timer(1, new ActionListener()
           {
-            public void actionPerformed(ActionEvent evt)
+            public void actionPerformed(final ActionEvent evt)
             {
               if (planeWindow.getWidth() < w)
               {
@@ -685,7 +691,7 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
 
         textField.setText(textField.getText() + "^");
@@ -715,7 +721,7 @@ public class GuiContainer
     contentPane.add(button);
 
     // history button
-    button = new JButton(">");
+    button = new JButton(rightArrow);
     gbc = new GridBagConstraints();
     gbc.gridx = 7;
     gbc.gridy = 4;
@@ -731,7 +737,7 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
         if (!historyWindow.isVisible())
         {
@@ -741,7 +747,7 @@ public class GuiContainer
 
           Timer timer = new Timer(1, new ActionListener()
           {
-            public void actionPerformed(ActionEvent evt)
+            public void actionPerformed(final ActionEvent evt)
             {
               if (historyWindow.getWidth() < w)
               {
@@ -765,7 +771,7 @@ public class GuiContainer
     contentPane.add(button);
 
     // step button
-    button = new JButton(" ^ ");
+    button = new JButton(upArrow);
     gbc = new GridBagConstraints();
     gbc.gridx = 4;
     gbc.gridy = 9;
@@ -781,7 +787,7 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
         if (!stepWindow.isVisible())
         {
@@ -791,7 +797,7 @@ public class GuiContainer
 
           Timer timer = new Timer(1, new ActionListener()
           {
-            public void actionPerformed(ActionEvent evt)
+            public void actionPerformed(final ActionEvent evt)
             {
               if (stepWindow.getHeight() < h)
               {
@@ -898,7 +904,7 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
 
         textField.setText(textField.getText() + " ^-1 ");
@@ -962,7 +968,7 @@ public class GuiContainer
     contentPane.add(button);
 
     // i button
-    button = new JButton("i");
+    button = new JButton(i);
     gbc = new GridBagConstraints();
     gbc.gridx = 5;
     gbc.gridy = 7;
@@ -978,16 +984,16 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
 
-        textField.setText(textField.getText() + "i");
+        textField.setText(textField.getText() + i);
         inputField.inputTypesetting(0, textField.getText().length());
       }
 
     });
     setButton(button);
-    button.setFont(new Font("TimesRoman", Font.ITALIC, 16));
+    button.setFont(new Font(timesRoman, Font.ITALIC, 16));
     button.setForeground(scheme.getButtonSecondary());
     contentPane.add(button);
 
@@ -1008,9 +1014,9 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
-        textField.setText("r"+textField.getText());
+        textField.setText("r" + textField.getText());
         inputField.inputTypesetting(0, textField.getText().length());
       }
 
@@ -1020,7 +1026,7 @@ public class GuiContainer
     contentPane.add(button);
 
     // imaginary part button
-    button = new JButton("im");
+    button = new JButton(imaginary);
     gbc = new GridBagConstraints();
     gbc.gridx = 3;
     gbc.gridy = 4;
@@ -1036,9 +1042,9 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
-        textField.setText("im"+textField.getText());
+        textField.setText(imaginary + textField.getText());
         inputField.inputTypesetting(0, textField.getText().length());
       }
 
@@ -1048,7 +1054,7 @@ public class GuiContainer
     contentPane.add(button);
 
     // polar form button
-    button = new JButton("pol");
+    button = new JButton(polar);
     gbc = new GridBagConstraints();
     gbc.gridx = 4;
     gbc.gridy = 4;
@@ -1064,9 +1070,9 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
-        textField.setText("pol"+textField.getText());
+        textField.setText(polar + textField.getText());
         inputField.inputTypesetting(0, textField.getText().length());
       }
 
@@ -1092,9 +1098,9 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
-        textField.setText("sqrt"+textField.getText());
+        textField.setText("sqrt" + textField.getText());
         inputField.inputTypesetting(0, textField.getText().length());
       }
 
@@ -1104,7 +1110,7 @@ public class GuiContainer
     contentPane.add(button);
 
     // log button
-    button = new JButton("log");
+    button = new JButton(log);
     gbc = new GridBagConstraints();
     gbc.gridx = 6;
     gbc.gridy = 4;
@@ -1120,9 +1126,9 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
-        textField.setText("log"+textField.getText());
+        textField.setText(log + textField.getText());
         inputField.inputTypesetting(0, textField.getText().length());
       }
 
@@ -1132,7 +1138,7 @@ public class GuiContainer
     contentPane.add(button);
 
     // decimal button
-    button = new JButton(".");
+    button = new JButton(decimal);
     gbc = new GridBagConstraints();
     gbc.gridx = 6;
     gbc.gridy = 7;
@@ -1148,10 +1154,10 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
 
-        textField.setText(textField.getText() + ".");
+        textField.setText(textField.getText() + decimal);
         inputField.inputTypesetting(0, textField.getText().length());
       }
 
@@ -1227,7 +1233,7 @@ public class GuiContainer
     JButton button;
     // Display
     display = DisplayComponent.createInstance(scheme.getHistoryBackgroundColor());
-    display.getPanel().setFont(new Font("TimesRoman", Font.PLAIN, 16));
+    display.getPanel().setFont(new Font(timesRoman, Font.PLAIN, 16));
     // create scroll pane for the display/history and set a restricting size
     JScrollPane scrollDisplay = new JScrollPane(display.getPanel());
     scrollDisplay.setViewportBorder(null);
@@ -1249,7 +1255,7 @@ public class GuiContainer
     gbl.setConstraints(scrollDisplay, gbc);
     contentPane.add(scrollDisplay);
 
-    button = new JButton("<");
+    button = new JButton(leftArrow);
     gbc = new GridBagConstraints();
     gbc.gridx = 1;
     gbc.gridy = 0;
@@ -1266,14 +1272,14 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
         if (historyWindow.isVisible())
         {
           historyWindow.setSize(320, historyWindow.getHeight());
           Timer timer = new Timer(1, new ActionListener()
           {
-            public void actionPerformed(ActionEvent evt)
+            public void actionPerformed(final ActionEvent evt)
             {
               if (historyWindow.getWidth() > 0)
               {
@@ -1301,7 +1307,7 @@ public class GuiContainer
     printIcon = new ImageIcon(newimg);
     button = new JButton(printIcon);
     // add listener to button.
-    HistoryPrinterHandeler handeler = new HistoryPrinterHandeler(this.getDisplay().getPanel());
+    HistoryPrinterHandler handeler = new HistoryPrinterHandler(this.getDisplay().getPanel());
     button.addActionListener(handeler);
     gbc = new GridBagConstraints();
     gbc.gridx = 1;
@@ -1319,7 +1325,7 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
 
       }
@@ -1333,14 +1339,14 @@ public class GuiContainer
      * GridBagConstraints.HORIZONTAL; gbc.anchor = GridBagConstraints.NORTH; gbc.weightx = 0;
      * gbc.weighty = 0; gbc.insets = new Insets(25, 0, 0, 0); gbl.setConstraints(start, gbc);
      * start.setBackground(new Color(199, 238, 255)); start.setBorderPainted(false);
-     * start.setFont(new Font("TimesRoman", Font.PLAIN, 13)); contentPane.add(start);
+     * start.setFont(new Font(timesRoman, Font.PLAIN, 13)); contentPane.add(start);
      * 
      * JButton stop = new JButton("stop"); stop.setVisible(false); gbc = new GridBagConstraints();
      * gbc.gridx = 1; gbc.gridy = 0; gbc.gridwidth = 1; gbc.gridheight = 1; gbc.fill =
      * GridBagConstraints.HORIZONTAL; gbc.anchor = GridBagConstraints.NORTH; gbc.weightx = 0;
      * gbc.weighty = 0; gbc.insets = new Insets(25, 0, 0, 0); gbl.setConstraints(stop, gbc);
      * stop.setBackground(new Color(199, 238, 255)); stop.setBorderPainted(false); stop.setFont(new
-     * Font("TimesRoman", Font.PLAIN, 13)); stop.addActionListener((ActionListener) new
+     * Font(timesRoman, Font.PLAIN, 13)); stop.addActionListener((ActionListener) new
      * ActionListener() {
      * 
      * @Override public void actionPerformed(ActionEvent e) { stop.setVisible(false);
@@ -1387,7 +1393,7 @@ public class GuiContainer
     gbl.setConstraints(scrollPlane, gbc);
     contentPane.add(scrollPlane);
 
-    button = new JButton(">");
+    button = new JButton(rightArrow);
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
     gbc.gridy = 0;
@@ -1405,14 +1411,14 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
         if (planeWindow.isVisible())
         {
           planeWindow.setSize(325, planeWindow.getHeight());
           Timer timer = new Timer(1, new ActionListener()
           {
-            public void actionPerformed(ActionEvent evt)
+            public void actionPerformed(final ActionEvent evt)
             {
               if (planeWindow.getWidth() > 0)
               {
@@ -1446,7 +1452,7 @@ public class GuiContainer
     GridBagConstraints gbc = new GridBagConstraints();
     JButton button;
 
-    JButton closeButton = new JButton(STRINGS.getString("Close"));
+    JButton closeButton = new JButton(strings.getString("Close"));
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
     gbc.gridy = 0;
@@ -1460,12 +1466,12 @@ public class GuiContainer
     gbl.setConstraints(closeButton, gbc);
     closeButton.setBackground(scheme.getSettingsBackgroundColor());
     closeButton.setBorderPainted(false);
-    closeButton.setFont(new Font("TimesRoman", Font.PLAIN, 13));
+    closeButton.setFont(new Font(timesRoman, Font.PLAIN, 13));
     closeButton.addActionListener((ActionListener) new ActionListener()
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
         settingWindow.setVisible(false);
       }
@@ -1473,8 +1479,8 @@ public class GuiContainer
     });
     contentPane.add(closeButton);
 
-    JLabel l = new JLabel(STRINGS.getString("Settings"));
-    l.setFont(new Font("TimesRoman", Font.BOLD, 14));
+    JLabel l = new JLabel(strings.getString("Settings"));
+    l.setFont(new Font(timesRoman, Font.BOLD, 14));
     l.setBackground(scheme.getSettingsBackgroundColor());
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
@@ -1489,8 +1495,8 @@ public class GuiContainer
     gbl.setConstraints(l, gbc);
     contentPane.add(l);
 
-    JLabel l2 = new JLabel(STRINGS.getString("Language") + ":");
-    l2.setFont(new Font("TimesRoman", Font.BOLD, 13));
+    JLabel l2 = new JLabel(strings.getString("Language") + ":");
+    l2.setFont(new Font(timesRoman, Font.BOLD, 13));
     l2.setBorder(BorderFactory.createMatteBorder(2, 0, 0, 0, Color.BLACK));
     l2.setBackground(scheme.getSettingsBackgroundColor());
     gbc = new GridBagConstraints();
@@ -1506,7 +1512,7 @@ public class GuiContainer
     gbl.setConstraints(l2, gbc);
     contentPane.add(l2);
 
-    button = new JButton(STRINGS.getString("about"));
+    button = new JButton(strings.getString("about"));
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
     gbc.gridy = 0;
@@ -1518,18 +1524,21 @@ public class GuiContainer
     gbc.insets = new Insets(0, 0, 15, 0);
     gbl.setConstraints(button, gbc);
     button.setBackground(scheme.getSettingsBackgroundColor());
-    button.setFont(new Font("TimesRoman", Font.PLAIN, 13));
+    button.setFont(new Font(timesRoman, Font.PLAIN, 13));
     button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
     contentPane.add(button);
 
-    String languages[] = {"English", "Spanish", "French"};
+    String english = "English";
+    String spanish = "Spanish";
+    String french = "French";
+    String languages[] = {english, spanish, french};
     DefaultListModel<String> model = new DefaultListModel<String>();
     // JList<String> languageList = new JList<String>(languages);
     JList<String> languageList = new JList<String>(model);
-    model.add(0, STRINGS.getString("English"));
-    model.add(1, STRINGS.getString("Spanish"));
-    model.add(2, STRINGS.getString("French"));
-    languageList.setFont(new Font("TimesRoman", Font.PLAIN, 13));
+    model.add(0, strings.getString(english));
+    model.add(1, strings.getString(spanish));
+    model.add(2, strings.getString(french));
+    languageList.setFont(new Font(timesRoman, Font.PLAIN, 13));
     languageList.setBackground(scheme.getSettingsBackgroundColor());
     languageList.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 2, Color.BLACK));
     gbc = new GridBagConstraints();
@@ -1560,7 +1569,7 @@ public class GuiContainer
     GridBagConstraints gbc = new GridBagConstraints();
     JButton button;
 
-    button = new JButton(" ^ ");
+    button = new JButton(upArrow);
     gbc = new GridBagConstraints();
     gbc.gridx = 1;
     gbc.gridy = 2;
@@ -1578,14 +1587,14 @@ public class GuiContainer
     {
 
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(final ActionEvent e)
       {
         if (stepWindow.isVisible())
         {
           stepWindow.setSize(stepWindow.getWidth(), 240);
           Timer timer = new Timer(1, new ActionListener()
           {
-            public void actionPerformed(ActionEvent evt)
+            public void actionPerformed(final ActionEvent evt)
             {
               if (stepWindow.getHeight() > 0)
               {
@@ -1604,9 +1613,9 @@ public class GuiContainer
 
     });
     contentPane.add(button);
-    
-    stepLabel = new JLabel(STRINGS.getString("Steps"));
-    stepLabel.setFont(new Font("TimesRoman", Font.BOLD, 18));
+
+    stepLabel = new JLabel(strings.getString("Steps"));
+    stepLabel.setFont(new Font(timesRoman, Font.BOLD, 18));
     gbc = new GridBagConstraints();
     gbc.gridx = 1;
     gbc.gridy = 0;
@@ -1618,11 +1627,11 @@ public class GuiContainer
     gbc.weighty = 0;
     gbc.insets = new Insets(0, 125, 0, 0);
     gbl.setConstraints(stepLabel, gbc);
-   contentPane.add(stepLabel);
-    
+    contentPane.add(stepLabel);
+
     steps = new StepDisplay();
     steps.getPane().setBackground(scheme.getFieldColor());
-    steps.getPane().setFont(new Font("TimesRoman", Font.PLAIN, 16));
+    steps.getPane().setFont(new Font(timesRoman, Font.PLAIN, 16));
     JScrollPane scrollDisplay = new JScrollPane(steps.getPane());
     scrollDisplay.setViewportBorder(null);
     scrollDisplay.setBorder(null);

@@ -8,21 +8,19 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 
-
 /**
+ * document filter for the input field. prevents characters to be entered after the i has been
+ * inputted.
+ * 
  * @author Seth Roper
  * @version 3/29/2020
- * document filter for the input field.
- * prevents characters to be entered after the i has been inputted.
- * 
  *
  */
 public class InputFieldDocumentFilter extends DocumentFilter
 {
   private String i = "i";
   private ArrayList<String> validChars;
-  // dumb checkstyle thing.
-  
+
   /**
    * Constructs an InputFiledDocumentFIlter.
    */
@@ -44,7 +42,7 @@ public class InputFieldDocumentFilter extends DocumentFilter
     validChars.add("^");
     validChars.add(i);
   }
-  
+
   @Override
   public void insertString(final DocumentFilter.FilterBypass fb, final int offset,
       final String string, final AttributeSet attr) throws BadLocationException
@@ -59,7 +57,7 @@ public class InputFieldDocumentFilter extends DocumentFilter
   public void replace(final DocumentFilter.FilterBypass fb, final int offset, final int length,
       final String string, final AttributeSet attr) throws BadLocationException
   {
-  
+
     try
     {
       Integer.parseInt(string);
@@ -79,24 +77,25 @@ public class InputFieldDocumentFilter extends DocumentFilter
     else
       super.replace(fb, offset, length, string, null);
   }
-  
+
   /**
+   * @param string
+   *          the string whose valid input will be determined.
    * @return whether the character entered is a valid character of an imaginary number.
-   * @param string the string whose valid input will be determined.
    * 
    */
-  private boolean isValidInput(final String string) 
+  private boolean isValidInput(final String string)
   {
     Iterator<String> iterator = this.validChars.iterator();
     boolean isValid = false;
-    while(iterator.hasNext())
+    while (iterator.hasNext())
     {
-      if(string.equals(iterator.next()))
+      if (string.equals(iterator.next()))
       {
         isValid = true;
       }
     }
-    
+
     return isValid;
   }
 }

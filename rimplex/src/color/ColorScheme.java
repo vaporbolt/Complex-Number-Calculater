@@ -5,7 +5,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 /**
- * Holds the colors included for rimplex to implement. Colors read from file.
+ * Holds the colors included for rimplex to implement. Colors read from file. The format of the file
+ * consists of a list of rbg values that correspond to a specific component.
  * 
  * @author Endre Szakal
  * @version 4/21/2021

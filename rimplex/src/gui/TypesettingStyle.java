@@ -1,7 +1,5 @@
 package gui;
 
-import javax.swing.JTextPane;
-import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
@@ -20,23 +18,28 @@ public final class TypesettingStyle
    */
   private TypesettingStyle()
   {
-    
+
   }
-  
+
   /**
-   * Given a string, convert every "i" character to italics. If input is empty, return the empty string.
+   * Given a string, convert every "i" character to italics. If input is empty, return the empty
+   * string.
    * 
+   * @param isDisplay
+   *          boolean
    * @return the new string with converted i characters
    */
-  public static Style applyTypesetting(boolean isDisplay)
+  public static Style applyTypesetting(final boolean isDisplay)
   {
     StyleContext sc = new StyleContext();
     Style italic = sc.addStyle("BLACK", null);
     italic.addAttribute(StyleConstants.Italic, true);
     italic.addAttribute(StyleConstants.Family, "TimesRoman");
-    if (isDisplay) italic.addAttribute(StyleConstants.FontSize, 16);
-    else italic.addAttribute(StyleConstants.FontSize, 20);
+    if (isDisplay)
+      italic.addAttribute(StyleConstants.FontSize, 16);
+    else
+      italic.addAttribute(StyleConstants.FontSize, 20);
     return italic;
   }
-  
+
 }

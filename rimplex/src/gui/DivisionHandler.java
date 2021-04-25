@@ -16,11 +16,11 @@ public class DivisionHandler implements ActionListener
   private InputField input;
   
   /**
-   * Creates a division handler
+   * Creates a division handler.
    * 
    * @param input the input field
    */
-  public DivisionHandler(InputField input)
+  public DivisionHandler(final InputField input)
   {
     this.input = input;
   }

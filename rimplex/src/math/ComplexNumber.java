@@ -15,7 +15,7 @@ public class ComplexNumber
   private double real;
   private double imaginary;
   private String steps;
-  
+
   private int sign;
 
   /**
@@ -31,7 +31,7 @@ public class ComplexNumber
     this.real = real;
     this.imaginary = imaginary;
     this.steps = "";
-    
+
     this.sign = 1;
   }
 
@@ -92,8 +92,7 @@ public class ComplexNumber
   {
     this.imaginary = imaginary;
   }
-  
-  
+
   /**
    * Switches the ComplexNumber from positive to negative or from negative to positive.
    */
@@ -120,9 +119,10 @@ public class ComplexNumber
     result.setSteps(s);
     return result;
   }
-  
+
   /**
    * Returns the real value of this complex number.
+   * 
    * @return a new complex number
    */
   public ComplexNumber realPart()
@@ -134,10 +134,10 @@ public class ComplexNumber
     result.setSteps(s);
     return result;
   }
-  
-  
+
   /**
    * Returns the imaginary value of this complex number.
+   * 
    * @return a new complex number
    */
   public ComplexNumber imaginaryPart()
@@ -149,9 +149,10 @@ public class ComplexNumber
     result.setSteps(s);
     return result;
   }
-  
+
   /**
    * Returns the polar form of the ComplexNumber.
+   * 
    * @return the polar form of the Complex Number
    */
   public ComplexNumber polarForm()
@@ -183,7 +184,8 @@ public class ComplexNumber
     String realNum = "";
     String imaginaryNum = "";
 
-    if (this.real == 0 && this.imaginary == 0) return "(0)";
+    if (this.real == 0 && this.imaginary == 0)
+      return "(0)";
     // check for integer or double
     if (this.real == (int) this.real)
       realNum += (int) this.real;
@@ -196,7 +198,6 @@ public class ComplexNumber
     else
       imaginaryNum += this.imaginary;
 
-    
     if (parentheses)
     {
       if (this.imaginary == 0 && this.real != 0)
@@ -208,7 +209,7 @@ public class ComplexNumber
         complete = "(" + imaginaryNum + "i)";
       }
       else
-      {  
+      {
         complete = "(" + realNum + " + " + imaginaryNum + "i)";
       }
     }
@@ -218,17 +219,18 @@ public class ComplexNumber
     }
     return complete;
   }
-  
+
   /**
    * Sets the printable steps for this complex number.
    * 
-   * @param s the string to set
+   * @param s
+   *          the string to set
    */
   public void setSteps(String s)
   {
     steps = s;
   }
-  
+
   /**
    * Access the printable steps for this complex number.
    * 

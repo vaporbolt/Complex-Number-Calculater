@@ -127,13 +127,12 @@ public class Operation
     result.setSteps(s);
     return result;
 
-    /*ComplexNumber top = Operation.multiply(a, b.conjugate());
-    double bottom = b.getReal() * b.getReal() + b.getImaginary() * b.getImaginary();
-    if (bottom == 0)
-    {
-      throw new IllegalArgumentException();
-    }
-    return new ComplexNumber(top.getReal() / bottom, top.getImaginary() / bottom);*/
+    /*
+     * ComplexNumber top = Operation.multiply(a, b.conjugate()); double bottom = b.getReal() *
+     * b.getReal() + b.getImaginary() * b.getImaginary(); if (bottom == 0) { throw new
+     * IllegalArgumentException(); } return new ComplexNumber(top.getReal() / bottom,
+     * top.getImaginary() / bottom);
+     */
   }
 
   /**
@@ -149,10 +148,11 @@ public class Operation
     s += STRINGS.getString("Step") + " 1:\n";
     s += "    1 / " + a.toString() + "\n\n";
     s += STRINGS.getString("Step") + " 2:\n";
-    s += "    (1 / " + a.toString() + ") * (" + a.conjugate().toString()
-        + " / " + a.conjugate().toString() + ") =\n\n";
+    s += "    (1 / " + a.toString() + ") * (" + a.conjugate().toString() + " / "
+        + a.conjugate().toString() + ") =\n\n";
     s += STRINGS.getString("Step") + " 3:\n";
-    s += "    " + a.conjugate().toString() + " / " + multiply(a, a.conjugate()).toString() + " =\n\n";
+    s += "    " + a.conjugate().toString() + " / " + multiply(a, a.conjugate()).toString()
+        + " =\n\n";
     s += STRINGS.getString("Step") + " 4:\n";
     if (a.getImaginary() == 0)
       return new ComplexNumber(1 / a.getReal(), 0);
