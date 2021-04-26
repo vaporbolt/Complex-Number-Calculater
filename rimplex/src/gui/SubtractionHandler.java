@@ -40,7 +40,7 @@ public class SubtractionHandler implements ActionListener
     try
     {
       // adds subtraction sign to input field
-      input.getTextField().setText(input.getTextField().getText() + " -");
+      input.getTextField().setText(input.getTextField().getText() + " - ");
       input.inputTypesetting(0, input.getTextField().getText().length());
     }
     catch (NullPointerException ex)
