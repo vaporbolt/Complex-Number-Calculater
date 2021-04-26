@@ -56,6 +56,10 @@ public class GuiContainer
   private JLabel stepLabel;
 
   private StepDisplay steps;
+  
+  private JLabel graphL;
+  
+  private JLabel xAxis;
 
   private final String timesRoman = "TimesRoman";
 
@@ -1439,7 +1443,7 @@ public class GuiContainer
     });
     contentPane.add(button);
     
-    JLabel graphL = new JLabel("Complex Plane Graph");
+    graphL = new JLabel("Complex Number Graph");
     graphL.setFont(new Font(timesRoman, Font.BOLD, 16));
     gbc = new GridBagConstraints();
     gbc.gridx = 2;
@@ -1447,14 +1451,14 @@ public class GuiContainer
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.anchor = GridBagConstraints.EAST;
     gbc.weightx = 0;
     gbc.weighty = 0;
-    gbc.insets = new Insets(0, 40, 0, 0);
+    gbc.insets = new Insets(0, 0, 0, 0);
     gbl.setConstraints(graphL, gbc);
     contentPane.add(graphL);
     
-    JLabel xAxis = new JLabel("real(x)");
+    xAxis = new JLabel("real(x)");
     xAxis.setFont(new Font(timesRoman, Font.BOLD, 12));
     gbc = new GridBagConstraints();
     gbc.gridx = 2;
@@ -1598,7 +1602,8 @@ public class GuiContainer
     gbc.insets = new Insets(20, 0, 30, 0);
     gbl.setConstraints(languageList, gbc);
     languageList.addListSelectionListener(
-        new LanguageListener(languageList, model, closeButton, l, l2, button, stepLabel, steps));
+        new LanguageListener(languageList, model, closeButton, l, l2, button, stepLabel, 
+            steps, graphL, xAxis));
     contentPane.add(languageList);
   }
 

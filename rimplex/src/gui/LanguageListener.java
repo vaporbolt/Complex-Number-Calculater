@@ -24,6 +24,8 @@ public class LanguageListener implements ListSelectionListener
   private JButton about;
   private JLabel stepLabel;
   private StepDisplay stepWindow;
+  private JLabel graphL;
+  private JLabel xAxis;
 
   /**
    * Creates a language listener.
@@ -44,10 +46,14 @@ public class LanguageListener implements ListSelectionListener
    *          the label for the step window
    * @param stepWindow
    *          the step window
+   * @param graphL
+   *          the graph label
+   * @param xAxis
+   *          the x axis label
    */
   public LanguageListener(final JList<String> languageList, final DefaultListModel<String> model,
       final JButton close, final JLabel settings, final JLabel language, final JButton about,
-      final JLabel stepLabel, final StepDisplay stepWindow)
+      final JLabel stepLabel, final StepDisplay stepWindow, final JLabel graphL, final JLabel xAxis)
   {
     this.languageList = languageList;
     this.model = model;
@@ -57,6 +63,8 @@ public class LanguageListener implements ListSelectionListener
     this.about = about;
     this.stepLabel = stepLabel;
     this.stepWindow = stepWindow;
+    this.graphL = graphL;
+    this.xAxis = xAxis;
   }
 
   /**
@@ -92,6 +100,7 @@ public class LanguageListener implements ListSelectionListener
         stepWindow.setLanguage(spanish);
         stepWindow.applyLanguage();
         stepWindow.displayTypesetting(0, stepWindow.getPane().getText().length());
+        graphL.setText("Gráfico de Números Complejos");
       }
       else if (languageList.getSelectedValue().equals(english)
           || languageList.getSelectedValue().equals(ingles)
@@ -108,6 +117,8 @@ public class LanguageListener implements ListSelectionListener
         stepWindow.setLanguage(english);
         stepWindow.applyLanguage();
         stepWindow.displayTypesetting(0, stepWindow.getPane().getText().length());
+        graphL.setText("Complex Number Graph");
+        xAxis.setText("real(x)");
       }
       else
       {
@@ -122,6 +133,8 @@ public class LanguageListener implements ListSelectionListener
         stepWindow.setLanguage(french);
         stepWindow.applyLanguage();
         stepWindow.displayTypesetting(0, stepWindow.getPane().getText().length());
+        graphL.setText("Graphique des Nombres Complexes");
+        xAxis.setText("réel(x)");
       }
     }
   }
