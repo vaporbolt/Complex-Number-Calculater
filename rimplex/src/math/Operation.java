@@ -265,6 +265,26 @@ public class Operation
    */
   public static ComplexNumber log(final ComplexNumber a)
   {
-    return null;
+    final String logParenthese = "    log(";
+
+    String s = "log" + a.toString() + EQUALSNEWLINE;
+    s += STRINGS.getString(STEP) + ONE;
+    double real1 = a.getReal() * a.getReal() + a.getImaginary() * a.getImaginary();
+    s += SPACING + a.getReal() + "^2 + " + a.getImaginary() + "^2" + EQUALS + real1 + TWONEWLINES;
+    s += STRINGS.getString(STEP) + TWO;
+    double real2 = Math.log(real1) / 2;
+    s += logParenthese + real1 + ") / 2 = " + real2 + TWONEWLINES;
+
+    s += STRINGS.getString(STEP) + THREE;
+    double imaginary = Math.atan(a.getImaginary() / a.getReal());
+
+    s += "    atan(" + a.getImaginary() + DIVIDE + a.getReal() + ")" + EQUALS + imaginary
+        + TWONEWLINES;
+
+    s += STRINGS.getString(STEP) + FOUR;
+    ComplexNumber result = new ComplexNumber(real2, imaginary);
+    s += SPACING + real2 + PLUS + imaginary + IEQUALS + result.toString();
+    result.setSteps(s);
+    return result;
   }
 }

@@ -329,4 +329,14 @@ class OperationTest
     assertEquals(-1, num2.getImaginary());    
   }
   
+  @Test
+  void testLog()
+  {
+    ComplexNumber num1 = new ComplexNumber(8, -6);
+    ComplexNumber num2 = Operation.log(num1);
+
+    assertEquals(2.3026, num2.getReal(), .0001);
+    assertEquals(-0.6435, num2.getImaginary(), .0001);    
+  }
+  
 }
