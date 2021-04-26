@@ -39,6 +39,13 @@ public class FrameListener implements ComponentListener
     this.step = step;
   }
 
+  /**
+   * Called when the main frame is resized.
+   * Closes all of the windows.
+   * 
+   * @param e
+   *          when the frame is resized.
+   */
   @Override
   public void componentResized(final ComponentEvent e)
   {
@@ -50,6 +57,13 @@ public class FrameListener implements ComponentListener
 
   }
 
+  /**
+   * Called when the main frame is moved.
+   * Moves all of the windows so that it follows the main frame.
+   * 
+   * @param e
+   *          when the frame is moved.
+   */
   @Override
   public void componentMoved(final ComponentEvent e)
   {
@@ -62,6 +76,13 @@ public class FrameListener implements ComponentListener
 
   }
 
+  /**
+   * Called when the main frame is opened.
+   * Do nothing.
+   * 
+   * @param e
+   *          when the frame is opened.
+   */
   @Override
   public void componentShown(final ComponentEvent e)
   {
@@ -69,6 +90,13 @@ public class FrameListener implements ComponentListener
 
   }
 
+  /**
+   * Called when the main frame is closed.
+   * Closes all of the windows.
+   * 
+   * @param e
+   *          when the frame is closed.
+   */
   @Override
   public void componentHidden(final ComponentEvent e)
   {
