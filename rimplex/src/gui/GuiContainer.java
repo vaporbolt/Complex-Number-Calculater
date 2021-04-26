@@ -1379,8 +1379,8 @@ public class GuiContainer
     JScrollPane scrollPlane = new JScrollPane(plane);
     scrollPlane.setPreferredSize(new Dimension(200, 200));
     gbc = new GridBagConstraints();
-    gbc.gridx = 1;
-    gbc.gridy = 0;
+    gbc.gridx = 2;
+    gbc.gridy = 1;
     gbc.gridwidth = 1;
     gbc.gridheight = 5;
     gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -1389,20 +1389,21 @@ public class GuiContainer
     gbc.ipady = 200;
     gbc.weightx = .9;
     gbc.weighty = 0;
+    gbc.insets = new Insets(0, -30, 0, 0);
     gbl.setConstraints(scrollPlane, gbc);
     contentPane.add(scrollPlane);
 
     button = new JButton(rightArrow);
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
-    gbc.gridy = 0;
+    gbc.gridy = 1;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 0.1;
     gbc.weighty = 0;
-    gbc.insets = new Insets(90, 0, 0, 0);
+    gbc.insets = new Insets(95, 0, 0, 0);
     gbl.setConstraints(button, gbc);
     button.setBackground(scheme.getPlaneBackgroundColor());
     button.setBorderPainted(false);
@@ -1437,6 +1438,51 @@ public class GuiContainer
 
     });
     contentPane.add(button);
+    
+    JLabel graphL = new JLabel("Complex Plane Graph");
+    graphL.setFont(new Font(timesRoman, Font.BOLD, 16));
+    gbc = new GridBagConstraints();
+    gbc.gridx = 2;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(0, 40, 0, 0);
+    gbl.setConstraints(graphL, gbc);
+    contentPane.add(graphL);
+    
+    JLabel xAxis = new JLabel("real(x)");
+    xAxis.setFont(new Font(timesRoman, Font.BOLD, 12));
+    gbc = new GridBagConstraints();
+    gbc.gridx = 2;
+    gbc.gridy = 7;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.SOUTH;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(0, 95, 0, 0);
+    gbl.setConstraints(xAxis, gbc);
+    contentPane.add(xAxis);
+    
+    JLabel yAxis = new JLabel("i(y)");
+    yAxis.setFont(new Font(timesRoman, Font.BOLD, 12));
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1;
+    gbc.gridy = 1;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.weightx = 0;
+    gbc.weighty = 0;
+    gbc.insets = new Insets(95, 0, 0, 0);
+    gbl.setConstraints(yAxis, gbc);
+    contentPane.add(yAxis);
   }
 
   /**
