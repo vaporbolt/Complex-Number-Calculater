@@ -3,6 +3,8 @@ package color;
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  * Holds the colors included for rimplex to implement. Colors read from file. The format of the file
@@ -37,33 +39,14 @@ public class ColorScheme
   /**
    * Private Constructor.
    * 
-   * @param in
-   *          BufferedReader
    * @throws IOException
    *           If file reading fails
    */
-  private ColorScheme(final BufferedReader in) throws IOException
+  public ColorScheme() throws IOException
   {
+    InputStream s = this.getClass().getResourceAsStream("Scheme.color");
+    BufferedReader in = new BufferedReader(new InputStreamReader(s));
     readColorFile(in);
-  }
-
-  /**
-   * Factory method for ColorScheme.
-   * 
-   * @param in
-   *          BufferedReader
-   * @return ColorScheme
-   * @throws IOException,
-   *           IllegalStateException
-   */
-  public static ColorScheme createInstance(final BufferedReader in)
-      throws IOException, IllegalStateException
-  {
-    if (!exists)
-      return new ColorScheme(in);
-    exists = true;
-
-    throw new IllegalStateException("A Color Scheme already exists for Rimplex!");
   }
 
   /**
@@ -126,6 +109,8 @@ public class ColorScheme
     String[] field = in.readLine().split(regex);
     this.fieldColor = new Color(Integer.parseInt(field[0]), Integer.parseInt(field[1]),
         Integer.parseInt(field[2]));
+
+    System.out.println("color success");
   }
 
   /**

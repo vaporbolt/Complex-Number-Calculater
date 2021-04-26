@@ -1,7 +1,5 @@
 package app;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 
 import color.ColorScheme;
@@ -34,26 +32,37 @@ public class RimplexDriver
     {
       public void run()
       {
-        // Get ColorScheme from passed color scheme file
         ColorScheme scheme = null;
-        @SuppressWarnings("unused")
         RimplexIcon icon = null;
-
+        
+        // Create ColorScheme
         try
         {
-          BufferedReader in = new BufferedReader(new FileReader(args[0]));
-          scheme = ColorScheme.createInstance(in);
+          scheme = new ColorScheme();
         }
-        catch (IllegalStateException | IOException e)
+        catch (IOException e)
         {
-          if (e instanceof IllegalStateException)
-            throw new IllegalStateException("a scheme already exists!");
+          e.printStackTrace();
         }
 
         // create GUI
         GuiContainer container = GuiContainer.createInstance(scheme);
-        // Get icon from a passed image file, and set the jframe to it.
-        icon = RimplexIcon.createInstance(args[1], container.getJframe());
+        
+        // Create icon and add it to the JFrame.
+        try
+        {
+          icon = new RimplexIcon();
+          icon.addIcon(container.getJframe());
+        }
+        catch (IllegalStateException e)
+        {
+          e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+          e.printStackTrace();
+        }
+        
         container.showGUI();
 
         // get display
