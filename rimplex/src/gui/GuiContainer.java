@@ -1,5 +1,6 @@
 package gui;
 
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -1443,7 +1444,8 @@ public class GuiContainer
     });
     contentPane.add(button);
     
-    graphL = new JLabel("Complex Number Graph");
+    graphL = new JLabel(strings.getString("Complex") + " " + strings.getString("Number") +
+        " " + strings.getString("Graph"));
     graphL.setFont(new Font(timesRoman, Font.BOLD, 16));
     gbc = new GridBagConstraints();
     gbc.gridx = 2;
@@ -1458,7 +1460,7 @@ public class GuiContainer
     gbl.setConstraints(graphL, gbc);
     contentPane.add(graphL);
     
-    xAxis = new JLabel("real(x)");
+    xAxis = new JLabel(strings.getString("real") + "(x)");
     xAxis.setFont(new Font(timesRoman, Font.BOLD, 12));
     gbc = new GridBagConstraints();
     gbc.gridx = 2;
@@ -1576,7 +1578,10 @@ public class GuiContainer
     button.setFont(new Font(timesRoman, Font.PLAIN, 13));
     button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
     // about window
-    AboutFrame aboutFrame = new AboutFrame(AboutFrame.ENGLISH, this.frame);
+    String text = AboutFrame.ENGLISH;
+    if (Locale.getDefault().getLanguage().equals("es")) text = AboutFrame.SPANISH;
+    else if (Locale.getDefault().getLanguage().equals("fr")) text = AboutFrame.FRENCH;
+    AboutFrame aboutFrame = new AboutFrame(text, this.frame);
     AboutHandeler handeler = new AboutHandeler(aboutFrame);
     button.addActionListener(handeler);
     contentPane.add(button);
@@ -1607,7 +1612,7 @@ public class GuiContainer
     gbl.setConstraints(languageList, gbc);
     languageList.addListSelectionListener(
         new LanguageListener(languageList, model, closeButton, l, l2, button, stepLabel, 
-            steps, graphL, xAxis,aboutFrame ));
+            steps, graphL, xAxis, aboutFrame));
     contentPane.add(languageList);
   }
 

@@ -105,6 +105,7 @@ public class LanguageListener implements ListSelectionListener
         stepWindow.applyLanguage();
         stepWindow.displayTypesetting(0, stepWindow.getPane().getText().length());
         graphL.setText("Gráfico de Números Complejos");
+        aboutFrame.changeText(AboutFrame.SPANISH);
       }
       else if (languageList.getSelectedValue().equals(english)
           || languageList.getSelectedValue().equals(ingles)
@@ -123,6 +124,7 @@ public class LanguageListener implements ListSelectionListener
         stepWindow.displayTypesetting(0, stepWindow.getPane().getText().length());
         graphL.setText("Complex Number Graph");
         xAxis.setText("real(x)");
+        aboutFrame.changeText(AboutFrame.ENGLISH);
       }
       else
       {
@@ -139,6 +141,7 @@ public class LanguageListener implements ListSelectionListener
         stepWindow.displayTypesetting(0, stepWindow.getPane().getText().length());
         graphL.setText("Graphique des Nombres Complexes");
         xAxis.setText("réel(x)");
+        aboutFrame.changeText(AboutFrame.FRENCH);
       }
     }
   }
