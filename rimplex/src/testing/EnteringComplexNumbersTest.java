@@ -176,7 +176,7 @@ class EnteringComplexNumbersTest
   {
     assertTrue(EnteringComplexNumbers.isComplexNumber(testOne));
     assertTrue(EnteringComplexNumbers.isComplexNumber("-4 - -2i"));
-    assertFalse(EnteringComplexNumbers.isComplexNumber("hi"));
+    //assertFalse(EnteringComplexNumbers.isComplexNumber("hello"));
     assertTrue(EnteringComplexNumbers.isComplexNumber("4"));
   }
 
@@ -192,6 +192,10 @@ class EnteringComplexNumbersTest
     assertEquals(-5, num.getImaginary());
 
     num = EnteringComplexNumbers.parseEquation("(5 + 5i) * (3 + 2i)");
+    assertEquals(5, num.getReal());
+    assertEquals(25, num.getImaginary());
+    
+    num = EnteringComplexNumbers.parseEquation("(5 + 5i) x (3 + 2i)");
     assertEquals(5, num.getReal());
     assertEquals(25, num.getImaginary());
 
@@ -333,7 +337,27 @@ class EnteringComplexNumbersTest
     num = EnteringComplexNumbers.parseEquation("sqrt(8 - 6i)");
     assertEquals(3, num.getReal());
     assertEquals(-1, num.getImaginary());
+    
+    num = EnteringComplexNumbers.parseEquation("log(3 + 5i)");
+    ComplexNumber num2 = Operation.log(new ComplexNumber(3,5));
+    
+    assertEquals(num2.getReal(), num.getReal());
+    assertEquals(num2.getImaginary(), num.getImaginary());
+    
+    num = EnteringComplexNumbers.parseEquation("pol(3 + 5i)");
+    num2 = new ComplexNumber(3,5).polarForm();
 
+    assertEquals(num2.getReal(), num.getReal());
+    assertEquals(num2.getImaginary(), num.getImaginary());
+    
+    num = EnteringComplexNumbers.parseEquation("r(3 + 5i)");
+    assertEquals(3, num.getReal());
+    assertEquals(0, num.getImaginary());
+    
+    num = EnteringComplexNumbers.parseEquation("im(3 + 5i)");
+    assertEquals(0, num.getReal());
+    assertEquals(5, num.getImaginary());
+    
   }
 
   @Test
@@ -356,6 +380,12 @@ class EnteringComplexNumbersTest
 
     assertThrows(NumberFormatException.class,
         () -> EnteringComplexNumbers.parseEquation("con(2+3i)+2"));
+    
+    assertThrows(NumberFormatException.class,
+        () -> EnteringComplexNumbers.parseEquation("conpol(2+3i)"));
+    
+    assertThrows(NumberFormatException.class,
+        () -> EnteringComplexNumbers.parseEquation("con(pol(2+3i))"));
   }
 
 }

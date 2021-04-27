@@ -43,30 +43,6 @@ public class ComplexNumber
   }
 
   /**
-   * Factory method that creates a complex number that represents a real number.
-   * 
-   * @param real
-   *          the value of the real number
-   * @return a new Complex Number
-   */
-  public static ComplexNumber constructReal(final double real)
-  {
-    return new ComplexNumber(real, 0.0);
-  }
-
-  /**
-   * Factory method that creates a complex number that represents a imaginary number.
-   * 
-   * @param imaginary
-   *          the value of the imaginary number
-   * @return a new Complex Number
-   */
-  public static ComplexNumber constructImaginary(final double imaginary)
-  {
-    return new ComplexNumber(0.0, imaginary);
-  }
-
-  /**
    * @return the real value
    */
   public double getReal()
@@ -75,29 +51,11 @@ public class ComplexNumber
   }
 
   /**
-   * @param real
-   *          value the real to set
-   */
-  public void setReal(final double real)
-  {
-    this.real = real;
-  }
-
-  /**
    * @return the imaginary value
    */
   public double getImaginary()
   {
     return imaginary * sign;
-  }
-
-  /**
-   * @param imaginary
-   *          the imaginary to set value
-   */
-  public void setImaginary(final double imaginary)
-  {
-    this.imaginary = imaginary;
   }
 
   /**

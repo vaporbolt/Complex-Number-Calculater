@@ -19,6 +19,7 @@ class OperationTest
   @Test
   void testAddTwoComplex()
   {
+    new Operation();
     ComplexNumber num1 = new ComplexNumber(2, 3);
     ComplexNumber num2 = new ComplexNumber(4, 2);
     ComplexNumber num3 = Operation.add(num1, num2);
@@ -303,22 +304,21 @@ class OperationTest
     ComplexNumber num1 = new ComplexNumber(5, 3);
     ComplexNumber num2 = Operation.exponential(num1, -1);
 
-    assertEquals(5.0/34, num2.getReal());
-    assertEquals(-3.0/34, num2.getImaginary());
+    assertEquals(5.0 / 34, num2.getReal());
+    assertEquals(-3.0 / 34, num2.getImaginary());
 
     num2 = Operation.exponential(num1, -2);
 
-    assertEquals(4.0/289, num2.getReal());
-    assertEquals(-15.0/578, num2.getImaginary());
+    assertEquals(4.0 / 289, num2.getReal());
+    assertEquals(-15.0 / 578, num2.getImaginary());
 
     num2 = Operation.exponential(num1, -3);
 
-    assertEquals(-5.0/19652, num2.getReal());
-    assertEquals(-99.0/19652, num2.getImaginary());
+    assertEquals(-5.0 / 19652, num2.getReal());
+    assertEquals(-99.0 / 19652, num2.getImaginary());
 
   }
 
-  
   @Test
   void testSquareRoot()
   {
@@ -326,9 +326,9 @@ class OperationTest
     ComplexNumber num2 = Operation.squareRoot(num1);
 
     assertEquals(3, num2.getReal());
-    assertEquals(-1, num2.getImaginary());    
+    assertEquals(-1, num2.getImaginary());
   }
-  
+
   @Test
   void testLog()
   {
@@ -336,7 +336,18 @@ class OperationTest
     ComplexNumber num2 = Operation.log(num1);
 
     assertEquals(2.3026, num2.getReal(), .0001);
-    assertEquals(-0.6435, num2.getImaginary(), .0001);    
+    assertEquals(-0.6435, num2.getImaginary(), .0001);
   }
-  
+
+  @Test
+  void testSetSteps()
+  {
+    String test = "test";
+    ComplexNumber num1 = new ComplexNumber(0, 0);
+
+    num1.setSteps(test);
+
+    assertEquals(test, num1.getSteps());
+
+  }
 }
