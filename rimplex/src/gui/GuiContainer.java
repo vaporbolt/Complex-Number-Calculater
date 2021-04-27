@@ -1575,6 +1575,10 @@ public class GuiContainer
     button.setBackground(scheme.getSettingsBackgroundColor());
     button.setFont(new Font(timesRoman, Font.PLAIN, 13));
     button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+    // about window
+    AboutFrame aboutFrame = new AboutFrame(AboutFrame.ENGLISH, this.frame);
+    AboutHandeler handeler = new AboutHandeler(aboutFrame);
+    button.addActionListener(handeler);
     contentPane.add(button);
 
     String english = "English";
@@ -1603,7 +1607,7 @@ public class GuiContainer
     gbl.setConstraints(languageList, gbc);
     languageList.addListSelectionListener(
         new LanguageListener(languageList, model, closeButton, l, l2, button, stepLabel, 
-            steps, graphL, xAxis));
+            steps, graphL, xAxis,aboutFrame ));
     contentPane.add(languageList);
   }
 

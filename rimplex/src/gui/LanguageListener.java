@@ -26,6 +26,7 @@ public class LanguageListener implements ListSelectionListener
   private StepDisplay stepWindow;
   private JLabel graphL;
   private JLabel xAxis;
+  private AboutFrame aboutFrame;
 
   /**
    * Creates a language listener.
@@ -50,10 +51,12 @@ public class LanguageListener implements ListSelectionListener
    *          the graph label
    * @param xAxis
    *          the x axis label
+   * @param aboutFrame the frame which contains the about section,
    */
   public LanguageListener(final JList<String> languageList, final DefaultListModel<String> model,
       final JButton close, final JLabel settings, final JLabel language, final JButton about,
-      final JLabel stepLabel, final StepDisplay stepWindow, final JLabel graphL, final JLabel xAxis)
+      final JLabel stepLabel, final StepDisplay stepWindow, final JLabel graphL, final JLabel xAxis,
+      final AboutFrame aboutFrame)
   {
     this.languageList = languageList;
     this.model = model;
@@ -65,6 +68,7 @@ public class LanguageListener implements ListSelectionListener
     this.stepWindow = stepWindow;
     this.graphL = graphL;
     this.xAxis = xAxis;
+    this.aboutFrame = aboutFrame;
   }
 
   /**
