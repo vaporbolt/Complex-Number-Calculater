@@ -10,6 +10,7 @@ import visualization.CartesianPlane;
 import math.ComplexNumber;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -49,6 +50,7 @@ public class InputField
     this.abstractDocument = (AbstractDocument) this.document;
     this.abstractDocument.setDocumentFilter(filter);
     this.field.setBackground(new Color(199, 238, 255));
+    
   }
 
   /**
